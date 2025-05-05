@@ -3,34 +3,178 @@ layout: archive
 title: "Publications"
 permalink: /publications/
 author_profile: true
+classes: page--publications
 ---
-
-{% if site.author.googlescholar %}
-  <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
-{% endif %}
 
 {% include base_path %}
 
-<!-- New style rendering if publication categories are defined -->
-{% if site.publication_category %}
-  {% for category in site.publication_category  %}
-    {% assign title_shown = false %}
-    {% for post in site.publications reversed %}
-      {% if post.category != category[0] %}
-        {% continue %}
-      {% endif %}
-      {% unless title_shown %}
-        <h2>{{ category[1].title }}</h2><hr />
-        {% assign title_shown = true %}
-      {% endunless %}
-      {% include archive-single.html %}
-    {% endfor %}
-  {% endfor %}
-{% else %}
-  {% for post in site.publications reversed %}
-    {% include archive-single.html %}
-  {% endfor %}
+<header class="page__header">
+  <h1 class="page__title">{{ page.title }}</h1>
+</header>
+
+{% if site.author.googlescholar %}
+  <div class="scholar-link">
+    <i class="fas fa-graduation-cap" aria-hidden="true"></i> You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.
+  </div>
 {% endif %}
 
+<!-- Publication filters (optional) -->
+<div class="publication-filters">
+  <button class="filter-btn active" data-filter="all">All Publications</button>
+  {% if site.publication_category %}
+    {% for category in site.publication_category %}
+      <button class="filter-btn" data-filter="{{ category[0] }}">{{ category[1].title }}</button>
+    {% endfor %}
+  {% endif %}
+</div>
 
+<!-- New style rendering with categories -->
+{% if site.publication_category %}
+  <div class="publications-container">
+    {% for category in site.publication_category %}
+      <section class="publication-category" id="{{ category[0] }}-section">
+        <div class="category-header">
+          <h2>{{ category[1].title }}</h2>
+        </div>
+        
+        {% assign category_publications = site.publications | where: "category", category[0] | sort: "date" | reverse %}
+        {% for post in category_publications %}
+          <div class="archive__item">
+            {% if post.teaser %}
+              <div class="archive__item-teaser">
+                <img src="{{ post.teaser | prepend: '/images/' | prepend: base_path }}" alt="{{ post.title }}">
+              </div>
+            {% endif %}
+            
+            <div class="archive__item-content">
+              <h2 class="archive__item-title">
+                <a href="{{ base_path }}{{ post.url }}">{{ post.title }}</a>
+              </h2>
+              
+              <div class="publication-meta">
+                {% if post.authors %}
+                  <span class="meta-item"><i class="fas fa-users"></i> {{ post.authors }}</span>
+                {% endif %}
+                
+                {% if post.venue %}
+                  <span class="meta-item"><i class="fas fa-university"></i> {{ post.venue }}</span>
+                {% endif %}
+                
+                {% if post.date %}
+                  <span class="meta-item"><i class="fas fa-calendar-alt"></i> {{ post.date | date: "%Y" }}</span>
+                {% endif %}
+                
+                {% if post.paperurl %}
+                  <span class="meta-item">
+                    <i class="fas fa-file-pdf"></i> <a href="{{ post.paperurl }}">PDF</a>
+                  </span>
+                {% endif %}
+                
+                {% if post.code %}
+                  <span class="meta-item">
+                    <i class="fas fa-code"></i> <a href="{{ post.code }}">Code</a>
+                  </span>
+                {% endif %}
+              </div>
+              
+              {% if post.excerpt %}
+                <div class="archive__item-excerpt">
+                  {{ post.excerpt }}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </section>
+    {% endfor %}
+  </div>
+{% else %}
+  <!-- Fallback to the original style if no categories are defined -->
+  <div class="publications-container">
+    {% for post in site.publications reversed %}
+      <div class="archive__item">
+        {% if post.teaser %}
+          <div class="archive__item-teaser">
+            <img src="{{ post.teaser | prepend: '/images/' | prepend: base_path }}" alt="{{ post.title }}">
+          </div>
+        {% endif %}
+        
+        <div class="archive__item-content">
+          <h2 class="archive__item-title">
+            <a href="{{ base_path }}{{ post.url }}">{{ post.title }}</a>
+          </h2>
+          
+          <div class="publication-meta">
+            {% if post.authors %}
+              <span class="meta-item"><i class="fas fa-users"></i> {{ post.authors }}</span>
+            {% endif %}
+            
+            {% if post.venue %}
+              <span class="meta-item"><i class="fas fa-university"></i> {{ post.venue }}</span>
+            {% endif %}
+            
+            {% if post.date %}
+              <span class="meta-item"><i class="fas fa-calendar-alt"></i> {{ post.date | date: "%Y" }}</span>
+            {% endif %}
+            
+            {% if post.paperurl %}
+              <span class="meta-item">
+                <i class="fas fa-file-pdf"></i> <a href="{{ post.paperurl }}">PDF</a>
+              </span>
+            {% endif %}
+            
+            {% if post.code %}
+              <span class="meta-item">
+                <i class="fas fa-code"></i> <a href="{{ post.code }}">Code</a>
+              </span>
+            {% endif %}
+          </div>
+          
+          {% if post.excerpt %}
+            <div class="archive__item-excerpt">
+              {{ post.excerpt }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
 
+<!-- Optional JavaScript for filtering -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    
+    if (filterBtns.length > 0) {
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          // Remove active class from all buttons
+          filterBtns.forEach(b => b.classList.remove('active'));
+          
+          // Add active class to clicked button
+          this.classList.add('active');
+          
+          const filter = this.getAttribute('data-filter');
+          
+          // Show/hide categories based on filter
+          const sections = document.querySelectorAll('.publication-category');
+          
+          if (filter === 'all') {
+            sections.forEach(section => {
+              section.style.display = 'block';
+            });
+          } else {
+            sections.forEach(section => {
+              if (section.id === filter + '-section') {
+                section.style.display = 'block';
+              } else {
+                section.style.display = 'none';
+              }
+            });
+          }
+        });
+      });
+    }
+  });
+</script>

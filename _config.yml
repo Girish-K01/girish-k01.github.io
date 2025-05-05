@@ -9,7 +9,7 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default"
-title                    : "GIRISH K LABS"
+title                    : "GIRISH K Labs"
 title_separator          : "-"
 name                     : &name "Girish K"
 description              : &description "Computer Science undergrad | Researcher in Privacy-preserving AI & Computational Neuroscience"
@@ -25,7 +25,7 @@ author:
   avatar           : "profile_pic.jpg"
   name             : "Girish Kulathumani"
   pronouns         : # example: "she/her"  
-  bio              : "Computer Science undergrad | Researcher in Privacy-preserving AI & Computational Neuroscience"
+  bio              : "Software Engineer|Researcher in Privacy-preserving AI & Computational Neuroscience"
   location         : "Chennai, Tamil Nadu, India"
   employer         : "Vellore Institute of Technology"
   uri              : # URL
