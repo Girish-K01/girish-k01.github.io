@@ -1,152 +1,336 @@
 {
   "basics": {
-    "name": "Your Sidebar Name",
-    "email": "none@example.org",
-    "phone": "",
-    "website": "https://academicpages.github.io",
-    "summary": "Currently employed at Red Brick University. Short biography for the left-hand sidebar",
+    "name": "Girish Kulathumani",
+    "email": "girishkulathumani@gmail.com",
+    "phone": "+917358479083",
+    "website": "https://www.girishklabs.com",
+    "summary": "Computer Science student at VIT Chennai with expertise in high-performance computing and artificial intelligence. Focused on the intersection of computational efficiency, security systems, and AI with particular emphasis on GPU acceleration and parallelized architectures.",
     "location": {
       "address": "",
       "postalCode": "",
-      "city": "Earth",
-      "countryCode": "US",
-      "region": ""
+      "city": "Chennai",
+      "countryCode": "IN",
+      "region": "Tamil Nadu"
     },
     "profiles": [
       {
-        "network": "Google Scholar",
-        "username": "",
-        "url": "https://scholar.google.com/citations?user=PS_CX0AAAAAJ"
-      },
-      {
-        "network": "ORCID",
-        "username": "",
-        "url": "http://orcid.org/yourorcidurl"
+        "network": "LinkedIn",
+        "username": "girish-kulathumani",
+        "url": "https://linkedin.com/in/girish-kulathumani"
       },
       {
         "network": "GitHub",
-        "username": "academicpages",
-        "url": "https://github.com/academicpages"
+        "username": "Girish-K01",
+        "url": "https://github.com/Girish-K01"
+      },
+      {
+        "network": "Twitter",
+        "username": "gk4913",
+        "url": "https://twitter.com/gk4913"
+      },
+      {
+        "network": "Google Scholar",
+        "username": "hOmai0UAAAAJ",
+        "url": "https://scholar.google.com/citations?user=hOmai0UAAAAJ&hl=en"
+      },
+      {
+        "network": "ORCID",
+        "username": "0009-0003-9210-0999",
+        "url": "https://orcid.org/0009-0003-9210-0999"
+      },
+      {
+        "network": "Substack",
+        "username": "greylattice",
+        "url": "https://greylattice.substack.com"
+      },
+      {
+        "network": "Kaggle",
+        "username": "girishk49",
+        "url": "https://www.kaggle.com/girishk49"
       }
     ]
   },
-  "work": [],
+  "work": [
+    {
+      "company": "Vellore Institute of Technology",
+      "position": "Research Assistant (Independent Project, Supervised)",
+      "website": "",
+      "startDate": "2024-01",
+      "endDate": "2024-05",
+      "summary": "Conducted research in cybersecurity, secure messaging architecture, and computational applications",
+      "highlights": [
+        "Advancing Cybersecurity through Deception and Adaptive Analysis: Collaborated on novel cybersecurity measures, conducted literature reviews, designed experiments, analyzed data using Python, TensorFlow, and PyTorch, and contributed to a research paper (preprint stage).",
+        "Modular Parallelised Secure Messaging Architecture: Led team in developing a secure messaging pipeline, implemented encryption algorithms using CUDA, evaluated performance and security, and documented results.",
+        "Additional Research: Working on five papers covering High Performance Computing, Computational Neuroscience, Deep learning applications, and financial data analysis."
+      ]
+    },
+    {
+      "company": "Google Developers and Smartbridge",
+      "position": "Data Analytics Extern",
+      "website": "",
+      "startDate": "2023-08",
+      "endDate": "2023-11",
+      "summary": "Developed data analysis skills and implemented a weapon detection system",
+      "highlights": [
+        "YOLO Weapon Detection Project: Led the development of a highly accurate YOLO model for detecting weapons from webcam video footage, enhancing safety. Deployed the model using Flask for web application.",
+        "Technical Proficiency: Mastered advanced data analysis and visualization techniques using NumPy, pandas, Matplotlib, Seaborn, and TensorFlow.",
+        "Collaborative Teamwork: Worked effectively with a team of three on project design, implementation, and presentation."
+      ]
+    },
+    {
+      "company": "Socrates Club",
+      "position": "Content Writer",
+      "website": "",
+      "startDate": "2023-07",
+      "endDate": "2024-06",
+      "summary": "Created philosophical content for academic audience",
+      "highlights": [
+        "Research and Writing: Authored long-term (10-12 minute reads), medium-term (5-7 minute reads), and short-term (3-4 minute reads) blogs on various philosophy topics.",
+        "Content Creation: Produced in-depth, well-researched content, enhancing the club's online presence and engaging the academic community.",
+        "Communication Skills: Developed clear and concise writing, making complex philosophical concepts accessible."
+      ]
+    },
+    {
+      "company": "Vellore Institute of Technology",
+      "position": "Social Media Manager and Event Coordinator",
+      "website": "",
+      "startDate": "2024-01",
+      "endDate": "Present",
+      "summary": "Managed social media presence for the Startup Incubation Centre",
+      "highlights": [
+        "Strategically managed social media platforms, increasing engagement and visibility for the Startup Incubation Centre."
+      ]
+    }
+  ],
   "education": [
     {
-      "institution": "GitHub University",
-      "area": "Ph.D in Version Control Theory",
-      "studyType": "",
-      "startDate": "",
-      "endDate": "2018",
-      "gpa": null,
-      "courses": []
-    },
-    {
-      "institution": "GitHub University",
-      "area": "M.S. in Jekyll",
-      "studyType": "",
-      "startDate": "",
-      "endDate": "2014",
-      "gpa": null,
-      "courses": []
-    },
-    {
-      "institution": "GitHub University",
-      "area": "B.S. in GitHub",
-      "studyType": "",
-      "startDate": "",
-      "endDate": "2012",
-      "gpa": null,
+      "institution": "Vellore Institute of Technology Chennai",
+      "area": "Computer Science and Engineering",
+      "studyType": "Bachelor of Technology",
+      "startDate": "2021-08",
+      "endDate": "2025-05",
+      "gpa": "8.65/10.0",
       "courses": []
     }
   ],
-  "skills": [],
-  "languages": [],
-  "interests": [],
+  "skills": [
+    {
+      "name": "Programming & Markup Languages",
+      "level": "Advanced",
+      "keywords": ["Python", "C++", "Java", "HTML", "CSS", "JavaScript", "SQL"]
+    },
+    {
+      "name": "High-Performance Computing",
+      "level": "Advanced",
+      "keywords": ["CUDA", "RAPIDS", "Multiprocessing", "Parallel Computing"]
+    },
+    {
+      "name": "Machine Learning & Data Science",
+      "level": "Advanced",
+      "keywords": ["TensorFlow", "PyTorch", "Apache Spark", "Apache Kafka", "Sklearn", "Pandas", "NumPy", "Seaborn", "Matplotlib"]
+    },
+    {
+      "name": "DevOps & Tools",
+      "level": "Intermediate",
+      "keywords": ["Docker", "Kubernetes", "Git", "Linux"]
+    },
+    {
+      "name": "ML Architectures",
+      "level": "Advanced",
+      "keywords": ["CNN", "LSTM", "YOLO", "Transformers (BERT, LSTM)", "RoBERTa"]
+    },
+    {
+      "name": "Security",
+      "level": "Advanced",
+      "keywords": ["Cryptography", "Secure Communication Systems"]
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Native"
+    },
+    {
+      "language": "Tamil",
+      "fluency": "Native"
+    }
+  ],
+  "interests": [
+    {
+      "name": "High-Performance Computing",
+      "keywords": ["GPU Acceleration", "Parallel Computing", "Computational Efficiency"]
+    },
+    {
+      "name": "Security Systems",
+      "keywords": ["Cryptography", "Secure Communication"]
+    },
+    {
+      "name": "Computational Neuroscience",
+      "keywords": ["Brain Decoding", "Neural Networks"]
+    }
+  ],
   "references": [],
+  "projects": [
+    {
+      "name": "High Performance(CUDA+Parallel) Real-time Sentiment Analysis for Stock Trading",
+      "startDate": "2024-01",
+      "endDate": "2024-04",
+      "description": "GPU-accelerated system that processes financial news and social media in real-time, extracting market sentiment signals for trading decisions.",
+      "highlights": [
+        "Reduced the time taken for sentiment analysis on multiple news articles dynamically from 8 minutes to 10 seconds for any stock.",
+        "Enabled real-time analysis of financial news and social media data to identify market sentiment and support informed trading decisions."
+      ],
+      "keywords": ["CUDA", "WSL", "Multiprocessing", "RAPIDS", "Apache Spark", "Apache Kafka", "Docker", "Python"],
+      "url": "https://github.com/Girish-K01/HPC-Sentiment-Analysis"
+    },
+    {
+      "name": "LSTM-Based Predictive Modeling for Mutual Fund NAV Forecasting",
+      "startDate": "2024-01",
+      "endDate": "2024-04",
+      "description": "Deep learning system that forecasts mutual fund Net Asset Values using recurrent neural networks trained on comprehensive market datasets.",
+      "highlights": [
+        "Developed and implemented a robust LSTM model for predicting Net Asset Values (NAVs) of mutual funds based on historical market data.",
+        "Leveraged LSTM architecture to capture temporal dependencies and patterns in financial data, enabling accurate forecasts of NAVs."
+      ],
+      "keywords": ["LSTM", "Pandas", "NumPy", "Matplotlib", "scikit-learn"],
+      "url": "https://github.com/thePrnvBot/MFAssetAllocationML"
+    },
+    {
+      "name": "JIGSaw - A Novel Modular Parallelised Secure Messaging Architecture",
+      "startDate": "2024-01",
+      "endDate": "2024-04",
+      "description": "Performance-optimized cryptographic communication framework leveraging parallelized execution paths and advanced cipher implementations.",
+      "highlights": [
+        "Designed and implemented a parallelized high-performance cryptographic communication system in Python.",
+        "Contributed to the reduction of processing time for cryptographic operations pipeline from 6 minutes to 17 seconds."
+      ],
+      "keywords": ["Multiprocessing", "cryptography.hazmat", "ecdsa", "pyaes", "pbkdf2", "TCP/IP sockets", "Python"],
+      "url": "https://github.com/Girish-K01/jigs-crypto-code-repo"
+    },
+    {
+      "name": "Online Bank interface with Python, Tkinter, and MySQL",
+      "startDate": "2023-07",
+      "endDate": "2023-08",
+      "description": "A transactional platform for simulated banking operations with real-time data synchronization and comprehensive security features.",
+      "highlights": [
+        "Developed an interactive GUI for a simulated online bank using Python and Tkinter, integrating MySQL for backend database management.",
+        "Implemented key functionalities such as fund deposit/withdrawal, new account creation, loan management with interest rates, and credit card application.",
+        "Implemented real-time data synchronization using MySQL connectors, enabling dynamic adjustment of rates based on actual dates and times."
+      ],
+      "keywords": ["Python", "Tkinter", "MySQL"],
+      "url": "https://github.com/Girish-K01/Online-Bank-GUI-tkinter-mysql"
+    },
+    {
+      "name": "YOLO Weapon Detection Project",
+      "startDate": "2023-08",
+      "endDate": "2023-11",
+      "description": "A computer vision system for detecting weapons in real-time video footage to enhance safety and security.",
+      "highlights": [
+        "Led the development of a highly accurate YOLO model for detecting weapons from webcam video footage.",
+        "Deployed the model using Flask to create a functional web application to alert authorities."
+      ],
+      "keywords": ["YOLO", "Computer Vision", "Flask", "Python"],
+      "url": ""
+    }
+  ],
   "publications": [
     {
-      "name": "Paper Title Number 1",
-      "publisher": "Journal 1",
-      "releaseDate": "2009-10-01",
-      "website": "http://academicpages.github.io/files/paper1.pdf",
-      "summary": "This paper is about the number 1. The number 2 is left for future work."
+      "name": "Siren – Advancing Cybersecurity through Deception and Adaptive Analysis",
+      "publisher": "arXiv",
+      "releaseDate": "2024",
+      "website": "https://arxiv.org/abs/2406.06225",
+      "summary": "Research on novel cybersecurity measures using deception techniques and adaptive analysis."
     },
     {
-      "name": "Paper Title Number 2",
-      "publisher": "Journal 1",
-      "releaseDate": "2010-10-01",
-      "website": "http://academicpages.github.io/files/paper2.pdf",
-      "summary": "This paper is about the number 2. The number 3 is left for future work."
+      "name": "JIGSaw: A Novel Modular Parallel Encryption and Authentication Pipeline for Secure Messaging",
+      "publisher": "Under Review",
+      "releaseDate": "2024",
+      "website": "",
+      "summary": "A framework for high-performance cryptographic communication with parallelized execution paths."
     },
     {
-      "name": "Paper Title Number 3",
-      "publisher": "Journal 1",
-      "releaseDate": "2015-10-01",
-      "website": "http://academicpages.github.io/files/paper3.pdf",
-      "summary": "This paper is about the number 3. The number 4 is left for future work."
+      "name": "GLr01: Brain Decoding: Toward Real-time Reconstruction of Visual Perception",
+      "publisher": "GreyLattice",
+      "releaseDate": "2023",
+      "website": "https://greylattice.substack.com/p/glr01",
+      "summary": "Referenced in arXiv:2310.19812, this article explores brain decoding and visual perception reconstruction."
     },
     {
-      "name": "Paper Title Number 4",
-      "publisher": "GitHub Journal of Bugs",
-      "releaseDate": "2024-02-17",
-      "website": "http://academicpages.github.io/files/paper3.pdf",
-      "summary": "This paper is about fixing template issue #693."
+      "name": "GL01: The Foundations of Computational Neuroscience",
+      "publisher": "GreyLattice",
+      "releaseDate": "2023",
+      "website": "https://greylattice.substack.com/p/gl01",
+      "summary": "An exploration of fundamental concepts in computational neuroscience."
+    },
+    {
+      "name": "GL00: GreyLattice — The Next Revolution in Human-Machine Interface",
+      "publisher": "GreyLattice",
+      "releaseDate": "2023",
+      "website": "https://greylattice.substack.com/p/gl00",
+      "summary": "Introduction to GreyLattice, focusing on advances in human-machine interfaces."
     }
   ],
-  "presentations": [
+  "certifications": [
     {
-      "name": "Talk 1 on Relevant Topic in Your Field",
-      "event": "UC San Francisco, Department of Testing",
-      "date": "2012-03-01",
-      "location": "San Francisco, CA, USA",
-      "description": ""
+      "name": "Microsoft Certified: Azure AI Fundamentals",
+      "issuer": "Microsoft",
+      "date": "2024-06"
     },
     {
-      "name": "Tutorial 1 on Relevant Topic in Your Field",
-      "event": "UC-Berkeley Institute for Testing Science",
-      "date": "2013-03-01",
-      "location": "Berkeley, CA, USA",
-      "description": ""
+      "name": "Microsoft Certified: Azure Data Fundamentals",
+      "issuer": "Microsoft",
+      "date": "2024-06"
     },
     {
-      "name": "Talk 2 on Relevant Topic in Your Field",
-      "event": "London School of Testing",
-      "date": "2014-02-01",
-      "location": "London, UK",
-      "description": ""
+      "name": "Google Career Certificates: Advanced Data Analytics",
+      "issuer": "Google",
+      "date": "2023-07"
     },
     {
-      "name": "Conference Proceeding talk 3 on Relevant Topic in Your Field",
-      "event": "Testing Institute of America 2014 Annual Conference",
-      "date": "2014-03-01",
-      "location": "Los Angeles, CA, USA",
-      "description": ""
+      "name": "Google Cloud Digital Leader",
+      "issuer": "Google Cloud",
+      "date": "2023-11"
     }
   ],
-  "teaching": [
+  "leadership": [
     {
-      "course": "Teaching experience 1",
-      "institution": "University 1, Department",
-      "date": "2014-01-01",
-      "role": "Undergraduate course",
-      "description": ""
+      "title": "Tech Lecturer",
+      "organization": "Vellore Institute of Technology",
+      "date": "2023",
+      "description": "Delivered an engaging seminar on the workings and applications of CUDA to an audience of over 50 students."
     },
     {
-      "course": "Teaching experience 2",
-      "institution": "University 1, Department",
-      "date": "2015-01-01",
-      "role": "Workshop",
-      "description": ""
+      "title": "Social Media Manager and Event Coordinator",
+      "organization": "Startup Incubation Centre at Vellore Institute of Technology, Chennai",
+      "startDate": "2024-01",
+      "endDate": "Present",
+      "description": "Strategically managed social media platforms, increasing engagement and visibility for the Startup Incubation Centre."
     }
   ],
-  "portfolio": [
-    {
-      "name": "Portfolio item number 1",
-      "category": "portfolio",
-      "date": "",
-      "url": "",
-      "description": "Short description of portfolio item number 1<br/><img src='/images/500x300.png'>"
-    }
-  ]
+  "research": {
+    "focus": [
+      {
+        "area": "High-Performance Computing",
+        "description": "Developing specialized acceleration techniques for computationally intensive workloads using CUDA and distributed processing frameworks.",
+        "currentWork": "Real-time financial sentiment analysis engine leveraging RAPIDS and distributed Apache Spark clusters."
+      },
+      {
+        "area": "Secure Communication Systems",
+        "description": "Engineering next-generation cryptographic frameworks with a focus on performance-optimized encryption and authentication.",
+        "currentWork": "Modular cryptographic pipeline with parallelized execution paths and advanced security primitives."
+      },
+      {
+        "area": "Computational Neuroscience",
+        "description": "Exploring the computational foundations of neuroscience through the GreyLattice research initiative.",
+        "currentWork": "Brain decoding and visual perception reconstruction techniques."
+      }
+    ],
+    "initiatives": [
+      {
+        "name": "GreyLattice",
+        "description": "A research initiative focused on computational neuroscience and human-machine interfaces.",
+        "url": "https://greylattice.substack.com"
+      }
+    ]
+  }
 }
