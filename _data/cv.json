@@ -148,7 +148,11 @@
   "languages": [
     {
       "language": "English",
-      "fluency": "Native"
+      "fluency": "Very Fluent"
+    },
+    {
+      "language": "Hindi",
+      "fluency": "Fluent"
     },
     {
       "language": "Tamil",
@@ -247,27 +251,6 @@
       "releaseDate": "2024",
       "website": "",
       "summary": "A framework for high-performance cryptographic communication with parallelized execution paths."
-    },
-    {
-      "name": "GLr01: Brain Decoding: Toward Real-time Reconstruction of Visual Perception",
-      "publisher": "GreyLattice",
-      "releaseDate": "2023",
-      "website": "https://greylattice.substack.com/p/glr01",
-      "summary": "Referenced in arXiv:2310.19812, this article explores brain decoding and visual perception reconstruction."
-    },
-    {
-      "name": "GL01: The Foundations of Computational Neuroscience",
-      "publisher": "GreyLattice",
-      "releaseDate": "2023",
-      "website": "https://greylattice.substack.com/p/gl01",
-      "summary": "An exploration of fundamental concepts in computational neuroscience."
-    },
-    {
-      "name": "GL00: GreyLattice — The Next Revolution in Human-Machine Interface",
-      "publisher": "GreyLattice",
-      "releaseDate": "2023",
-      "website": "https://greylattice.substack.com/p/gl00",
-      "summary": "Introduction to GreyLattice, focusing on advances in human-machine interfaces."
     }
   ],
   "certifications": [
