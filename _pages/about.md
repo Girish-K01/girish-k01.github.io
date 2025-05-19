@@ -212,11 +212,11 @@ Vellore Institute of Technology, Chennai<br>
 <h2 class="section-heading">Connect with Me</h2>
 
 <div class="contact-links">
-  <a href="https://www.girishklabs.com">🌐 Portfolio</a>
-  <a href="https://greylattice.substack.com">✍️ GreyLattice Blog</a>
-  <a href="https://linkedin.com/in/girish-kulathumani">💼 LinkedIn</a>
-  <a href="https://github.com/Girish-K01">🐙 GitHub</a>
-  <a href="mailto:girishkulathumani@gmail.com">📬 Email</a>
+  <a href="https://www.girishklabs.com">Portfolio</a>
+  <a href="https://greylattice.substack.com">GreyLattice Blog</a>
+  <a href="https://linkedin.com/in/girish-kulathumani">LinkedIn</a>
+  <a href="https://github.com/Girish-K01">GitHub</a>
+  <a href="mailto:girishkulathumani@gmail.com">Email</a>
 </div>
 
 <div class="signature">
