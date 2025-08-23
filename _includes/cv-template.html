@@ -44,6 +44,17 @@
         </span>
       </div>
       {% endif %}
+
+      <!-- Social Profiles -->
+      {% if cv.basics.profiles.size > 0 %}
+      <div class="cv-social-profiles">
+        {% for profile in cv.basics.profiles %}
+        <a href="{{ profile.url }}" class="cv-social-link" target="_blank" rel="noopener noreferrer" aria-label="{{ profile.network }} profile">
+          <span class="cv-social-network">{{ profile.network }}</span>
+        </a>
+        {% endfor %}
+      </div>
+      {% endif %}
     </address>
   </header>
 
@@ -58,21 +69,24 @@
           {% for work in cv.work %}
           <article class="cv-item cv-work-item" itemprop="worksFor" itemscope itemtype="https://schema.org/Organization">
             <header class="cv-item-header">
-              <h3 class="cv-item-title">{{ work.position }}</h3>
+              <h3 class="cv-item-title" itemprop="jobTitle">{{ work.position }}</h3>
               <div class="cv-item-meta">
                 <span class="cv-company" itemprop="name">{{ work.company }}</span>
+                {% if work.website %}
+                <a href="{{ work.website }}" class="cv-company-link" target="_blank" rel="noopener noreferrer" aria-label="Company website">🔗</a>
+                {% endif %}
                 <time class="cv-date" datetime="{{ work.startDate }}">
-                  {{ work.startDate }}{% if work.endDate %} - {{ work.endDate }}{% else %} - Present{% endif %}
+                  {{ work.startDate | date: "%b %Y" }}{% if work.endDate %} - {{ work.endDate | date: "%b %Y" }}{% else %} - Present{% endif %}
                 </time>
               </div>
             </header>
             {% if work.summary %}
             <div class="cv-item-content">
-              <p>{{ work.summary }}</p>
+              <p class="cv-work-summary">{{ work.summary }}</p>
             </div>
             {% endif %}
             {% if work.highlights.size > 0 %}
-            <ul class="cv-highlights">
+            <ul class="cv-highlights" role="list">
               {% for highlight in work.highlights %}
               <li>{{ highlight }}</li>
               {% endfor %}
@@ -92,20 +106,73 @@
           {% for ed in cv.education %}
           <article class="cv-item cv-education-item" itemprop="alumniOf" itemscope itemtype="https://schema.org/EducationalOrganization">
             <header class="cv-item-header">
-              <h3 class="cv-item-title">{{ ed.area }}</h3>
+              <h3 class="cv-item-title">{{ ed.studyType }}{% if ed.area %} in {{ ed.area }}{% endif %}</h3>
               <div class="cv-item-meta">
                 <span class="cv-institution" itemprop="name">{{ ed.institution }}</span>
-                <time class="cv-date" datetime="{{ ed.endDate }}">{{ ed.endDate }}</time>
+                <time class="cv-date" datetime="{{ ed.startDate }}">
+                  {{ ed.startDate | date: "%Y" }}{% if ed.endDate %} - {{ ed.endDate | date: "%Y" }}{% endif %}
+                </time>
               </div>
             </header>
-            {% if ed.gpa %}
             <div class="cv-item-content">
-              <p><strong>GPA:</strong> {{ ed.gpa }}</p>
+              {% if ed.gpa %}
+              <p class="cv-gpa"><strong>GPA:</strong> {{ ed.gpa }}</p>
+              {% endif %}
+              {% if ed.courses.size > 0 %}
+              <div class="cv-courses">
+                <strong>Relevant Courses:</strong>
+                <span class="cv-course-list">{{ ed.courses | join: ", " }}</span>
+              </div>
+              {% endif %}
             </div>
-            {% endif %}
           </article>
           {% endfor %}
         </div>
+      </section>
+      {% endif %}
+
+      <!-- Research Section -->
+      {% if cv.research %}
+      <section class="cv-section" aria-labelledby="research-heading">
+        <h2 id="research-heading" class="cv-section-title">Research</h2>
+        
+        {% if cv.research.focus.size > 0 %}
+        <div class="cv-research-focus">
+          <h3 class="cv-subsection-title">Research Focus</h3>
+          {% for focus in cv.research.focus %}
+          <article class="cv-item cv-research-item">
+            <header class="cv-item-header">
+              <h4 class="cv-item-title">{{ focus.area }}</h4>
+            </header>
+            <div class="cv-item-content">
+              <p>{{ focus.description }}</p>
+              {% if focus.currentWork %}
+              <p class="cv-current-work"><strong>Current Work:</strong> {{ focus.currentWork }}</p>
+              {% endif %}
+            </div>
+          </article>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if cv.research.initiatives.size > 0 %}
+        <div class="cv-research-initiatives">
+          <h3 class="cv-subsection-title">Research Initiatives</h3>
+          {% for initiative in cv.research.initiatives %}
+          <article class="cv-item cv-initiative-item">
+            <header class="cv-item-header">
+              <h4 class="cv-item-title">{{ initiative.name }}</h4>
+            </header>
+            <div class="cv-item-content">
+              <p>{{ initiative.description }}</p>
+              {% if initiative.url %}
+              <a href="{{ initiative.url }}" class="cv-link" target="_blank" rel="noopener noreferrer">Learn More</a>
+              {% endif %}
+            </div>
+          </article>
+          {% endfor %}
+        </div>
+        {% endif %}
       </section>
       {% endif %}
 
@@ -118,13 +185,32 @@
           <article class="cv-item cv-project-item">
             <header class="cv-item-header">
               <h3 class="cv-item-title">{{ project.name }}</h3>
-              {% if project.date %}
-              <time class="cv-date" datetime="{{ project.date }}">{{ project.date }}</time>
+              {% if project.startDate %}
+              <time class="cv-date" datetime="{{ project.startDate }}">
+                {{ project.startDate | date: "%b %Y" }}{% if project.endDate %} - {{ project.endDate | date: "%b %Y" }}{% endif %}
+              </time>
               {% endif %}
             </header>
             {% if project.description %}
             <div class="cv-item-content">
-              <p>{{ project.description }}</p>
+              <p class="cv-project-description">{{ project.description }}</p>
+              {% if project.highlights.size > 0 %}
+              <ul class="cv-project-highlights" role="list">
+                {% for highlight in project.highlights %}
+                <li>{{ highlight }}</li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+              {% if project.keywords.size > 0 %}
+              <div class="cv-project-tech">
+                <strong>Technologies:</strong>
+                <div class="cv-tech-tags">
+                  {% for keyword in project.keywords %}
+                  <span class="cv-tech-tag">{{ keyword }}</span>
+                  {% endfor %}
+                </div>
+              </div>
+              {% endif %}
             </div>
             {% endif %}
             {% if project.url %}
@@ -144,18 +230,74 @@
         <h2 id="publications-heading" class="cv-section-title">Publications</h2>
         <div class="cv-timeline">
           {% for pub in cv.publications %}
-          <article class="cv-item cv-publication-item">
+          <article class="cv-item cv-publication-item" itemscope itemtype="https://schema.org/ScholarlyArticle">
             <header class="cv-item-header">
-              <h3 class="cv-item-title">{{ pub.name }}</h3>
+              <h3 class="cv-item-title" itemprop="name">{{ pub.name }}</h3>
               <div class="cv-item-meta">
-                <span class="cv-publisher">{{ pub.publisher }}</span>
-                <time class="cv-date" datetime="{{ pub.releaseDate }}">{{ pub.releaseDate | slice: 0, 4 }}</time>
+                <span class="cv-publisher" itemprop="publisher">{{ pub.publisher }}</span>
+                <time class="cv-date" datetime="{{ pub.releaseDate }}" itemprop="datePublished">{{ pub.releaseDate | slice: 0, 4 }}</time>
               </div>
             </header>
+            {% if pub.summary %}
+            <div class="cv-item-content">
+              <p class="cv-publication-summary" itemprop="description">{{ pub.summary }}</p>
+            </div>
+            {% endif %}
             {% if pub.website %}
             <footer class="cv-item-footer">
-              <a href="{{ pub.website }}" class="cv-link" target="_blank" rel="noopener noreferrer">Read Publication</a>
+              <a href="{{ pub.website }}" class="cv-link" target="_blank" rel="noopener noreferrer" itemprop="url">Read Publication</a>
             </footer>
+            {% endif %}
+          </article>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+
+      <!-- Certifications Section -->
+      {% if cv.certifications.size > 0 %}
+      <section class="cv-section" aria-labelledby="certifications-heading">
+        <h2 id="certifications-heading" class="cv-section-title">Certifications</h2>
+        <div class="cv-grid">
+          {% for cert in cv.certifications %}
+          <article class="cv-item cv-certification-item">
+            <header class="cv-item-header">
+              <h3 class="cv-item-title">{{ cert.name }}</h3>
+              <div class="cv-item-meta">
+                <span class="cv-issuer">{{ cert.issuer }}</span>
+                <time class="cv-date" datetime="{{ cert.date }}">{{ cert.date | date: "%b %Y" }}</time>
+              </div>
+            </header>
+          </article>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+
+      <!-- Leadership Section -->
+      {% if cv.leadership.size > 0 %}
+      <section class="cv-section" aria-labelledby="leadership-heading">
+        <h2 id="leadership-heading" class="cv-section-title">Leadership & Activities</h2>
+        <div class="cv-timeline">
+          {% for leadership in cv.leadership %}
+          <article class="cv-item cv-leadership-item">
+            <header class="cv-item-header">
+              <h3 class="cv-item-title">{{ leadership.title }}</h3>
+              <div class="cv-item-meta">
+                <span class="cv-organization">{{ leadership.organization }}</span>
+                <time class="cv-date" datetime="{{ leadership.date | default: leadership.startDate }}">
+                  {% if leadership.startDate %}
+                    {{ leadership.startDate | date: "%b %Y" }}{% if leadership.endDate %} - {{ leadership.endDate | date: "%b %Y" }}{% endif %}
+                  {% else %}
+                    {{ leadership.date | date: "%Y" }}
+                  {% endif %}
+                </time>
+              </div>
+            </header>
+            {% if leadership.description %}
+            <div class="cv-item-content">
+              <p>{{ leadership.description }}</p>
+            </div>
             {% endif %}
           </article>
           {% endfor %}
@@ -174,9 +316,12 @@
           {% for skill in cv.skills %}
           <div class="cv-skill-group">
             <h3 class="cv-skill-category">{{ skill.name }}</h3>
-            <div class="cv-skill-tags">
+            {% if skill.level %}
+            <span class="cv-skill-level" aria-label="Skill level">{{ skill.level }}</span>
+            {% endif %}
+            <div class="cv-skill-tags" role="list" aria-label="Skills in {{ skill.name }}">
               {% for keyword in skill.keywords %}
-              <span class="cv-skill-tag">{{ keyword }}</span>
+              <span class="cv-skill-tag" role="listitem">{{ keyword }}</span>
               {% endfor %}
             </div>
           </div>
@@ -189,9 +334,9 @@
       {% if cv.languages.size > 0 %}
       <section class="cv-section" aria-labelledby="languages-heading">
         <h2 id="languages-heading" class="cv-section-title">Languages</h2>
-        <div class="cv-languages">
+        <div class="cv-languages" role="list">
           {% for lang in cv.languages %}
-          <div class="cv-language-item">
+          <div class="cv-language-item" role="listitem">
             <span class="cv-language-name">{{ lang.language }}</span>
             <span class="cv-language-level">{{ lang.fluency }}</span>
           </div>
@@ -209,9 +354,9 @@
           <div class="cv-interest-item">
             <h3 class="cv-interest-name">{{ interest.name }}</h3>
             {% if interest.keywords.size > 0 %}
-            <div class="cv-interest-tags">
+            <div class="cv-interest-tags" role="list" aria-label="Areas of interest in {{ interest.name }}">
               {% for keyword in interest.keywords %}
-              <span class="cv-interest-tag">{{ keyword }}</span>
+              <span class="cv-interest-tag" role="listitem">{{ keyword }}</span>
               {% endfor %}
             </div>
             {% endif %}
@@ -222,444 +367,12 @@
       {% endif %}
     </aside>
   </main>
+
+  <!-- Print-specific metadata -->
+  <div class="cv-metadata" style="display: none;" aria-hidden="true">
+    <span itemprop="name">{{ cv.basics.name }}</span>
+    <span itemprop="email">{{ cv.basics.email }}</span>
+    <span itemprop="url">{{ cv.basics.website }}</span>
+    <time itemprop="dateModified" datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: "%Y-%m-%d" }}</time>
+  </div>
 </article>
-<style>
-/* Reset and base styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Georgia', 'Times New Roman', serif;
-  line-height: 1.6;
-  color: #333;
-  background-color: #f8f9fa;
-}
-
-/* Container */
-.cv-container {
-  max-width: 1000px;
-  margin: 2rem auto;
-  background: white;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-/* Header */
-.cv-header {
-  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-  color: white;
-  padding: 2rem;
-  text-align: center;
-}
-
-.cv-header-content {
-  margin-bottom: 1.5rem;
-}
-
-.cv-name {
-  font-size: 2.5rem;
-  font-weight: 300;
-  margin-bottom: 0.5rem;
-  letter-spacing: 1px;
-}
-
-.cv-title {
-  font-size: 1.2rem;
-  opacity: 0.9;
-  margin-bottom: 1rem;
-  font-style: italic;
-}
-
-.cv-summary {
-  font-size: 1rem;
-  opacity: 0.9;
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: 1.5;
-}
-
-.cv-contact {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  font-style: normal;
-}
-
-.cv-contact-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 25px;
-  backdrop-filter: blur(10px);
-}
-
-.cv-contact-label {
-  font-size: 1.2rem;
-}
-
-.cv-contact a {
-  color: white;
-  text-decoration: none;
-  transition: opacity 0.3s ease;
-}
-
-.cv-contact a:hover {
-  opacity: 0.8;
-}
-
-/* Main content */
-.cv-main {
-  display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: 2rem;
-  padding: 2rem;
-}
-
-.cv-content {
-  min-width: 0; /* Prevents overflow */
-}
-
-.cv-sidebar {
-  background: #f8f9fa;
-  padding: 1.5rem;
-  border-radius: 8px;
-  height: fit-content;
-  position: sticky;
-  top: 2rem;
-}
-
-/* Sections */
-.cv-section {
-  margin-bottom: 2rem;
-}
-
-.cv-section:last-child {
-  margin-bottom: 0;
-}
-
-.cv-section-title {
-  font-size: 1.5rem;
-  color: #2c3e50;
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid #3498db;
-  position: relative;
-}
-
-.cv-section-title::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 50px;
-  height: 2px;
-  background: #3498db;
-}
-
-/* Timeline layout */
-.cv-timeline {
-  position: relative;
-  padding-left: 1rem;
-}
-
-.cv-timeline::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: #ddd;
-}
-
-/* Items */
-.cv-item {
-  position: relative;
-  margin-bottom: 1.5rem;
-  padding-left: 1.5rem;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.cv-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
-.cv-timeline .cv-item::before {
-  content: '';
-  position: absolute;
-  left: -1.75rem;
-  top: 1rem;
-  width: 12px;
-  height: 12px;
-  background: #3498db;
-  border-radius: 50%;
-  border: 3px solid white;
-  box-shadow: 0 0 0 2px #3498db;
-}
-
-.cv-item-header {
-  padding: 1rem 1rem 0.5rem;
-}
-
-.cv-item-title {
-  font-size: 1.2rem;
-  color: #2c3e50;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-}
-
-.cv-item-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  font-size: 0.9rem;
-  color: #666;
-}
-
-.cv-company,
-.cv-institution,
-.cv-publisher {
-  font-weight: 500;
-  color: #555;
-}
-
-.cv-date {
-  background: #ecf0f1;
-  padding: 0.25rem 0.5rem;
-  border-radius: 15px;
-  font-size: 0.8rem;
-  white-space: nowrap;
-}
-
-.cv-item-content {
-  padding: 0 1rem 0.5rem;
-}
-
-.cv-item-footer {
-  padding: 0.5rem 1rem 1rem;
-}
-
-.cv-link {
-  color: #3498db;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.cv-link:hover {
-  color: #2980b9;
-}
-
-/* Highlights */
-.cv-highlights {
-  margin: 0.5rem 0;
-  padding-left: 1rem;
-  list-style: none;
-}
-
-.cv-highlights li {
-  position: relative;
-  padding-left: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.cv-highlights li::before {
-  content: '▸';
-  position: absolute;
-  left: 0;
-  color: #3498db;
-  font-weight: bold;
-}
-
-/* Grid layout for projects */
-.cv-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1rem;
-}
-
-/* Skills */
-.cv-skills-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.cv-skill-group {
-  background: white;
-  padding: 1rem;
-  border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.cv-skill-category {
-  font-size: 1rem;
-  color: #2c3e50;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-}
-
-.cv-skill-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.cv-skill-tag {
-  background: #e8f4fd;
-  color: #2980b9;
-  padding: 0.25rem 0.5rem;
-  border-radius: 15px;
-  font-size: 0.8rem;
-  font-weight: 500;
-}
-
-/* Languages */
-.cv-languages {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.cv-language-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.5rem;
-  background: white;
-  border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.cv-language-name {
-  font-weight: 500;
-  color: #2c3e50;
-}
-
-.cv-language-level {
-  color: #666;
-  font-size: 0.9rem;
-}
-
-/* Interests */
-.cv-interests {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.cv-interest-item {
-  background: white;
-  padding: 1rem;
-  border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.cv-interest-name {
-  font-size: 1rem;
-  color: #2c3e50;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-}
-
-.cv-interest-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.cv-interest-tag {
-  background: #f1f2f6;
-  color: #555;
-  padding: 0.25rem 0.5rem;
-  border-radius: 15px;
-  font-size: 0.8rem;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-  .cv-main {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 1rem;
-  }
-  
-  .cv-header {
-    padding: 1.5rem 1rem;
-  }
-  
-  .cv-name {
-    font-size: 2rem;
-  }
-  
-  .cv-contact {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .cv-contact-item {
-    width: 100%;
-    max-width: 250px;
-    justify-content: center;
-  }
-  
-  .cv-item-meta {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .cv-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .cv-sidebar {
-    order: -1;
-    margin-bottom: 1rem;
-  }
-}
-
-@media print {
-  body {
-    background: white;
-  }
-  
-  .cv-container {
-    box-shadow: none;
-    border-radius: 0;
-    margin: 0;
-  }
-  
-  .cv-header {
-    background: #2c3e50 !important;
-    -webkit-print-color-adjust: exact;
-    color-adjust: exact;
-  }
-  
-  .cv-main {
-    grid-template-columns: 1fr 250px;
-    gap: 1rem;
-  }
-  
-  .cv-item {
-    break-inside: avoid;
-    page-break-inside: avoid;
-  }
-  
-  .cv-section {
-    break-after: avoid;
-    page-break-after: avoid;
-  }
-}
-</style>
