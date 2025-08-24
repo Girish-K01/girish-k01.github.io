@@ -1,9 +1,9 @@
 {
   "basics": {
     "name": "Girish Kulathumani",
-    "email": "girishkulathumani@gmail.com",
+    "email": "girish.kulathumani@gmail.com",
     "website": "https://www.girishklabs.com",
-    "summary": "Computer Science student at VIT Chennai with expertise in high-performance computing and artificial intelligence. Focused on the intersection of computational efficiency, security systems, and AI with particular emphasis on GPU acceleration and parallelized architectures.",
+    "summary": "Computer Science Engineering student at VIT Chennai specializing in federated learning, secure AI systems, and high-performance computing. Focused on GPU-accelerated machine learning, cryptographic architectures, and computational neuroscience with proven expertise in distributed systems and multimodal ML frameworks.",
     "location": {
       "address": "",
       "postalCode": "",
@@ -51,60 +51,57 @@
   },
   "work": [
     {
+      "company": "Vellore Institute of Technology (via NVIDIA DGX)",
+      "position": "Independent Project Lead - Federated Learning AI",
+      "website": "",
+      "startDate": "2025-01",
+      "endDate": "2025-05",
+      "summary": "Leading federated multimodal ML framework development with GPU acceleration and containerized deployment",
+      "highlights": [
+        "Led 3-member team building federated multimodal ML framework achieving 87.65% wildlife audio and 69.92% visual recognition on datasets of 18.2K spectrograms & 50K images",
+        "Achieved 5% accuracy gain over centralized training using <2MB MobileNetV3/SqueezeNet models, deployed via containerized Flower pipeline with multi-GPU CUDA workflows and custom Docker provisioning"
+      ]
+    },
+    {
       "company": "Vellore Institute of Technology",
-      "position": "Research Assistant (Independent Project, Supervised)",
+      "position": "Research Assistant - Secure AI Systems & Cryptography",
       "website": "",
       "startDate": "2024-01",
       "endDate": "2024-05",
-      "summary": "Conducted research in cybersecurity, secure messaging architecture, and computational applications",
+      "summary": "Conducted advanced research in cybersecurity, secure messaging architecture, and AI-driven threat detection",
       "highlights": [
-        "Advancing Cybersecurity through Deception and Adaptive Analysis: Collaborated on novel cybersecurity measures, conducted literature reviews, designed experiments, analyzed data using Python, TensorFlow, and PyTorch, and contributed to a research paper (preprint stage).",
-        "Modular Parallelised Secure Messaging Architecture: Led team in developing a secure messaging pipeline, implemented encryption algorithms using CUDA, evaluated performance and security, and documented results.",
-        "Additional Research: Working on five papers covering High Performance Computing, Computational Neuroscience, Deep learning applications, and financial data analysis."
+        "Co-authored 2 peer-reviewed papers: JIGS (96.67% speedup via parallelized ECDH/AES-128 pipeline) and Siren (ML-driven honeypot with TCP sockets, simulated user activity, and probabilistic encryption)",
+        "Designed modular Python cryptographic architecture and integrated deception-based threat engagement for adaptive cybersecurity research"
       ]
     },
     {
-      "company": "Google Developers and Smartbridge",
-      "position": "Data Analytics Extern",
+      "company": "Google Developers x SmartBridge",
+      "position": "Data Science & ML Extern",
       "website": "",
       "startDate": "2023-08",
       "endDate": "2023-11",
-      "summary": "Developed data analysis skills and implemented a weapon detection system",
+      "summary": "Developed real-time computer vision systems and advanced ML applications",
       "highlights": [
-        "YOLO Weapon Detection Project: Led the development of a highly accurate YOLO model for detecting weapons from webcam video footage, enhancing safety. Deployed the model using Flask for web application.",
-        "Technical Proficiency: Mastered advanced data analysis and visualization techniques using NumPy, pandas, Matplotlib, Seaborn, and TensorFlow.",
-        "Collaborative Teamwork: Worked effectively with a team of three on project design, implementation, and presentation."
+        "Built real-time weapon detection system using YOLO + Flask; optimized TensorFlow inference for webcam-based classification",
+        "Mastered advanced data analysis and visualization techniques using NumPy, pandas, Matplotlib, Seaborn, and TensorFlow"
       ]
     },
     {
-      "company": "Socrates Club",
-      "position": "Content Writer",
-      "website": "",
-      "startDate": "2023-07",
-      "endDate": "2024-06",
-      "summary": "Created philosophical content for academic audience",
-      "highlights": [
-        "Research and Writing: Authored long-term (10-12 minute reads), medium-term (5-7 minute reads), and short-term (3-4 minute reads) blogs on various philosophy topics.",
-        "Content Creation: Produced in-depth, well-researched content, enhancing the club's online presence and engaging the academic community.",
-        "Communication Skills: Developed clear and concise writing, making complex philosophical concepts accessible."
-      ]
-    },
-    {
-      "company": "Vellore Institute of Technology",
-      "position": "Social Media Manager and Event Coordinator",
+      "company": "Vellore Institute of Technology Startup Centre",
+      "position": "Social Media Manager",
       "website": "",
       "startDate": "2024-01",
       "endDate": "Present",
-      "summary": "Managed social media presence for the Startup Incubation Centre",
+      "summary": "Managed social media presence and increased engagement for the Startup Incubation Centre",
       "highlights": [
-        "Strategically managed social media platforms, increasing engagement and visibility for the Startup Incubation Centre."
+        "Strategically managed social media platforms, increasing engagement and visibility for the Startup Incubation Centre"
       ]
     }
   ],
   "education": [
     {
       "institution": "Vellore Institute of Technology Chennai",
-      "area": "Computer Science and Engineering",
+      "area": "Computer Science Engineering",
       "studyType": "Bachelor of Technology",
       "startDate": "2021-08",
       "endDate": "2025-05",
@@ -114,34 +111,34 @@
   ],
   "skills": [
     {
-      "name": "Programming & Markup Languages",
+      "name": "Programming Languages",
       "level": "Advanced",
-      "keywords": ["Python", "C++", "Java", "HTML", "CSS", "JavaScript", "SQL"]
-    },
-    {
-      "name": "High-Performance Computing",
-      "level": "Advanced",
-      "keywords": ["CUDA", "RAPIDS", "Multiprocessing", "Parallel Computing"]
+      "keywords": ["Python", "C++", "Java", "JavaScript", "TypeScript", "SQL"]
     },
     {
       "name": "Machine Learning & Data Science",
       "level": "Advanced",
-      "keywords": ["TensorFlow", "PyTorch", "Apache Spark", "Apache Kafka", "Sklearn", "Pandas", "NumPy", "Seaborn", "Matplotlib"]
+      "keywords": ["PyTorch", "TensorFlow", "scikit-learn", "HuggingFace", "OpenCV", "YOLO", "pandas", "NumPy", "RAPIDS"]
     },
     {
-      "name": "DevOps & Tools",
-      "level": "Intermediate",
-      "keywords": ["Docker", "Kubernetes", "Git", "Linux"]
-    },
-    {
-      "name": "ML Architectures",
+      "name": "Frameworks & Tools",
       "level": "Advanced",
-      "keywords": ["CNN", "LSTM", "YOLO", "Transformers (BERT, LSTM)", "RoBERTa"]
+      "keywords": ["FastAPI", "Flask", "React", "Apache Kafka", "Apache Spark", "Docker", "Git"]
     },
     {
-      "name": "Security",
+      "name": "Databases & Infrastructure",
       "level": "Advanced",
-      "keywords": ["Cryptography", "Secure Communication Systems"]
+      "keywords": ["PostgreSQL", "MySQL", "NVIDIA NGC catalog", "Linux", "SSH", "Docker Compose"]
+    },
+    {
+      "name": "High-Performance Computing",
+      "level": "Advanced",
+      "keywords": ["CUDA", "RAPIDS", "Multi-GPU workflows", "Parallel Computing", "GPU acceleration"]
+    },
+    {
+      "name": "Security & Cryptography",
+      "level": "Advanced",
+      "keywords": ["Cryptographic architectures", "ECDH", "AES-128", "Secure Communication Systems"]
     }
   ],
   "languages": [
@@ -160,106 +157,114 @@
   ],
   "interests": [
     {
-      "name": "High-Performance Computing",
-      "keywords": ["GPU Acceleration", "Parallel Computing", "Computational Efficiency"]
+      "name": "Federated Learning",
+      "keywords": ["Multimodal ML", "Distributed Systems", "Privacy-preserving AI"]
     },
     {
-      "name": "Security Systems",
-      "keywords": ["Cryptography", "Secure Communication"]
+      "name": "High-Performance Computing",
+      "keywords": ["GPU Acceleration", "CUDA", "Multi-GPU workflows"]
+    },
+    {
+      "name": "Secure AI Systems",
+      "keywords": ["Cryptography", "ML-driven Security", "Adaptive Cybersecurity"]
     },
     {
       "name": "Computational Neuroscience",
-      "keywords": ["Brain Decoding", "Neural Networks"]
+      "keywords": ["Brain Decoding", "Neurotechnology", "GreyLattice Research"]
     }
   ],
   "references": [],
   "projects": [
     {
-      "name": "High Performance(CUDA+Parallel) Real-time Sentiment Analysis for Stock Trading",
+      "name": "Enterprise Banking System (Full-Stack)",
+      "startDate": "2025-05",
+      "endDate": "Present",
+      "description": "Comprehensive banking system with REST API, modern frontend, and containerized deployment.",
+      "highlights": [
+        "Developing REST API with FastAPI and SQLAlchemy ORM for role-based access and ACID-safe transactions",
+        "Building React + TypeScript frontend with Material UI, JWT authentication, and Axios interceptors",
+        "Containerized with Docker Compose, CI/CD via GitHub Actions, 85% test coverage with pytest"
+      ],
+      "keywords": ["FastAPI", "PostgreSQL", "React", "Docker", "JWT", "TypeScript", "Material UI"],
+      "url": ""
+    },
+    {
+      "name": "GPU-Accelerated Financial Sentiment Pipeline",
       "startDate": "2024-01",
       "endDate": "2024-04",
-      "description": "GPU-accelerated system that processes financial news and social media in real-time, extracting market sentiment signals for trading decisions.",
+      "description": "High-performance system for real-time financial sentiment analysis using GPU acceleration.",
       "highlights": [
-        "Reduced the time taken for sentiment analysis on multiple news articles dynamically from 8 minutes to 10 seconds for any stock.",
-        "Enabled real-time analysis of financial news and social media data to identify market sentiment and support informed trading decisions."
+        "Processed high-volume financial news streams with Apache Kafka and GPU-accelerated cuDF on RTX 2060",
+        "Reduced sentiment analysis latency from 8 minutes to 10 seconds using multiprocessing and RAPIDS",
+        "Integrated pretrained FinBERT model for real-time sentiment scoring, containerized with Docker"
       ],
-      "keywords": ["CUDA", "WSL", "Multiprocessing", "RAPIDS", "Apache Spark", "Apache Kafka", "Docker", "Python"],
+      "keywords": ["RAPIDS", "Apache Kafka", "Apache Spark", "Docker", "CUDA", "FinBERT"],
       "url": "https://github.com/Girish-K01/HPC-Sentiment-Analysis"
     },
     {
-      "name": "LSTM-Based Predictive Modeling for Mutual Fund NAV Forecasting",
+      "name": "LSTM Time-Series Forecasting for Mutual Funds",
       "startDate": "2024-01",
       "endDate": "2024-04",
-      "description": "Deep learning system that forecasts mutual fund Net Asset Values using recurrent neural networks trained on comprehensive market datasets.",
+      "description": "Advanced ML pipeline for financial forecasting with comprehensive feature engineering.",
       "highlights": [
-        "Developed and implemented a robust LSTM model for predicting Net Asset Values (NAVs) of mutual funds based on historical market data.",
-        "Leveraged LSTM architecture to capture temporal dependencies and patterns in financial data, enabling accurate forecasts of NAVs."
+        "Built ML pipeline integrating live NAV API data with S&P BSE Tech index for next-day forecasting",
+        "Engineered 15+ financial features (RSI, MACD, Bollinger Bands, CAPM metrics) achieving MAE 0.3-0.8",
+        "Applied sliding window preprocessing and feature selection using mutual information scoring"
       ],
-      "keywords": ["LSTM", "Pandas", "NumPy", "Matplotlib", "scikit-learn"],
+      "keywords": ["PyTorch", "LSTM", "TA-Lib", "Financial Engineering", "Time Series"],
       "url": "https://github.com/thePrnvBot/MFAssetAllocationML"
     },
     {
-      "name": "JIGSaw - A Novel Modular Parallelised Secure Messaging Architecture",
+      "name": "JIGSaw - Modular Parallelised Secure Messaging Architecture",
       "startDate": "2024-01",
       "endDate": "2024-04",
-      "description": "Performance-optimized cryptographic communication framework leveraging parallelized execution paths and advanced cipher implementations.",
+      "description": "High-performance cryptographic communication framework with parallelized execution.",
       "highlights": [
-        "Designed and implemented a parallelized high-performance cryptographic communication system in Python.",
-        "Contributed to the reduction of processing time for cryptographic operations pipeline from 6 minutes to 17 seconds."
+        "Designed and implemented parallelized high-performance cryptographic communication system achieving 96.67% speedup",
+        "Developed modular Python architecture with ECDH/AES-128 pipeline and TCP socket implementation"
       ],
-      "keywords": ["Multiprocessing", "cryptography.hazmat", "ecdsa", "pyaes", "pbkdf2", "TCP/IP sockets", "Python"],
+      "keywords": ["ECDH", "AES-128", "Multiprocessing", "TCP Sockets", "Python", "Cryptography"],
       "url": "https://github.com/Girish-K01/jigs-crypto-code-repo"
     },
     {
-      "name": "Online Bank interface with Python, Tkinter, and MySQL",
-      "startDate": "2023-07",
-      "endDate": "2023-08",
-      "description": "A transactional platform for simulated banking operations with real-time data synchronization and comprehensive security features.",
-      "highlights": [
-        "Developed an interactive GUI for a simulated online bank using Python and Tkinter, integrating MySQL for backend database management.",
-        "Implemented key functionalities such as fund deposit/withdrawal, new account creation, loan management with interest rates, and credit card application.",
-        "Implemented real-time data synchronization using MySQL connectors, enabling dynamic adjustment of rates based on actual dates and times."
-      ],
-      "keywords": ["Python", "Tkinter", "MySQL"],
-      "url": "https://github.com/Girish-K01/Online-Bank-GUI-tkinter-mysql"
-    },
-    {
-      "name": "YOLO Weapon Detection Project",
+      "name": "YOLO Weapon Detection System",
       "startDate": "2023-08",
       "endDate": "2023-11",
-      "description": "A computer vision system for detecting weapons in real-time video footage to enhance safety and security.",
+      "description": "Real-time computer vision system for security applications.",
       "highlights": [
-        "Led the development of a highly accurate YOLO model for detecting weapons from webcam video footage.",
-        "Deployed the model using Flask to create a functional web application to alert authorities."
+        "Built real-time weapon detection system using YOLO + Flask with optimized TensorFlow inference",
+        "Deployed web application for real-time webcam-based weapon classification"
       ],
-      "keywords": ["YOLO", "Computer Vision", "Flask", "Python"],
+      "keywords": ["YOLO", "Computer Vision", "Flask", "TensorFlow", "OpenCV"],
       "url": ""
     }
   ],
   "publications": [
     {
-      "name": "Siren – Advancing Cybersecurity through Deception and Adaptive Analysis",
-      "publisher": "arXiv",
-      "releaseDate": "2024",
-      "website": "https://arxiv.org/abs/2406.06225",
-      "summary": "Research on novel cybersecurity measures using deception techniques and adaptive analysis."
-    },
-    {
-      "name": "JIGSaw: A Novel Modular Parallel Encryption and Authentication Pipeline for Secure Messaging",
-      "publisher": "Under Review",
+      "name": "JIGS: Modular Parallel Encryption Pipeline",
+      "publisher": "IOP Engineering Research Express",
       "releaseDate": "2024",
       "website": "",
-      "summary": "A framework for high-performance cryptographic communication with parallelized execution paths."
+      "summary": "Hybrid ECDH-AES messaging architecture with modular design achieving 96.67% speedup through parallelization"
+    },
+    {
+      "name": "Siren: Adaptive Cybersecurity via Deception",
+      "publisher": "Springer LNNS CompCom 2025",
+      "releaseDate": "2025",
+      "website": "",
+      "summary": "ML-integrated honeypot system with simulated user interactions and probabilistic encryption for threat engagement"
+    },
+    {
+      "name": "GreyLattice – Independent Neurotechnology Publication",
+      "publisher": "Substack",
+      "releaseDate": "2024",
+      "website": "https://greylattice.substack.com",
+      "summary": "Published 5+ longform technical articles on computational neuroscience, including a 50-minute breakdown of brain decoding research"
     }
   ],
   "certifications": [
     {
       "name": "Microsoft Certified: Azure AI Fundamentals",
-      "issuer": "Microsoft",
-      "date": "2024-06"
-    },
-    {
-      "name": "Microsoft Certified: Azure Data Fundamentals",
       "issuer": "Microsoft",
       "date": "2024-06"
     },
@@ -276,41 +281,46 @@
   ],
   "leadership": [
     {
-      "title": "Tech Lecturer",
+      "title": "Technical Speaker",
       "organization": "Vellore Institute of Technology",
       "date": "2023",
-      "description": "Delivered an engaging seminar on the workings and applications of CUDA to an audience of over 50 students."
+      "description": "CUDA Seminar delivered to 50+ attendees, covering GPU acceleration techniques and parallel computing applications"
     },
     {
-      "title": "Social Media Manager and Event Coordinator",
-      "organization": "Startup Incubation Centre at Vellore Institute of Technology, Chennai",
+      "title": "Social Media Manager",
+      "organization": "VIT Startup Centre",
       "startDate": "2024-01",
       "endDate": "Present",
-      "description": "Strategically managed social media platforms, increasing engagement and visibility for the Startup Incubation Centre."
+      "description": "Strategically managed social media platforms, increasing engagement and visibility for the Startup Incubation Centre"
     }
   ],
   "research": {
     "focus": [
       {
-        "area": "High-Performance Computing",
-        "description": "Developing specialized acceleration techniques for computationally intensive workloads using CUDA and distributed processing frameworks.",
-        "currentWork": "Real-time financial sentiment analysis engine leveraging RAPIDS and distributed Apache Spark clusters."
+        "area": "Federated Learning & Multimodal AI",
+        "description": "Developing privacy-preserving ML frameworks with GPU acceleration and containerized deployment using cutting-edge distributed learning techniques.",
+        "currentWork": "Leading federated multimodal ML framework achieving superior accuracy over centralized training with efficient model architectures."
       },
       {
-        "area": "Secure Communication Systems",
-        "description": "Engineering next-generation cryptographic frameworks with a focus on performance-optimized encryption and authentication.",
-        "currentWork": "Modular cryptographic pipeline with parallelized execution paths and advanced security primitives."
+        "area": "Secure AI Systems",
+        "description": "Engineering next-generation cryptographic frameworks and AI-driven security systems with focus on adaptive threat detection and response.",
+        "currentWork": "Modular cryptographic architectures with ML-integrated honeypot systems for advanced cybersecurity applications."
+      },
+      {
+        "area": "High-Performance Computing",
+        "description": "Specialized GPU acceleration techniques for computationally intensive ML workloads using CUDA and distributed processing frameworks.",
+        "currentWork": "Multi-GPU workflows and containerized ML pipelines for real-time data processing and analysis."
       },
       {
         "area": "Computational Neuroscience",
-        "description": "Exploring the computational foundations of neuroscience through the GreyLattice research initiative.",
-        "currentWork": "Brain decoding and visual perception reconstruction techniques."
+        "description": "Exploring brain-computer interfaces and neural decoding through the GreyLattice research initiative.",
+        "currentWork": "Brain decoding research and neurotechnology applications with published technical articles."
       }
     ],
     "initiatives": [
       {
         "name": "GreyLattice",
-        "description": "A research initiative focused on computational neuroscience and human-machine interfaces.",
+        "description": "An independent neurotechnology research publication focusing on computational neuroscience and brain-computer interfaces.",
         "url": "https://greylattice.substack.com"
       }
     ]

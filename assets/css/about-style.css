@@ -1,0 +1,122 @@
+/* Custom styles for about page - with dark mode support */
+:root {
+  --text-color: inherit;
+  --accent-color: #2a76dd;
+  --border-color: #f2f3f3;
+  --card-bg-color: rgba(0, 0, 0, 0.05);
+  --card-border-color: #2a76dd;
+  --quote-bg-color: rgba(0, 0, 0, 0.03);
+  --contact-link-bg: rgba(0, 0, 0, 0.03);
+  --contact-link-hover-bg: rgba(0, 0, 0, 0.08);
+}
+
+.dark {
+  --accent-color: #4d8fec;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --card-bg-color: rgba(255, 255, 255, 0.05);
+  --card-border-color: #4d8fec;
+  --quote-bg-color: rgba(255, 255, 255, 0.05);
+  --contact-link-bg: rgba(255, 255, 255, 0.08);
+  --contact-link-hover-bg: rgba(255, 255, 255, 0.12);
+}
+
+.profile-header {
+  margin-bottom: 2em;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1em;
+}
+
+.highlight-text {
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+.lead-paragraph {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-bottom: 1.5em;
+}
+
+.section-heading {
+  margin-top: 1.5em;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.research-card {
+  margin: 1em 0;
+  padding: 1em;
+  background-color: var(--card-bg-color);
+  border-left: 3px solid var(--card-border-color);
+  border-radius: 3px;
+  color: var(--text-color);
+}
+
+.research-card h3 {
+  margin-top: 0;
+  color: var(--accent-color);
+}
+
+.research-card ul {
+  padding-left: 1.5em;
+}
+
+.quote-box {
+  font-style: italic;
+  padding: 1em;
+  margin: 1.5em 0;
+  background-color: var(--quote-bg-color);
+  border-radius: 5px;
+  text-align: center;
+  color: var(--text-color);
+}
+
+.goals-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.goals-list li {
+  padding: 0.5em 0;
+  margin-bottom: 0.5em;
+}
+
+.goals-list li:before {
+  content: "→ ";
+  color: var(--accent-color);
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin: 1.5em 0;
+}
+
+.contact-links a {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5em 1em;
+  background-color: var(--contact-link-bg);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  color: var(--text-color);
+}
+
+.contact-links a:hover {
+  background-color: var(--contact-link-hover-bg);
+}
+
+.signature {
+  font-style: italic;
+  margin-top: 2em;
+  padding-top: 1em;
+  border-top: 1px solid var(--border-color);
+}
+
+@media (max-width: 768px) {
+  .contact-links {
+    flex-direction: column;
+  }
+}
