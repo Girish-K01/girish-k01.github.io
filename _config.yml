@@ -11,7 +11,7 @@ locale                   : "en-US"
 site_theme               : "default"
 title                    : "GIRISH K Labs"
 title_separator          : "-"
-name                     : &name "Girish K"
+name                     : &name "Girish Kulathumani"
 description              : &description "Developer|Researcher|Writer"
 url                      : "https://girish-k01.github.io"
 baseurl                  : ""
@@ -88,7 +88,6 @@ breadcrumbs              : false # true, false (default)
 words_per_minute         : 160
 future                   : true
 read_more                : "disabled" # if enabled, adds "Read more" links to excerpts
-talkmap_link             : false      #change to true to add link to talkmap on talks page
 comments:
   provider               : "staticman"
   disqus:
@@ -138,9 +137,14 @@ og_image                 : "og_image.png"
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
-  type                   : # Person or Organization (defaults to Person)
-  name                   : # If the user or organization name differs from the site's name
-  links: # An array of links to social media profiles
+  type                   : Person
+  name                   : Girish Kulathumani
+  links: ["https://github.com/Girish-K01", 
+          "https://twitter.com/GK4913", 
+          "https://www.linkedin.com/in/girish-kulathumani/", 
+          "https://scholar.google.com/citations?user=hOmai0UAAAAJ",
+          "https://orcid.org/0009-0003-9210-0999"
+         ]
 
 
 # Analytics

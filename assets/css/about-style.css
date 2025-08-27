@@ -120,3 +120,48 @@
     flex-direction: column;
   }
 }
+
+/* Refinements for About Page */
+
+/* Improve readability of intro */
+.profile-header h1 {
+  font-size: 2em;
+  margin-bottom: 0.3em;
+}
+
+.lead-paragraph {
+  font-size: 1.15em;
+  line-height: 1.7;
+  margin-bottom: 2em;
+  color: var(--text-color);
+}
+
+/* Section heading consistency */
+.section-heading, h2 {
+  margin-top: 2em;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 1.3em;
+  font-weight: 600;
+  color: var(--accent-color);
+}
+
+/* Bullet improvements */
+ul {
+  margin: 0.8em 0;
+  padding-left: 1.5em;
+  line-height: 1.6;
+}
+
+/* Link section */
+.contact-links a {
+  font-weight: 500;
+}
+
+/* Signature styling */
+.signature {
+  text-align: right;
+  font-style: italic;
+  margin-top: 3em;
+  color: var(--accent-color);
+}
