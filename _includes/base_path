@@ -1,4 +1,12 @@
-{% if site.url %}
+{% comment %}
+  Production: absolute URLs (canonical and og:image tags need them).
+  Development: root-relative URLs. `jekyll serve` sets site.url to http://localhost:4000
+  but prints http://127.0.0.1:4000; absolute localhost URLs on a 127.0.0.1 page make the
+  icon fonts cross-origin, the browser blocks them and icons render as empty boxes.
+{% endcomment %}
+{% if jekyll.environment == "development" %}
+  {% assign base_path = site.baseurl %}
+{% elsif site.url %}
   {% assign base_path = site.url | append: site.baseurl %}
 {% else %}
   {% assign base_path = site.github.url %}
