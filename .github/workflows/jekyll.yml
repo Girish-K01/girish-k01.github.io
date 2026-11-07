@@ -54,6 +54,9 @@ jobs:
 
   # Deployment job
   deploy:
+    # Only master publishes. A manual run on another branch (gh workflow run jekyll.yml --ref <branch>)
+    # just tests the build.
+    if: github.ref == 'refs/heads/master'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
