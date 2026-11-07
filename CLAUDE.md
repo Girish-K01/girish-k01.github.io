@@ -16,6 +16,8 @@ bundle exec jekyll build              # one-off build into _site/
 
 - `_config.yml` changes are **not** picked up by `jekyll serve`; restart the server.
 - HTML is minified by `_layouts/compress.html` except when `JEKYLL_ENV=development`, so inspect output with that env set if whitespace matters.
+- Templates build URLs from `{{ base_path }}` (`_includes/base_path`): absolute `site.url` in production (canonical and og tags need it), root-relative under `jekyll serve`, so the dev site works at both `localhost` and `127.0.0.1`. Don't hard-code `site.url` into asset links: from a `127.0.0.1` page, absolute `localhost` font URLs are cross-origin, the browser blocks them, and icons render as boxes.
+- WEBrick (the dev server) logs `ERROR Errno::ECONNRESET … io_fillbuf` when the browser drops an idle connection. It's harmless and doesn't happen on GitHub Pages.
 
 JavaScript bundle (only needed when editing `assets/js/_main.js` or `assets/js/plugins/*`):
 
@@ -45,7 +47,7 @@ Also in `_pages/`: `tag-archive.html` (`/tags/`, linked from post tags), `sitema
 
 **Publications**: grouped by the `category` front-matter key, which must match a key under `publication_category` in `_config.yml` (`manuscripts`, `conferences`); a publication with any other category won't appear on the categorized page. The listing template reads `title`, `authors`, `venue`, `date`, `paperurl`, `codeurl`, `teaser`, `excerpt`. Individual publication pages use `_layouts/single.html` via `defaults` in `_config.yml`. The page's `classes: page--publications` front matter is output on `<body>` by `_layouts/default.html`, and `_sass/_custom_publications.scss` is scoped to that class (any page can use `classes:` the same way).
 
-**CV**: dates in `_data/cv.json` are `YYYY-MM`, `YYYY` or `Present`. Render them with `{% include cv-date.html date=... %}`, never the raw `date` filter: Liquid can't parse `YYYY-MM` (it prints it unformatted) and reads a bare `YYYY` as a Unix timestamp (it prints 1970).
+**CV**: dates in `_data/cv.json` are `YYYY-MM`, `YYYY` or `Present`. Render them with `{% include cv-date.html date=... %}`, never the raw `date` filter: Liquid can't parse `YYYY-MM` (it prints it unformatted) and reads a bare `YYYY` as a Unix timestamp (it prints 1970). Entries render in file order, so keep each list newest first. Publications take an optional `authors` string (HTML allowed; the owner's name is wrapped in `<b>`). The page's "Download Resume (PDF)" button serves `files/cv.pdf`: the owner's resume is the source of truth, so when it changes, replace that PDF and update `cv.json`, `_publications/` and `_pages/about.md` to match.
 
 **Blog posts**: each post sets an explicit `permalink` and an `image` (under `/images/`); posts belong to the "GreyLattice" series mirrored from greylattice.substack.com. `future: true` is set, so future-dated posts still publish. `image` is only used for the card on `/blog/` (rendered ~180px tall, ≤450px wide), so add it as WebP at ~900px wide rather than a full-size PNG. MathJax is loaded only on pages with `math: true` in front matter.
 
@@ -55,4 +57,4 @@ Also in `_pages/`: `tag-archive.html` (`/tags/`, linked from post tags), `sitema
 
 **Dark mode**: an inline script in `_includes/head.html` sets the initial theme before CSS loads (avoids a light flash). `assets/js/_main.js` toggles `data-theme="dark"` on `<html>` from `#theme-toggle` in `_includes/masthead.html`, persisting the choice in `localStorage` (always wrapped in try/catch) and otherwise following `prefers-color-scheme`. The toggle is an `<a href="#" role="button">`, not a `<button>`: the nav CSS and `jquery.greedy-navigation.js` treat every `<button>` inside `#site-nav` as the hamburger menu, so don't add other buttons there. Any new styling must work in both themes and meet WCAG AA contrast (4.5:1), ideally by using the `--global-*` variables rather than hard-coded colors.
 
-**Site-wide settings**: author sidebar/profile links, social links, analytics (GA4), SEO, and plugin list all live in `_config.yml`. Sidebar markup is `_includes/author-profile.html`; `<head>` additions go in `_includes/head/custom.html`.
+**Site-wide settings**: author sidebar/profile links, social links, analytics (currently disabled; the comment above `analytics:` says how to re-enable GA4), SEO, and plugin list all live in `_config.yml`. Sidebar markup is `_includes/author-profile.html`; `<head>` additions go in `_includes/head/custom.html`.

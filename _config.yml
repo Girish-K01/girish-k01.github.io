@@ -27,7 +27,7 @@ author:
   pronouns         : # example: "she/her"  
   bio              : "Developer | Researcher | Writer"
   location         : "Chennai, Tamil Nadu, India"
-  employer         : "Vellore Institute of Technology"
+  employer         : # shown in the sidebar when set (VIT ended May 2025, Accenture Oct 2026)
   uri              : # URL
   email            : "girish.kulathumani@gmail.com" 
 
@@ -121,11 +121,12 @@ social:
          ]
 
 
-# Analytics
+# Analytics (disabled: the old tag G-PZ8254RK67 returned 404 from Google).
+# To enable, set provider to "google-analytics-4" and add:
+#   google:
+#     tracking_id: "G-XXXXXXXXXX"
 analytics:
-  provider: "google-analytics-4"
-  google:
-    tracking_id: "G-PZ8254RK67"
+  provider: false
 
 
 # Reading Files

@@ -2,8 +2,7 @@
   "basics": {
     "name": "Girish Kulathumani",
     "email": "girish.kulathumani@gmail.com",
-    "website": "https://www.girishklabs.com",
-    "summary": "Computer Science Engineering student at VIT Chennai specializing in federated learning, secure AI systems, and high-performance computing. Focused on GPU-accelerated machine learning, cryptographic architectures, and computational neuroscience with proven expertise in distributed systems and multimodal ML frameworks.",
+    "summary": "Computer Science and Engineering graduate (VIT Chennai, 2025). Research interests: decoding non-invasive biosignals (EEG and wrist surface EMG) so that models trained on some people work on new ones with little or no calibration; personalising shared models without pooling each person's data, using federated learning; and evaluation with subject-wise splits that rules out data leakage.",
     "location": {
       "address": "",
       "postalCode": "",
@@ -51,61 +50,58 @@
   },
   "work": [
     {
-      "company": "Vellore Institute of Technology (via NVIDIA DGX)",
-      "position": "Independent Project Lead - Federated Learning AI",
+      "company": "Accenture, Chennai",
+      "position": "Application Engineer",
+      "website": "",
+      "startDate": "2025-10",
+      "endDate": "2026-10",
+      "summary": "Built Salesforce Life Sciences Cloud features (Apex, Lightning Web Components, Flows) for a global pharmaceutical client.",
+      "highlights": [
+        "Evaluated GitHub Copilot on real user stories, reporting over 80% average time savings, which fed into the licence decision",
+        "Wrote a 60-page onboarding guide adopted by teams in India and the Philippines"
+      ]
+    },
+    {
+      "company": "Vellore Institute of Technology, Chennai (on the university's NVIDIA DGX)",
+      "position": "Research Assistant, Federated Learning",
       "website": "",
       "startDate": "2025-01",
       "endDate": "2025-05",
-      "summary": "Leading federated multimodal ML framework development with GPU acceleration and containerized deployment",
+      "summary": "Led a three-person team building HabitatFL, a federated framework for classifying wildlife audio and images across separate clients, with Flower and Docker on multi-GPU infrastructure.",
       "highlights": [
-        "Led 3-member team building federated multimodal ML framework achieving 87.65% wildlife audio and 69.92% visual recognition on datasets of 18.2K spectrograms & 50K images",
-        "Achieved 5% accuracy gain over centralized training using <2MB MobileNetV3/SqueezeNet models, deployed via containerized Flower pipeline with multi-GPU CUDA workflows and custom Docker provisioning"
+        "Trained lightweight edge models (MobileNetV3, SqueezeNet, under 2 MB): 87.65% accuracy on 18.2K spectrograms (27 classes) and 69.92% on 50K images (82 classes) (<a href=\"https://github.com/Girish-K01/federated-learning-ai-for-biodiv\">code</a>)"
       ]
     },
     {
-      "company": "Vellore Institute of Technology",
-      "position": "Research Assistant - Secure AI Systems & Cryptography",
+      "company": "Vellore Institute of Technology, Chennai",
+      "position": "Research Assistant, Secure Systems and AI",
       "website": "",
       "startDate": "2024-01",
       "endDate": "2024-05",
-      "summary": "Conducted advanced research in cybersecurity, secure messaging architecture, and AI-driven threat detection",
+      "summary": "Research on secure messaging and deception-based defence, leading to two peer-reviewed papers.",
       "highlights": [
-        "Co-authored 2 peer-reviewed papers: JIGS (96.67% speedup via parallelized ECDH/AES-128 pipeline) and Siren (ML-driven honeypot with TCP sockets, simulated user activity, and probabilistic encryption)",
-        "Designed modular Python cryptographic architecture and integrated deception-based threat engagement for adaptive cybersecurity research"
+        "Designed and implemented JIGS, a secure-messaging pipeline combining ECDH key exchange with nonce-based AES-128 and parallelised stages, with its protocol verified in ProVerif (<a href=\"https://github.com/Girish-K01/jigs-crypto-code-repo\">code</a>)",
+        "Contributed to Siren, a deception-based defence pairing honeypots and simulated user activity with ML classification of attacker behaviour"
       ]
     },
     {
-      "company": "Google Developers x SmartBridge",
-      "position": "Data Science & ML Extern",
+      "company": "Google Developers × SmartBridge (remote)",
+      "position": "Data Science and ML Extern",
       "website": "",
       "startDate": "2023-08",
       "endDate": "2023-11",
-      "summary": "Developed real-time computer vision systems and advanced ML applications",
-      "highlights": [
-        "Built real-time weapon detection system using YOLO + Flask; optimized TensorFlow inference for webcam-based classification",
-        "Mastered advanced data analysis and visualization techniques using NumPy, pandas, Matplotlib, Seaborn, and TensorFlow"
-      ]
-    },
-    {
-      "company": "Vellore Institute of Technology Startup Centre",
-      "position": "Social Media Manager",
-      "website": "",
-      "startDate": "2024-01",
-      "endDate": "Present",
-      "summary": "Managed social media presence and increased engagement for the Startup Incubation Centre",
-      "highlights": [
-        "Strategically managed social media platforms, increasing engagement and visibility for the Startup Incubation Centre"
-      ]
+      "summary": "Built a real-time weapon-detection system on live video with YOLO and Flask, in a team of three.",
+      "highlights": []
     }
   ],
   "education": [
     {
-      "institution": "Vellore Institute of Technology Chennai",
-      "area": "Computer Science Engineering",
+      "institution": "Vellore Institute of Technology, Chennai",
+      "area": "Computer Science and Engineering",
       "studyType": "Bachelor of Technology",
       "startDate": "2021-08",
       "endDate": "2025-05",
-      "gpa": "8.69/10.0",
+      "gpa": "8.69/10",
       "courses": []
     }
   ],
@@ -118,7 +114,18 @@
     {
       "name": "Machine Learning & Data Science",
       "level": "Advanced",
-      "keywords": ["PyTorch", "TensorFlow", "scikit-learn", "HuggingFace", "OpenCV", "YOLO", "pandas", "NumPy", "RAPIDS"]
+      "keywords": [
+        "PyTorch",
+        "TensorFlow",
+        "scikit-learn",
+        "HuggingFace",
+        "OpenCV",
+        "YOLO",
+        "pandas",
+        "NumPy",
+        "RAPIDS",
+        "Flower (federated learning)"
+      ]
     },
     {
       "name": "Frameworks & Tools",
@@ -139,6 +146,11 @@
       "name": "Security & Cryptography",
       "level": "Advanced",
       "keywords": ["Cryptographic architectures", "ECDH", "AES-128", "Secure Communication Systems"]
+    },
+    {
+      "name": "Currently Learning",
+      "level": "Learning",
+      "keywords": ["MNE-Python", "Biosignal processing"]
     }
   ],
   "languages": [
@@ -156,6 +168,10 @@
     }
   ],
   "interests": [
+    {
+      "name": "Biosignal Decoding",
+      "keywords": ["EEG", "Wrist surface EMG", "Cross-subject generalisation"]
+    },
     {
       "name": "Federated Learning",
       "keywords": ["Multimodal ML", "Distributed Systems", "Privacy-preserving AI"]
@@ -189,16 +205,12 @@
       "url": ""
     },
     {
-      "name": "GPU-Accelerated Financial Sentiment Pipeline",
+      "name": "GPU-Accelerated Financial News Sentiment",
       "startDate": "2024-01",
       "endDate": "2024-04",
-      "description": "High-performance system for real-time financial sentiment analysis using GPU acceleration.",
-      "highlights": [
-        "Processed high-volume financial news streams with Apache Kafka and GPU-accelerated cuDF on RTX 2060",
-        "Reduced sentiment analysis latency from 8 minutes to 10 seconds using multiprocessing and RAPIDS",
-        "Integrated pretrained FinBERT model for real-time sentiment scoring, containerized with Docker"
-      ],
-      "keywords": ["RAPIDS", "Apache Kafka", "Apache Spark", "Docker", "CUDA", "FinBERT"],
+      "description": "Streamed news through Kafka and scored it with FinBERT, using RAPIDS cuDF on an RTX 2060 to cut end-to-end latency from about 8 minutes to 10 seconds.",
+      "highlights": [],
+      "keywords": ["Apache Kafka", "FinBERT", "RAPIDS cuDF", "CUDA"],
       "url": "https://github.com/Girish-K01/HPC-Sentiment-Analysis"
     },
     {
@@ -241,25 +253,20 @@
   ],
   "publications": [
     {
-      "name": "JIGS: Modular Parallel Encryption Pipeline",
-      "publisher": "IOP Engineering Research Express",
-      "releaseDate": "2024",
-      "website": "",
-      "summary": "Hybrid ECDH-AES messaging architecture with modular design achieving 96.67% speedup through parallelization"
-    },
-    {
-      "name": "Siren: Adaptive Cybersecurity via Deception",
-      "publisher": "Springer LNNS CompCom 2025",
+      "name": "JIGS: a modular parallel encryption and authentication pipeline for secure messaging",
+      "authors": "<b>G. Kulathumani</b>, S. V. Madangarli, J. Ullas, I. Agarwal, et al.",
+      "publisher": "Engineering Research Express 7(2), 025276",
       "releaseDate": "2025",
-      "website": "",
-      "summary": "ML-integrated honeypot system with simulated user interactions and probabilistic encryption for threat engagement"
+      "website": "https://doi.org/10.1088/2631-8695/addd67",
+      "summary": "A secure-messaging pipeline combining ECDH key exchange with nonce-based AES-128 and parallelised stages, with its protocol verified in ProVerif."
     },
     {
-      "name": "GreyLattice – Independent Neurotechnology Publication",
-      "publisher": "Substack",
-      "releaseDate": "2024",
-      "website": "https://greylattice.substack.com",
-      "summary": "Published 5+ longform technical articles on computational neuroscience, including a 50-minute breakdown of brain decoding research"
+      "name": "Siren: Advancing cybersecurity through deception and adaptive analysis",
+      "authors": "A. Samhruth, <b>K. Girish</b>, N. Ganesh",
+      "publisher": "Intelligent Computing: Proceedings of the Computing Conference, pp. 506–519, Springer LNNS",
+      "releaseDate": "2025",
+      "website": "https://link.springer.com/chapter/10.1007/978-3-031-92605-1_31",
+      "summary": "A deception-based defence pairing honeypots and simulated user activity with ML classification of attacker behaviour. Preprint: arXiv:2406.06225."
     }
   ],
   "certifications": [
@@ -281,10 +288,10 @@
   ],
   "leadership": [
     {
-      "title": "Technical Speaker",
-      "organization": "Vellore Institute of Technology",
+      "title": "Talk: Introduction to CUDA Programming",
+      "organization": "VIT Chennai",
       "date": "2023",
-      "description": "CUDA Seminar delivered to 50+ attendees, covering GPU acceleration techniques and parallel computing applications"
+      "description": "Introduction to CUDA programming for 50+ attendees."
     },
     {
       "title": "Social Media Manager",
@@ -297,30 +304,23 @@
   "research": {
     "focus": [
       {
-        "area": "Federated Learning & Multimodal AI",
-        "description": "Developing privacy-preserving ML frameworks with GPU acceleration and containerized deployment using cutting-edge distributed learning techniques.",
-        "currentWork": "Leading federated multimodal ML framework achieving superior accuracy over centralized training with efficient model architectures."
+        "area": "Cross-subject biosignal decoding",
+        "description": "Decoding non-invasive biosignals (EEG and wrist surface EMG) so that models trained on some people work on new ones with little or no calibration.",
+        "currentWork": "Independent entry to the EEG/EMG Foundation Challenge, NeurIPS 2026 (Track 2: EEG decoding): a covariance-based EEG decoder (Riemannian tangent space with logistic regression), written without AI-generated code and evaluated on held-out participants."
       },
       {
-        "area": "Secure AI Systems",
-        "description": "Engineering next-generation cryptographic frameworks and AI-driven security systems with focus on adaptive threat detection and response.",
-        "currentWork": "Modular cryptographic architectures with ML-integrated honeypot systems for advanced cybersecurity applications."
+        "area": "Federated personalisation",
+        "description": "Personalising shared models without pooling each person's data, using federated learning."
       },
       {
-        "area": "High-Performance Computing",
-        "description": "Specialized GPU acceleration techniques for computationally intensive ML workloads using CUDA and distributed processing frameworks.",
-        "currentWork": "Multi-GPU workflows and containerized ML pipelines for real-time data processing and analysis."
-      },
-      {
-        "area": "Computational Neuroscience",
-        "description": "Exploring brain-computer interfaces and neural decoding through the GreyLattice research initiative.",
-        "currentWork": "Brain decoding research and neurotechnology applications with published technical articles."
+        "area": "Leakage-free evaluation",
+        "description": "Evaluation with subject-wise splits that rules out data leakage."
       }
     ],
     "initiatives": [
       {
         "name": "GreyLattice",
-        "description": "An independent neurotechnology research publication focusing on computational neuroscience and brain-computer interfaces.",
+        "description": "Founder and writer since February 2025. An independent publication on brain–computer interfaces and computational neuroscience: around ten posts, including long technical deep dives, e.g. a breakdown of real-time MEG decoding of visual perception (arXiv:2310.19812) and an explainer on the limits of non-invasive brain recording. Built and run the publication's own site (Astro, TypeScript, Keystatic CMS).",
         "url": "https://greylattice.substack.com"
       }
     ]

@@ -1,14 +1,15 @@
 ---
-title: "Siren--Advancing Cybersecurity through Deception and Adaptive Analysis"
+title: "Siren: Advancing Cybersecurity through Deception and Adaptive Analysis"
 collection: publications
 category: conferences
 permalink: /publication/2024-06-10-siren-cybersecurity
 excerpt: 'Siren represents a pioneering research effort aimed at fortifying cybersecurity through strategic integration of deception, machine learning, and proactive threat analysis.'
-date: 2024-06-10
-venue: 'Intelligent Computing - Proceedings of the 2025 Computing Conference, Volume 2'
+date: 2025-06-19
+venue: 'Intelligent Computing: Proceedings of the Computing Conference (Springer LNNS)'
+authors: 'A. Samhruth, <b>K. Girish</b>, N. Ganesh'
 paperurl: 'https://link.springer.com/chapter/10.1007/978-3-031-92605-1_31'
 codeurl: 'https://github.com/Girish-K01/'
-citation: 'Kulathumani, G., Ananthanarayanan, S., & Narayanan, G. (2024). &quot;Siren--Advancing Cybersecurity through Deception and Adaptive Analysis.&quot; <i>arXiv preprint arXiv:2406.06225</i>.'
+citation: 'Samhruth, A., Girish, K., & Ganesh, N. (2025). &quot;Siren: Advancing cybersecurity through deception and adaptive analysis.&quot; In <i>Intelligent Computing: Proceedings of the Computing Conference</i>, pp. 506–519. Springer LNNS. arXiv:2406.06225.'
 ---
 
 Drawing inspiration from mythical sirens, this project employs sophisticated methods to lure potential threats into controlled environments. The system features a dynamic machine learning model for real-time analysis and classification, ensuring continuous adaptability to emerging cyber threats. 

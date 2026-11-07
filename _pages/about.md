@@ -1,7 +1,7 @@
 ---
 permalink: /
 title: "About Me"
-excerpt: "AI Systems Engineer & Researcher — Federated Learning, Secure AI, and Computational Neuroscience"
+excerpt: "Researcher in non-invasive biosignal decoding (EEG and wrist EMG), federated learning and leakage-free evaluation."
 author_profile: true
 redirect_from: 
   - /about/
@@ -12,29 +12,25 @@ redirect_from:
 <div class="profile-header">
   <h1>Hi, I’m <span class="highlight-text">Girish Kulathumani</span></h1>
   <p class="lead-paragraph">
-    AI Systems Engineer & Researcher working at the intersection of <span class="highlight-text">federated learning, security, and neurotechnology</span>.  
-    I build scalable ML systems, secure protocols, and computational neuroscience tools — with published work in encryption pipelines, deception-based cybersecurity, and wildlife AI.
+    I work on <span class="highlight-text">decoding non-invasive biosignals</span>, EEG and wrist surface EMG, so that models trained on some people work on new ones with little or no calibration.
+    I’m also interested in personalising shared models with federated learning without pooling anyone’s data, and in evaluating them with subject-wise splits that rule out data leakage.
   </p>
 </div>
 
 ## What I Focus On
-- **Federated Learning & Edge AI** — Built a multimodal wildlife monitoring framework (87.6% audio, 69.9% vision accuracy) with <2MB models on NVIDIA DGX.  
-- **Secure AI Systems** — Designed parallelized ECDH/AES messaging (96% faster), and ML-driven honeypots for adaptive defense.  
-- **Neurotechnology & Research** — Founder of *GreyLattice*, where I publish deep-dives on brain-computer interfaces, decoding, and AI inspired by neuroscience.  
-
-
+- **Cross-subject biosignal decoding** — EEG and wrist surface EMG models that work on new people with little or no calibration. I’m currently an independent entrant in the NeurIPS 2026 EEG/EMG Foundation Challenge (Track 2, EEG decoding), with a covariance-based decoder (Riemannian tangent space with logistic regression) evaluated on held-out participants.
+- **Federated learning** — personalising shared models without pooling each person’s data. At VIT Chennai I led HabitatFL, a federated framework for classifying wildlife audio and images, built with Flower and Docker on the university’s NVIDIA DGX; its edge models (under 2 MB) reached 87.65% accuracy on audio and 69.92% on images.
+- **Leakage-free evaluation** — subject-wise splits that rule out data leakage.
 
 ## Recent Highlights
-- 2 peer-reviewed publications in AI security & cryptography  
-- GPU-accelerated financial sentiment system: reduced latency 8 min → 10 sec  
-- Technical Speaker: CUDA Seminar (50+ attendees)  
-- B.Tech CSE (VIT Chennai, graduating 2025, CGPA 8.69/10)  
-
-
+- Two peer-reviewed papers: [JIGS](/publication/2025-00-00-jigs-crypto) in *Engineering Research Express* (2025), a parallelised ECDH and AES-128 secure-messaging pipeline verified in ProVerif, and [Siren](/publication/2024-06-10-siren-cybersecurity) in Springer LNNS (2025), a deception-based cyber defence
+- Application Engineer at Accenture (Oct 2025 – Oct 2026): built Salesforce Life Sciences Cloud features for a global pharmaceutical client, and evaluated GitHub Copilot on real user stories (over 80% average time savings), which fed into the licence decision
+- Founder and writer of [GreyLattice](https://greylattice.substack.com) (since Feb 2025): around ten posts on brain–computer interfaces and computational neuroscience
+- GPU-accelerated financial news sentiment with Kafka, FinBERT and RAPIDS cuDF: end-to-end latency cut from about 8 minutes to 10 seconds
+- Talk: introduction to CUDA programming, VIT Chennai (50+ attendees)
+- B.Tech. in Computer Science and Engineering, VIT Chennai (2021–2025), CGPA 8.69/10
 
 ## Open To
-- Research collaborations in federated learning, security, or computational neuroscience  
-- Internships with labs/companies advancing AI systems, BCI, or edge computing  
-- Projects at the boundary of **engineering and research**  
-
-
+- Research collaborations in EEG/EMG decoding, federated learning, or computational neuroscience
+- Internships with labs/companies advancing AI systems, BCI, or edge computing
+- Projects at the boundary of **engineering and research**
