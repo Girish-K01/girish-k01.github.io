@@ -51,6 +51,7 @@ function updateNav() {
     if (breaks.length < 1) {
       $btn.addClass('hidden');
       $btn.removeClass('close');
+      $btn.attr('aria-expanded', 'false');
       $hlinks.addClass('hidden');
     }
   }
@@ -74,13 +75,18 @@ function updateNav() {
 $(window).on('resize', function () {
   updateNav();
 });
-screen.orientation.addEventListener("change", function () {
-  updateNav();
-});
+// screen.orientation is missing on iOS Safari < 16.4; calling it unguarded throws
+// and stops the rest of main.min.js (theme toggle, follow button) from running.
+if (window.screen && screen.orientation && screen.orientation.addEventListener) {
+  screen.orientation.addEventListener("change", function () {
+    updateNav();
+  });
+}
 
 $btn.on('click', function () {
   $hlinks.toggleClass('hidden');
   $(this).toggleClass('close');
+  $(this).attr('aria-expanded', $hlinks.hasClass('hidden') ? 'false' : 'true');
 });
 
 updateNav();

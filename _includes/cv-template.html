@@ -17,28 +17,28 @@
     <address class="cv-contact" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
       {% if cv.basics.email %}
       <div class="cv-contact-item">
-        <span class="cv-contact-label" aria-label="Email">📧</span>
+        <span class="cv-contact-label" role="img" aria-label="Email">📧</span>
         <a href="mailto:{{ cv.basics.email }}" itemprop="email">{{ cv.basics.email }}</a>
       </div>
       {% endif %}
       
       {% if cv.basics.phone %}
       <div class="cv-contact-item">
-        <span class="cv-contact-label" aria-label="Phone">📞</span>
+        <span class="cv-contact-label" role="img" aria-label="Phone">📞</span>
         <a href="tel:{{ cv.basics.phone }}" itemprop="telephone">{{ cv.basics.phone }}</a>
       </div>
       {% endif %}
       
       {% if cv.basics.website %}
       <div class="cv-contact-item">
-        <span class="cv-contact-label" aria-label="Website">🌐</span>
+        <span class="cv-contact-label" role="img" aria-label="Website">🌐</span>
         <a href="{{ cv.basics.website }}" itemprop="url" target="_blank" rel="noopener noreferrer">{{ cv.basics.website }}</a>
       </div>
       {% endif %}
       
       {% if cv.basics.location.city %}
       <div class="cv-contact-item">
-        <span class="cv-contact-label" aria-label="Location">📍</span>
+        <span class="cv-contact-label" role="img" aria-label="Location">📍</span>
         <span>
           <span itemprop="addressLocality">{{ cv.basics.location.city }}</span>{% if cv.basics.location.region %}, <span itemprop="addressRegion">{{ cv.basics.location.region }}</span>{% endif %}
         </span>
@@ -59,7 +59,7 @@
   </header>
 
   <!-- Main Content Area -->
-  <main class="cv-main">
+  <div class="cv-main">
     <div class="cv-content">
       <!-- Work Experience Section -->
       {% if cv.work.size > 0 %}
@@ -76,7 +76,7 @@
                 <a href="{{ work.website }}" class="cv-company-link" target="_blank" rel="noopener noreferrer" aria-label="Company website">🔗</a>
                 {% endif %}
                 <time class="cv-date" datetime="{{ work.startDate }}">
-                  {{ work.startDate | date: "%b %Y" }}{% if work.endDate %} - {{ work.endDate | date: "%b %Y" }}{% else %} - Present{% endif %}
+                  {% include cv-date.html date=work.startDate %}{% if work.endDate %} - {% include cv-date.html date=work.endDate %}{% else %} - Present{% endif %}
                 </time>
               </div>
             </header>
@@ -110,7 +110,7 @@
               <div class="cv-item-meta">
                 <span class="cv-institution" itemprop="name">{{ ed.institution }}</span>
                 <time class="cv-date" datetime="{{ ed.startDate }}">
-                  {{ ed.startDate | date: "%Y" }}{% if ed.endDate %} - {{ ed.endDate | date: "%Y" }}{% endif %}
+                  {% include cv-date.html date=ed.startDate format="%Y" %}{% if ed.endDate %} - {% include cv-date.html date=ed.endDate format="%Y" %}{% endif %}
                 </time>
               </div>
             </header>
@@ -187,7 +187,7 @@
               <h3 class="cv-item-title">{{ project.name }}</h3>
               {% if project.startDate %}
               <time class="cv-date" datetime="{{ project.startDate }}">
-                {{ project.startDate | date: "%b %Y" }}{% if project.endDate %} - {{ project.endDate | date: "%b %Y" }}{% endif %}
+                {% include cv-date.html date=project.startDate %}{% if project.endDate %} - {% include cv-date.html date=project.endDate %}{% endif %}
               </time>
               {% endif %}
             </header>
@@ -265,7 +265,7 @@
               <h3 class="cv-item-title">{{ cert.name }}</h3>
               <div class="cv-item-meta">
                 <span class="cv-issuer">{{ cert.issuer }}</span>
-                <time class="cv-date" datetime="{{ cert.date }}">{{ cert.date | date: "%b %Y" }}</time>
+                <time class="cv-date" datetime="{{ cert.date }}">{% include cv-date.html date=cert.date %}</time>
               </div>
             </header>
           </article>
@@ -287,9 +287,9 @@
                 <span class="cv-organization">{{ leadership.organization }}</span>
                 <time class="cv-date" datetime="{{ leadership.date | default: leadership.startDate }}">
                   {% if leadership.startDate %}
-                    {{ leadership.startDate | date: "%b %Y" }}{% if leadership.endDate %} - {{ leadership.endDate | date: "%b %Y" }}{% endif %}
+                    {% include cv-date.html date=leadership.startDate %}{% if leadership.endDate %} - {% include cv-date.html date=leadership.endDate %}{% endif %}
                   {% else %}
-                    {{ leadership.date | date: "%Y" }}
+                    {% include cv-date.html date=leadership.date format="%Y" %}
                   {% endif %}
                 </time>
               </div>
@@ -307,7 +307,7 @@
     </div>
 
     <!-- Sidebar -->
-    <aside class="cv-sidebar">
+    <div class="cv-sidebar">
       <!-- Skills Section -->
       {% if cv.skills.size > 0 %}
       <section class="cv-section" aria-labelledby="skills-heading">
@@ -317,7 +317,7 @@
           <div class="cv-skill-group">
             <h3 class="cv-skill-category">{{ skill.name }}</h3>
             {% if skill.level %}
-            <span class="cv-skill-level" aria-label="Skill level">{{ skill.level }}</span>
+            <span class="cv-skill-level">{{ skill.level }}</span>
             {% endif %}
             <div class="cv-skill-tags" role="list" aria-label="Skills in {{ skill.name }}">
               {% for keyword in skill.keywords %}
@@ -365,8 +365,8 @@
         </div>
       </section>
       {% endif %}
-    </aside>
-  </main>
+    </div>
+  </div>
 
   <!-- Print-specific metadata -->
   <div class="cv-metadata" style="display: none;" aria-hidden="true">

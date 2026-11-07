@@ -1,7 +1,7 @@
 /* Custom styles for about page - with dark mode support */
 :root {
   --text-color: inherit;
-  --accent-color: #2a76dd;
+  --accent-color: #2563eb; /* was #2a76dd (4.4:1) */
   --border-color: #f2f3f3;
   --card-bg-color: rgba(0, 0, 0, 0.05);
   --card-border-color: #2a76dd;

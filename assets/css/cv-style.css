@@ -3,6 +3,7 @@
 /* CSS Custom Properties for theming */
 :root {
   --cv-primary-color: #2563eb;
+  --cv-link-color: #2563eb; /* link text; primary stays the badge/button background */
   --cv-accent-color: #059669;
   
   /* Light theme */
@@ -10,12 +11,13 @@
   --cv-bg-secondary: #f8fafc;
   --cv-text-primary: #1e293b;
   --cv-text-secondary: #64748b;
-  --cv-text-muted: #94a3b8;
+  --cv-text-muted: #64748b; /* #94a3b8 was 2.4:1 on the light background */
   --cv-border-color: #e2e8f0;
 }
 
 /* Dark theme overrides */
 [data-theme="dark"] {
+  --cv-link-color: #60a5fa; /* #2563eb was 3.4:1 on the dark background */
   --cv-bg-primary: #0f172a;
   --cv-bg-secondary: #1e293b;
   --cv-text-primary: #f1f5f9;
@@ -79,7 +81,7 @@
 }
 
 .cv-contact a {
-  color: var(--cv-primary-color);
+  color: var(--cv-link-color);
   text-decoration: none;
 }
 
@@ -101,7 +103,7 @@
 }
 
 .cv-social-link {
-  color: var(--cv-primary-color);
+  color: var(--cv-link-color);
   text-decoration: none;
   font-size: 0.9rem;
   padding: 0.25rem 0.5rem;
@@ -244,7 +246,7 @@
 
 /* Links */
 .cv-link {
-  color: var(--cv-primary-color);
+  color: var(--cv-link-color);
   text-decoration: none;
   font-weight: 500;
 }
@@ -254,7 +256,7 @@
 }
 
 .cv-company-link {
-  color: var(--cv-primary-color);
+  color: var(--cv-link-color);
   text-decoration: none;
   margin-left: 0.5rem;
 }

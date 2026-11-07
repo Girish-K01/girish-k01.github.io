@@ -231,6 +231,11 @@ body:hover .visually-hidden button {
   .fa-github-alt,
   .fa-github-square {
     color: $github-color;
+
+    /* the brand colour is near-black, invisible on the dark background */
+    html[data-theme="dark"] & {
+      color: var(--global-text-color);
+    }
   }
 
   .fa-google-plus,
@@ -324,6 +329,7 @@ body:hover .visually-hidden button {
    ========================================================================== */
 
 .navicon {
+  display: block; /* rendered as a <span> inside the menu button */
   position: relative;
   width: $navicon-width;
   height: $navicon-height;

@@ -1,0 +1,15 @@
+{%- comment -%}
+  Formats a date string from _data/cv.json.
+    "2024-01"    -> "Jan 2024"  (Liquid's date filter can't parse YYYY-MM on its own)
+    "2024-01-15" -> "Jan 2024"
+    "2023"       -> "2023"      (the date filter would read a bare year as a Unix timestamp: 1970)
+    "Present"    -> "Present"
+  Usage: {% include cv-date.html date=work.startDate %}  (optional: format="%Y")
+{%- endcomment -%}
+{%- assign d = include.date | strip -%}
+{%- assign fmt = include.format | default: "%b %Y" -%}
+{%- if d == "" -%}
+{%- elsif d.size == 4 -%}{{ d }}
+{%- elsif d contains "-" -%}{%- if d.size == 7 -%}{%- assign d = d | append: "-01" -%}{%- endif -%}{{ d | date: fmt }}
+{%- else -%}{{ d }}
+{%- endif -%}

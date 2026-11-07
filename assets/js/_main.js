@@ -8,11 +8,16 @@ $(document).ready(function () {
     ? 'dark'
     : 'light';
 
+  // localStorage can throw when storage is blocked; never let that stop the rest of this file
+  var savedTheme = function () {
+    try { return localStorage.getItem("theme"); } catch (e) { return null; }
+  };
+
   // Set the theme on page load or when explicitly called
   var setTheme = function (theme) {
     const use_theme =
       theme ||
-      localStorage.getItem("theme") ||
+      savedTheme() ||
       $("html").attr("data-theme") ||
       browserPref;
 
@@ -31,7 +36,7 @@ $(document).ready(function () {
   window
     .matchMedia('(prefers-color-scheme: dark)')
     .addEventListener("change", (e) => {
-      if (!localStorage.getItem("theme")) {
+      if (!savedTheme()) {
         setTheme(e.matches ? "dark" : "light");
       }
     });
@@ -40,11 +45,15 @@ $(document).ready(function () {
   var toggleTheme = function () {
     const current_theme = $("html").attr("data-theme");
     const new_theme = current_theme === "dark" ? "light" : "dark";
-    localStorage.setItem("theme", new_theme);
+    try { localStorage.setItem("theme", new_theme); } catch (e) { /* storage blocked: still switch for this page */ }
     setTheme(new_theme);
   };
 
-  $('#theme-toggle').on('click', toggleTheme);
+  // The toggle is <a href="#" role="button">: stop the "#" navigation, and
+  // support Space as well as Enter so it behaves like a button for keyboard users.
+  $('#theme-toggle a')
+    .on('click', function (e) { e.preventDefault(); toggleTheme(); })
+    .on('keydown', function (e) { if (e.key === ' ') { e.preventDefault(); toggleTheme(); } });
 
   // These should be the same as the settings in _variables.scss
   const scssLarge = 925; // pixels

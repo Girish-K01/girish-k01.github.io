@@ -35,13 +35,13 @@ $sidebar-screen-min-width   : 1024px;
     --global-dark-border-color          : #e5e7eb; /* Tailwind gray-200 */
     --global-code-background-color      : #f9fafb;
     --global-code-text-color            : #{$darker-gray};
-    --global-fig-caption-color          : mix(#ffffff,  #{$dark-gray}, 25%);
-    --global-link-color                 : #3B82F6; /* updated */
-    --global-link-color-hover           : #2563EB; /* updated */
-    --global-link-color-visited         : #60A5FA; /* updated */
+    --global-fig-caption-color          : #{mix(#ffffff, $dark-gray, 25%)}; /* interpolated so Sass evaluates mix(); custom properties are passed through raw */
+    --global-link-color                 : #2563EB; /* was #3B82F6 (3.7:1 on white) */
+    --global-link-color-hover           : #1D4ED8;
+    --global-link-color-visited         : #1E40AF; /* was #60A5FA (2.5:1) */
     --global-masthead-link-color        : #{$dark-gray};
-    --global-masthead-link-color-hover  : mix(#000000, #{$gray}, 25%);
+    --global-masthead-link-color-hover  : #{mix(#000000, $gray, 25%)};
     --global-text-color                 : #{$dark-gray};
-    --global-text-color-light           : #{$light-gray};
+    --global-text-color-light           : #{$gray}; /* was $light-gray (2.5:1 on white) */
     --global-thead-color                : #{$lighter-gray};
 }
