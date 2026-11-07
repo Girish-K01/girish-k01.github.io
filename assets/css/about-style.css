@@ -10,7 +10,7 @@
   --contact-link-hover-bg: rgba(0, 0, 0, 0.08);
 }
 
-.dark {
+html[data-theme="dark"] {
   --accent-color: #4d8fec;
   --border-color: rgba(255, 255, 255, 0.1);
   --card-bg-color: rgba(255, 255, 255, 0.05);
