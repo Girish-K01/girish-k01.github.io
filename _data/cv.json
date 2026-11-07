@@ -70,7 +70,8 @@
       "summary": "Led a three-person team building HabitatFL, a federated framework for classifying wildlife audio and images across separate clients, with Flower and Docker on multi-GPU infrastructure.",
       "highlights": [
         "Trained lightweight edge models (MobileNetV3, SqueezeNet, under 2 MB): 87.65% accuracy on 18.2K spectrograms (27 classes) and 69.92% on 50K images (82 classes) (<a href=\"https://github.com/Girish-K01/federated-learning-ai-for-biodiv\">code</a>)"
-      ]
+      ],
+      "category": "research"
     },
     {
       "company": "Vellore Institute of Technology, Chennai",
@@ -82,7 +83,8 @@
       "highlights": [
         "Designed and implemented JIGS, a secure-messaging pipeline combining ECDH key exchange with nonce-based AES-128 and parallelised stages, with its protocol verified in ProVerif (<a href=\"https://github.com/Girish-K01/jigs-crypto-code-repo\">code</a>)",
         "Contributed to Siren, a deception-based defence pairing honeypots and simulated user activity with ML classification of attacker behaviour"
-      ]
+      ],
+      "category": "research"
     },
     {
       "company": "Google Developers × SmartBridge (remote)",
@@ -297,8 +299,7 @@
     "focus": [
       {
         "area": "Cross-subject biosignal decoding",
-        "description": "Decoding non-invasive biosignals (EEG and wrist surface EMG) so that models trained on some people work on new ones with little or no calibration.",
-        "currentWork": "Independent entry to the EEG/EMG Foundation Challenge, NeurIPS 2026 (Track 2: EEG decoding): a covariance-based EEG decoder (Riemannian tangent space with logistic regression), written without AI-generated code and evaluated on held-out participants."
+        "description": "Decoding non-invasive biosignals (EEG and wrist surface EMG) so that models trained on some people work on new ones with little or no calibration."
       },
       {
         "area": "Federated personalisation",
@@ -312,9 +313,19 @@
     "initiatives": [
       {
         "name": "GreyLattice",
-        "description": "Founder and writer since February 2025. An independent publication on brain–computer interfaces and computational neuroscience: around ten posts, including long technical deep dives, e.g. a breakdown of real-time MEG decoding of visual perception (arXiv:2310.19812) and an explainer on the limits of non-invasive brain recording. Built and run the publication's own site (Astro, TypeScript, Keystatic CMS).",
-        "url": "https://greylattice.substack.com"
+        "description": "Independent publication on brain–computer interfaces and computational neuroscience: around ten posts, including long technical deep dives, e.g. a breakdown of real-time MEG decoding of visual perception (arXiv:2310.19812) and an explainer on the limits of non-invasive brain recording. Built and run the publication's own site (Astro, TypeScript, Keystatic CMS).",
+        "url": "https://greylattice.substack.com",
+        "role": "Founder and writer",
+        "startDate": "2025-02",
+        "endDate": "Present"
       }
     ]
-  }
+  },
+  "current": [
+    {
+      "name": "EEG/EMG Foundation Challenge, NeurIPS 2026 (Track 2: EEG decoding)",
+      "startDate": "2026-11",
+      "summary": "Independent entry: a covariance-based EEG decoder (Riemannian tangent space with logistic regression), written without AI-generated code and evaluated on held-out participants."
+    }
+  ]
 }

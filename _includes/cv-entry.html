@@ -1,0 +1,16 @@
+{% comment %}
+  One CV entry: title and dates on one line, organisation below, then text and/or bullets.
+  Params: title, url, org, start, end (or date for a single date), text, points (array).
+  Values from cv.json may contain HTML (e.g. code links), so they are output as-is.
+{% endcomment %}
+<article class="cv-entry">
+  <div class="cv-entry__head">
+    <h3 class="cv-entry__title">{% if include.url and include.url != "" %}<a href="{{ include.url }}">{{ include.title }}</a>{% else %}{{ include.title }}{% endif %}</h3>
+    <span class="cv-entry__date">{% if include.start %}{% include cv-date.html date=include.start %}{% if include.end %} – {% include cv-date.html date=include.end %}{% endif %}{% elsif include.date %}{% include cv-date.html date=include.date %}{% endif %}</span>
+  </div>
+  {% if include.org and include.org != "" %}<p class="cv-entry__org">{{ include.org }}</p>{% endif %}
+  {% if include.text and include.text != "" %}<p class="cv-entry__text">{{ include.text }}</p>{% endif %}
+  {% if include.points and include.points.size > 0 %}
+  <ul class="cv-entry__points">{% for point in include.points %}<li>{{ point }}</li>{% endfor %}</ul>
+  {% endif %}
+</article>
