@@ -215,6 +215,17 @@ defaults:
 sass:
   sass_dir: _sass
   style: compressed # http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
+  sourcemap: never
+  # The template SCSS predates Dart Sass and uses @import, slash division, etc.
+  # These are warnings today but will be errors in Dart Sass 3.0; the lockfile pins
+  # sass-embedded 1.x. Remove an entry here to see where it is used.
+  quiet_deps: true
+  silence_deprecations:
+    - import
+    - global-builtin
+    - slash-div
+    - if-function
+    - color-functions
 
 
 # Outputting

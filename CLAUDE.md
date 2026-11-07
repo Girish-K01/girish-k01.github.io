@@ -9,7 +9,7 @@ Personal academic site for Girish Kulathumani (https://girish-k01.github.io), bu
 ## Commands
 
 ```bash
-bundle install                        # install Ruby gems (Gemfile.lock is gitignored)
+bundle install                        # install Ruby gems from the committed Gemfile.lock (Jekyll 4.4, Ruby 4.0)
 bundle exec jekyll serve -l -H localhost   # local dev server with livereload at http://localhost:4000
 bundle exec jekyll build              # one-off build into _site/
 ```
@@ -28,7 +28,7 @@ npm run build:js      # uglifies jQuery + plugins + _main.js into assets/js/main
 
 ## Deployment
 
-Pushing to `master` triggers `.github/workflows/jekyll.yml`, which builds with Ruby 3.1 (`JEKYLL_ENV=production`) and deploys to GitHub Pages. There is no other deploy step.
+Pushing to `master` triggers `.github/workflows/jekyll.yml`, which builds with Ruby 4.0 from the committed `Gemfile.lock` (`JEKYLL_ENV=production`) and deploys to GitHub Pages. There is no other deploy step. The site does **not** use the `github-pages` gem, so GitHub's implicit plugins (optional front matter, relative links, titles from headings, `site.github`) are not available; add any plugin you need to both `Gemfile` and `plugins:` in `_config.yml`. If you change the Ruby version, update the workflow's `ruby-version` too, and after changing gems run `bundle lock` so the lockfile keeps its Linux platforms for CI.
 
 ## Architecture
 
@@ -47,7 +47,7 @@ Also in `_pages/`: `tag-archive.html` (`/tags/`, linked from post tags), `sitema
 
 **Blog posts**: each post sets an explicit `permalink` and an `image` (under `/images/`); posts belong to the "GreyLattice" series mirrored from greylattice.substack.com. `future: true` is set, so future-dated posts still publish. `image` is only used for the card on `/blog/` (rendered ~180px tall, ≤450px wide), so add it as WebP at ~900px wide rather than a full-size PNG. MathJax is loaded only on pages with `math: true` in front matter.
 
-**Styling**: `assets/css/main.scss` is the single Sass entry point, importing from `_sass/`. Theme colors are CSS custom properties: `_sass/theme/_default.scss` defines them on `:root`, `_sass/theme/_dark.scss` overrides them under `html[data-theme="dark"]`. Page-specific stylesheets in `assets/css/` (cv, about, year-archive) are plain CSS loaded via `<link>` from the page itself and must define their own `[data-theme="dark"]` variants. Custom publication styles live in `_sass/_custom_publications.scss`. `_sass/vendor/` is third-party — don't edit.
+**Styling**: `assets/css/main.scss` is the single Sass entry point, importing from `_sass/`. Theme colors are CSS custom properties: `_sass/theme/_default.scss` defines them on `:root`, `_sass/theme/_dark.scss` overrides them under `html[data-theme="dark"]`. Page-specific stylesheets in `assets/css/` (cv, about, year-archive) are plain CSS loaded via `<link>` from the page itself and must define their own `[data-theme="dark"]` variants. Custom publication styles live in `_sass/_custom_publications.scss`. `_sass/vendor/` is third-party — don't edit. Sass is compiled by Dart Sass (`sass-embedded`); the template SCSS uses deprecated syntax (`@import`, `/` division, global functions), so those warnings are silenced under `sass.silence_deprecations` in `_config.yml`. They will become errors in Dart Sass 3.0, so don't upgrade `sass-embedded` past 1.x without migrating the SCSS.
 
 **Dark mode**: an inline script in `_includes/head.html` sets the initial theme before CSS loads (avoids a light flash); it must not contain `//` comments because `_layouts/compress.html` collapses newlines. `assets/js/_main.js` toggles `data-theme="dark"` on `<html>` (button `#theme-toggle` in `_includes/masthead.html`), persisting the choice in `localStorage` and otherwise following `prefers-color-scheme`. Any new styling must work in both themes, ideally by using the `--global-*` variables rather than hard-coded colors.
 
