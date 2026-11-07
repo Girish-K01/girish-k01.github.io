@@ -1,8 +1,8 @@
 ---
 layout: archive
 permalink: /blog/
-title: "Blog posts by Girish Kulathumani on GreyLattice"
-description: "A comprehensive archive of blog posts by Girish Kulathumani on GreyLattice, covering various topics and insights. Visit greylattice.substack.com for more."
+title: "Blog"
+description: "Every GreyLattice post by Girish Kulathumani: deep dives on brain–computer interfaces, brain decoding and computational neuroscience, plus audio summaries."
 author_profile: true
 ---
 
@@ -10,36 +10,36 @@ author_profile: true
 
 <link rel="stylesheet" href="{{ base_path }}/assets/css/year-archive-style.css">
 
+{% comment %}
+  Posts come from the GreyLattice Substack feed via _plugins/greylattice.rb (site.data.greylattice),
+  falling back to the snapshot in _data/greylattice.json. Links go to the posts on Substack.
+{% endcomment %}
+<p class="page__lead">I write <a href="https://greylattice.substack.com">GreyLattice</a>, a publication on brain–computer interfaces and computational neuroscience. Every post, newest first:</p>
+
 <div class="blog-archive">
-  {% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+  {% assign posts_by_year = site.data.greylattice | group_by_exp: "post", "post.date | slice: 0, 4" %}
   {% for year in posts_by_year %}
-    <div class="year-section">
-      <h2 class="year-title">{{ year.name }}</h2>
+    <section class="year-section" aria-labelledby="year-{{ year.name }}">
+      <h2 class="year-title" id="year-{{ year.name }}">{{ year.name }}</h2>
       <div class="posts-container">
         {% for post in year.items %}
           <article class="post-card">
             {% if post.image %}
-              <a href="{{ post.url | relative_url }}">
-                <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" class="post-image" loading="lazy" decoding="async">
-              </a>
+              <img src="{{ post.image }}" alt="" class="post-image" loading="lazy" decoding="async">
             {% endif %}
-
             <div class="post-content">
-              <h3 class="post-title">
-                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-              </h3>
-
-              <time class="post-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">
-                {{ post.date | date: '%B %d, %Y' }}
-              </time>
-
-              {% if post.excerpt %}
-                <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
+              <h3 class="post-title"><a href="{{ post.url }}">{{ post.title | escape }}</a></h3>
+              <p class="post-meta">
+                <time class="post-date" datetime="{{ post.date }}">{{ post.date | date: '%B %-d, %Y' }}</time>
+                {% if post.audio %}<span class="post-badge">Audio summary</span>{% endif %}
+              </p>
+              {% if post.summary != "" %}
+                <p class="post-excerpt">{{ post.summary | strip_html | truncatewords: 30 | escape }}</p>
               {% endif %}
             </div>
           </article>
         {% endfor %}
       </div>
-    </div>
+    </section>
   {% endfor %}
 </div>

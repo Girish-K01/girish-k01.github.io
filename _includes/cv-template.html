@@ -61,6 +61,82 @@
   <!-- Main Content Area -->
   <div class="cv-main">
     <div class="cv-content">
+      <!-- Research Section -->
+      {% if cv.research %}
+      <section class="cv-section" aria-labelledby="research-heading">
+        <h2 id="research-heading" class="cv-section-title">Research</h2>
+        
+        {% if cv.research.focus.size > 0 %}
+        <div class="cv-research-focus">
+          <h3 class="cv-subsection-title">Research Focus</h3>
+          {% for focus in cv.research.focus %}
+          <article class="cv-item cv-research-item">
+            <header class="cv-item-header">
+              <h4 class="cv-item-title">{{ focus.area }}</h4>
+            </header>
+            <div class="cv-item-content">
+              <p>{{ focus.description }}</p>
+              {% if focus.currentWork %}
+              <p class="cv-current-work"><strong>Current Work:</strong> {{ focus.currentWork }}</p>
+              {% endif %}
+            </div>
+          </article>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if cv.research.initiatives.size > 0 %}
+        <div class="cv-research-initiatives">
+          <h3 class="cv-subsection-title">Research Initiatives</h3>
+          {% for initiative in cv.research.initiatives %}
+          <article class="cv-item cv-initiative-item">
+            <header class="cv-item-header">
+              <h4 class="cv-item-title">{{ initiative.name }}</h4>
+            </header>
+            <div class="cv-item-content">
+              <p>{{ initiative.description }}</p>
+              {% if initiative.url and initiative.url != "" %}
+              <a href="{{ initiative.url }}" class="cv-link" target="_blank" rel="noopener noreferrer">Learn More</a>
+              {% endif %}
+            </div>
+          </article>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </section>
+      {% endif %}
+
+      <!-- Publications Section -->
+      {% if cv.publications.size > 0 %}
+      <section class="cv-section" aria-labelledby="publications-heading">
+        <h2 id="publications-heading" class="cv-section-title">Publications</h2>
+        <div class="cv-timeline">
+          {% for pub in cv.publications %}
+          <article class="cv-item cv-publication-item" itemscope itemtype="https://schema.org/ScholarlyArticle">
+            <header class="cv-item-header">
+              <h3 class="cv-item-title" itemprop="name">{{ pub.name }}</h3>
+              <div class="cv-item-meta">
+                <span class="cv-publisher" itemprop="publisher">{{ pub.publisher }}</span>
+                <time class="cv-date" datetime="{{ pub.releaseDate }}" itemprop="datePublished">{{ pub.releaseDate | slice: 0, 4 }}</time>
+              </div>
+              {% if pub.authors %}<p class="cv-publication-authors">{{ pub.authors }}</p>{% endif %}
+            </header>
+            {% if pub.summary %}
+            <div class="cv-item-content">
+              <p class="cv-publication-summary" itemprop="description">{{ pub.summary }}</p>
+            </div>
+            {% endif %}
+            {% if pub.website and pub.website != "" %}
+            <footer class="cv-item-footer">
+              <a href="{{ pub.website }}" class="cv-link" target="_blank" rel="noopener noreferrer" itemprop="url">Read Publication</a>
+            </footer>
+            {% endif %}
+          </article>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+
       <!-- Work Experience Section -->
       {% if cv.work.size > 0 %}
       <section class="cv-section" aria-labelledby="work-heading">
@@ -131,51 +207,6 @@
       </section>
       {% endif %}
 
-      <!-- Research Section -->
-      {% if cv.research %}
-      <section class="cv-section" aria-labelledby="research-heading">
-        <h2 id="research-heading" class="cv-section-title">Research</h2>
-        
-        {% if cv.research.focus.size > 0 %}
-        <div class="cv-research-focus">
-          <h3 class="cv-subsection-title">Research Focus</h3>
-          {% for focus in cv.research.focus %}
-          <article class="cv-item cv-research-item">
-            <header class="cv-item-header">
-              <h4 class="cv-item-title">{{ focus.area }}</h4>
-            </header>
-            <div class="cv-item-content">
-              <p>{{ focus.description }}</p>
-              {% if focus.currentWork %}
-              <p class="cv-current-work"><strong>Current Work:</strong> {{ focus.currentWork }}</p>
-              {% endif %}
-            </div>
-          </article>
-          {% endfor %}
-        </div>
-        {% endif %}
-
-        {% if cv.research.initiatives.size > 0 %}
-        <div class="cv-research-initiatives">
-          <h3 class="cv-subsection-title">Research Initiatives</h3>
-          {% for initiative in cv.research.initiatives %}
-          <article class="cv-item cv-initiative-item">
-            <header class="cv-item-header">
-              <h4 class="cv-item-title">{{ initiative.name }}</h4>
-            </header>
-            <div class="cv-item-content">
-              <p>{{ initiative.description }}</p>
-              {% if initiative.url and initiative.url != "" %}
-              <a href="{{ initiative.url }}" class="cv-link" target="_blank" rel="noopener noreferrer">Learn More</a>
-              {% endif %}
-            </div>
-          </article>
-          {% endfor %}
-        </div>
-        {% endif %}
-      </section>
-      {% endif %}
-
       <!-- Projects Section -->
       {% if cv.projects.size > 0 %}
       <section class="cv-section" aria-labelledby="projects-heading">
@@ -216,37 +247,6 @@
             {% if project.url and project.url != "" %}
             <footer class="cv-item-footer">
               <a href="{{ project.url }}" class="cv-link" target="_blank" rel="noopener noreferrer">View Project</a>
-            </footer>
-            {% endif %}
-          </article>
-          {% endfor %}
-        </div>
-      </section>
-      {% endif %}
-
-      <!-- Publications Section -->
-      {% if cv.publications.size > 0 %}
-      <section class="cv-section" aria-labelledby="publications-heading">
-        <h2 id="publications-heading" class="cv-section-title">Publications</h2>
-        <div class="cv-timeline">
-          {% for pub in cv.publications %}
-          <article class="cv-item cv-publication-item" itemscope itemtype="https://schema.org/ScholarlyArticle">
-            <header class="cv-item-header">
-              <h3 class="cv-item-title" itemprop="name">{{ pub.name }}</h3>
-              <div class="cv-item-meta">
-                <span class="cv-publisher" itemprop="publisher">{{ pub.publisher }}</span>
-                <time class="cv-date" datetime="{{ pub.releaseDate }}" itemprop="datePublished">{{ pub.releaseDate | slice: 0, 4 }}</time>
-              </div>
-              {% if pub.authors %}<p class="cv-publication-authors">{{ pub.authors }}</p>{% endif %}
-            </header>
-            {% if pub.summary %}
-            <div class="cv-item-content">
-              <p class="cv-publication-summary" itemprop="description">{{ pub.summary }}</p>
-            </div>
-            {% endif %}
-            {% if pub.website and pub.website != "" %}
-            <footer class="cv-item-footer">
-              <a href="{{ pub.website }}" class="cv-link" target="_blank" rel="noopener noreferrer" itemprop="url">Read Publication</a>
             </footer>
             {% endif %}
           </article>
@@ -305,6 +305,7 @@
         </div>
       </section>
       {% endif %}
+
     </div>
 
     <!-- Sidebar -->

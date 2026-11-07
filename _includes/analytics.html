@@ -1,6 +1,8 @@
 {% if site.analytics.provider and page.analytics != false %}
 
 {% case site.analytics.provider %}
+{% when "goatcounter" %}
+  {% include /analytics-providers/goatcounter.html %}
 {% when "google-analytics-4" %}
   {% include /analytics-providers/google-analytics-4.html %}
 {% when "custom" %}

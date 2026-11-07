@@ -1,0 +1,22 @@
+{% comment %}
+  Highwire Press citation tags, which Google Scholar reads to index a paper and group this
+  page with the publisher's version. Filled from the `scholar:` map in a publication's front
+  matter; use the metadata exactly as the publisher/Crossref records it.
+{% endcomment %}
+{% if page.collection == "publications" and page.scholar %}
+  {% assign s = page.scholar %}
+  <meta name="citation_title" content="{{ s.title | default: page.title | strip_html | escape }}">
+  {% for author in s.authors %}<meta name="citation_author" content="{{ author | escape }}">
+  {% endfor %}
+  <meta name="citation_publication_date" content="{{ page.date | date: "%Y/%m/%d" }}">
+  {% if s.journal %}<meta name="citation_journal_title" content="{{ s.journal | escape }}">{% endif %}
+  {% if s.conference %}<meta name="citation_conference_title" content="{{ s.conference | escape }}">{% endif %}
+  {% if s.volume %}<meta name="citation_volume" content="{{ s.volume }}">{% endif %}
+  {% if s.issue %}<meta name="citation_issue" content="{{ s.issue }}">{% endif %}
+  {% if s.firstpage %}<meta name="citation_firstpage" content="{{ s.firstpage }}">{% endif %}
+  {% if s.lastpage %}<meta name="citation_lastpage" content="{{ s.lastpage }}">{% endif %}
+  {% if s.publisher %}<meta name="citation_publisher" content="{{ s.publisher | escape }}">{% endif %}
+  {% if s.doi %}<meta name="citation_doi" content="{{ s.doi }}">{% endif %}
+  {% if s.pdf_url %}<meta name="citation_pdf_url" content="{{ s.pdf_url }}">{% endif %}
+  {% if s.arxiv_id %}<meta name="citation_arxiv_id" content="{{ s.arxiv_id }}">{% endif %}
+{% endif %}

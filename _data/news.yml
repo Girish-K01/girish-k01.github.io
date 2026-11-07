@@ -1,0 +1,23 @@
+# Dated updates for the home page (it shows the newest six). Newest first.
+#   date: YYYY-MM   text: plain sentence   link: optional (internal links start with "/")
+
+- date: "2026-11"
+  text: "Entered the NeurIPS 2026 EEG/EMG Foundation Challenge (Track 2: EEG decoding) as an independent participant."
+
+- date: "2025-10"
+  text: "Joined Accenture, Chennai as an Application Engineer, building Salesforce Life Sciences Cloud features (until Oct 2026)."
+
+- date: "2025-06"
+  text: "Siren published in Intelligent Computing (Springer LNNS) and presented at the Computing Conference 2025 in London."
+  link: "/publication/2024-06-10-siren-cybersecurity"
+
+- date: "2025-06"
+  text: "JIGS published in Engineering Research Express."
+  link: "/publication/2025-00-00-jigs-crypto"
+
+- date: "2025-05"
+  text: "Graduated with a B.Tech. in Computer Science and Engineering from VIT Chennai (CGPA 8.69/10)."
+
+- date: "2025-02"
+  text: "Launched GreyLattice, a publication on brain–computer interfaces and computational neuroscience."
+  link: "https://greylattice.substack.com"

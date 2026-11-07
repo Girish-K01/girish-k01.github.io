@@ -1,0 +1,20 @@
+{% comment %}
+  One portfolio card. Usage: {% include project-card.html project=p heading="h2" %}
+  (heading defaults to h3; pass h2 when the cards sit directly under the page's h1).
+{% endcomment %}
+{% assign p = include.project %}
+{% assign heading = include.heading | default: "h3" %}
+{% assign topic_names = site.data.projects.topics %}
+<li class="project-card" data-filter-tags="{{ p.topics | join: ' ' }}">
+  <p class="project-card__meta">{% if p.status %}<span class="project-card__status">{{ p.status | escape }}</span>{% endif %}<span>{{ p.when | escape }}</span></p>
+  <{{ heading }} class="project-card__title">{{ p.title | escape }}</{{ heading }}>
+  <p class="project-card__summary">{{ p.summary | escape }}</p>
+  <ul class="project-card__topics" aria-label="Topics">
+    {% for t in p.topics %}<li class="topic-chip">{{ topic_names[t] | default: t | escape }}</li>{% endfor %}
+  </ul>
+  {% if p.links and p.links.size > 0 %}
+  <p class="project-card__links">
+    {% for link in p.links %}<a href="{% if link.url contains '://' %}{{ link.url }}{% else %}{{ link.url | relative_url }}{% endif %}">{{ link.label | escape }}<span class="visually-hidden">: {{ p.title | escape }}</span></a>{% endfor %}
+  </p>
+  {% endif %}
+</li>

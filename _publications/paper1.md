@@ -9,6 +9,18 @@ venue: 'Intelligent Computing: Proceedings of the Computing Conference (Springer
 authors: 'A. Samhruth, <b>K. Girish</b>, N. Ganesh'
 paperurl: 'https://link.springer.com/chapter/10.1007/978-3-031-92605-1_31'
 codeurl: 'https://github.com/Girish-K01/'
+preprinturl: 'https://arxiv.org/abs/2406.06225'
+doiurl: 'https://doi.org/10.1007/978-3-031-92605-1_31'
+bibtexurl: '/files/bib/samhruth2025siren.bib'
+scholar:  # Google Scholar citation tags; metadata as recorded by Crossref (Springer lists the names in this order)
+  title: 'Siren: Advancing Cybersecurity Through Deception and Adaptive Analysis'
+  authors: ['Samhruth, Ananthanarayanan', 'Girish, Kulathumani', 'Ganesh, Narayanan']
+  conference: 'Intelligent Computing: Proceedings of the Computing Conference'
+  firstpage: 506
+  lastpage: 519
+  publisher: 'Springer Nature Switzerland'
+  doi: '10.1007/978-3-031-92605-1_31'
+  arxiv_id: '2406.06225'
 citation: 'Samhruth, A., Girish, K., & Ganesh, N. (2025). &quot;Siren: Advancing cybersecurity through deception and adaptive analysis.&quot; In <i>Intelligent Computing: Proceedings of the Computing Conference</i>, pp. 506–519. Springer LNNS. arXiv:2406.06225.'
 ---
 

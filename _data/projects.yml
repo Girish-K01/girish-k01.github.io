@@ -1,0 +1,93 @@
+# Portfolio entries, most relevant first (pages show them in this order).
+# The home page shows those with `featured: true` (keep it to about four);
+# /projects/ shows all of them, with a filter per topic.
+#   title, when, summary: shown on the card (plain text)
+#   topics: keys from `topics` below; the first one is the card's main topic
+#   status: optional pill such as "In progress"
+#   links: optional; internal links start with "/"
+
+topics:
+  biosignals: "Biosignals"
+  federated: "Federated learning"
+  security: "Security"
+  systems: "Systems & HPC"
+  applied: "Applied ML"
+  writing: "Writing"
+
+items:
+  - title: "Cross-subject EEG decoding (NeurIPS 2026 challenge)"
+    when: "Nov 2026"
+    status: "In progress"
+    topics: [biosignals]
+    featured: true
+    summary: "Independent entry to the EEG/EMG Foundation Challenge, NeurIPS 2026 (Track 2: EEG decoding): a covariance-based decoder (Riemannian tangent space with logistic regression), written without AI-generated code and evaluated on held-out participants."
+    links: []
+
+  - title: "HabitatFL: federated wildlife audio and image classification"
+    when: "Jan – May 2025"
+    topics: [federated]
+    featured: true
+    summary: "Led a three-person team building a federated framework that classifies wildlife audio and images across separate clients, with Flower and Docker on VIT's NVIDIA DGX. Edge models under 2 MB reached 87.65% on 18.2K spectrograms (27 classes) and 69.92% on 50K images (82 classes)."
+    links:
+      - label: "Code"
+        url: "https://github.com/Girish-K01/federated-learning-ai-for-biodiv"
+
+  - title: "GreyLattice"
+    when: "Feb 2025 – present"
+    topics: [writing, biosignals]
+    featured: true
+    summary: "Founder and writer of an independent publication on brain–computer interfaces and computational neuroscience, with long technical deep dives such as a breakdown of real-time MEG decoding of visual perception."
+    links:
+      - label: "All posts"
+        url: "/blog/"
+      - label: "Substack"
+        url: "https://greylattice.substack.com"
+
+  - title: "JIGS: parallel encryption and authentication pipeline"
+    when: "2024 – 2025"
+    topics: [security, systems]
+    featured: true
+    summary: "A secure-messaging pipeline combining ECDH key exchange with nonce-based AES-128 and parallelised stages, with its protocol verified in ProVerif. Published in Engineering Research Express (2025)."
+    links:
+      - label: "Paper"
+        url: "/publication/2025-00-00-jigs-crypto"
+      - label: "Code"
+        url: "https://github.com/Girish-K01/jigs-crypto-code-repo"
+
+  - title: "Siren: deception-based cyber defence"
+    when: "2024 – 2025"
+    topics: [security]
+    summary: "Contributed to a defence that pairs honeypots and simulated user activity with ML classification of attacker behaviour. Published in Intelligent Computing (Springer LNNS, 2025)."
+    links:
+      - label: "Paper"
+        url: "/publication/2024-06-10-siren-cybersecurity"
+      - label: "arXiv"
+        url: "https://arxiv.org/abs/2406.06225"
+
+  - title: "Enterprise banking system"
+    when: "May 2025 – present"
+    topics: [systems]
+    summary: "Full-stack banking system: a FastAPI and SQLAlchemy REST API with role-based access and ACID-safe transactions, a React and TypeScript frontend, Docker Compose, CI with GitHub Actions and 85% test coverage with pytest."
+    links: []
+
+  - title: "GPU-accelerated financial news sentiment"
+    when: "Jan – Apr 2024"
+    topics: [systems, applied]
+    summary: "Streamed news through Kafka and scored it with FinBERT, using RAPIDS cuDF on an RTX 2060 to cut end-to-end latency from about 8 minutes to 10 seconds."
+    links:
+      - label: "Code"
+        url: "https://github.com/Girish-K01/HPC-Sentiment-Analysis"
+
+  - title: "LSTM forecasting for mutual funds"
+    when: "Jan – Apr 2024"
+    topics: [applied]
+    summary: "Next-day forecasting pipeline combining live NAV data with the S&P BSE Tech index and 15+ engineered features (RSI, MACD, Bollinger Bands, CAPM metrics), reaching an MAE of 0.3–0.8."
+    links:
+      - label: "Code"
+        url: "https://github.com/thePrnvBot/MFAssetAllocationML"
+
+  - title: "Real-time weapon detection"
+    when: "Aug – Nov 2023"
+    topics: [applied]
+    summary: "Built a real-time weapon-detection system on live video with YOLO and Flask, in a team of three, during the Google Developers × SmartBridge externship."
+    links: []

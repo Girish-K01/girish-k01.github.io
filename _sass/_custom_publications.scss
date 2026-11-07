@@ -119,31 +119,24 @@
       }
     }
 
-    // Category filter buttons
-    .publication-filters {
+    // Paper / arXiv / DOI / Code / BibTeX links under each entry
+    .publication-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .filter-btn {
-      padding: 0.4rem 0.9rem;
+      gap: 0.4rem 1.1rem;
+      margin: 0.6rem 0 0.8rem;
       font-size: 0.9rem;
-      color: var(--global-text-color);
-      background: transparent;
-      border: 1px solid var(--global-border-color);
-      border-radius: 999px;
-      cursor: pointer;
 
-      &:hover {
-        border-color: var(--global-link-color);
-      }
+      a {
+        text-decoration: none;
 
-      &.active {
-        color: var(--global-bg-color);
-        background: var(--global-link-color);
-        border-color: var(--global-link-color);
+        i {
+          margin-right: 0.25rem;
+        }
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }

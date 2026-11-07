@@ -1,0 +1,27 @@
+{% comment %}
+  Filter buttons: each .filter-btn[data-filter] shows only the elements matching `include.items`
+  whose space-separated data-filter-tags contain that filter ("all" shows everything).
+  Usage: {% include filter-script.html items=".project-card" %}
+  This is an inline script, so use only /* */ comments: compress.html joins every line in
+  production and a // comment would swallow the rest of the script.
+{% endcomment %}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var buttons = document.querySelectorAll('.filter-btn');
+    var items = document.querySelectorAll('{{ include.items }}');
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var filter = btn.getAttribute('data-filter');
+        buttons.forEach(function (b) {
+          var on = b === btn;
+          b.classList.toggle('active', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        items.forEach(function (item) {
+          var tags = (item.getAttribute('data-filter-tags') || '').split(' ');
+          item.style.display = (filter === 'all' || tags.indexOf(filter) !== -1) ? '' : 'none';
+        });
+      });
+    });
+  });
+</script>

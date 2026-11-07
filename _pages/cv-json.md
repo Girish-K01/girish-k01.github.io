@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "Academic CV/Resume – Girish Kulathumani"
+title: "CV"
 description: "Full academic CV of Girish Kulathumani, including research experience, publications, and projects in AI and computational neuroscience."
 permalink: /cv/
 author_profile: true

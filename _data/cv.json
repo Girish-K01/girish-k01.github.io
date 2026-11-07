@@ -107,13 +107,7 @@
   ],
   "skills": [
     {
-      "name": "Programming Languages",
-      "level": "Advanced",
-      "keywords": ["Python", "C++", "Java", "JavaScript", "TypeScript", "SQL"]
-    },
-    {
       "name": "Machine Learning & Data Science",
-      "level": "Advanced",
       "keywords": [
         "PyTorch",
         "TensorFlow",
@@ -123,33 +117,31 @@
         "YOLO",
         "pandas",
         "NumPy",
-        "RAPIDS",
         "Flower (federated learning)"
       ]
     },
     {
+      "name": "Programming Languages",
+      "keywords": ["Python", "C++", "Java", "JavaScript", "TypeScript", "SQL"]
+    },
+    {
+      "name": "High-Performance Computing",
+      "keywords": ["CUDA", "RAPIDS", "Multi-GPU workflows", "Parallel Computing", "GPU acceleration"]
+    },
+    {
       "name": "Frameworks & Tools",
-      "level": "Advanced",
       "keywords": ["FastAPI", "Flask", "React", "Apache Kafka", "Apache Spark", "Docker", "Git"]
     },
     {
       "name": "Databases & Infrastructure",
-      "level": "Advanced",
       "keywords": ["PostgreSQL", "MySQL", "NVIDIA NGC catalog", "Linux", "SSH", "Docker Compose"]
     },
     {
-      "name": "High-Performance Computing",
-      "level": "Advanced",
-      "keywords": ["CUDA", "RAPIDS", "Multi-GPU workflows", "Parallel Computing", "GPU acceleration"]
-    },
-    {
       "name": "Security & Cryptography",
-      "level": "Advanced",
       "keywords": ["Cryptographic architectures", "ECDH", "AES-128", "Secure Communication Systems"]
     },
     {
       "name": "Currently Learning",
-      "level": "Learning",
       "keywords": ["MNE-Python", "Biosignal processing"]
     }
   ],

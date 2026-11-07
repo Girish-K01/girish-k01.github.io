@@ -9,10 +9,11 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default"
-title                    : "GIRISH K Labs"
-title_separator          : "-"
+title                    : "Girish Kulathumani"
+title_separator          : "–"
+tagline                  : "EEG/EMG decoding and federated learning" # home page <title>
 name                     : &name "Girish Kulathumani"
-description              : &description "Developer|Researcher|Writer"
+description              : &description "Girish Kulathumani works on decoding non-invasive biosignals (EEG and wrist EMG), federated learning and leakage-free evaluation."
 url                      : "https://girish-k01.github.io"
 baseurl                  : ""
 repository               : "Girish-K01/girish-k01.github.io"
@@ -25,7 +26,7 @@ author:
   avatar           : "profile_pic.jpg"
   name             : "Girish Kulathumani"
   pronouns         : # example: "she/her"  
-  bio              : "Developer | Researcher | Writer"
+  bio              : "Biosignal decoding · Federated learning"
   location         : "Chennai, Tamil Nadu, India"
   employer         : # shown in the sidebar when set (VIT ended May 2025, Accenture Oct 2026)
   uri              : # URL
@@ -107,26 +108,33 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 : "og_image.png"
-# For specifying social profiles
-# - https://developers.google.com/structured-data/customize/social-profiles
+og_image                 : "og-card.png" # 1200x630 link preview; regenerate with scripts/brand_images.py
+# Structured data describing you (schema.org Person, on the home page).
+# sameAs links help search engines connect your profiles to this site.
 social:
   type                   : Person
   name                   : Girish Kulathumani
-  links: ["https://github.com/Girish-K01", 
-          "https://twitter.com/GK4913", 
-          "https://www.linkedin.com/in/girish-kulathumani/", 
-          "https://scholar.google.com/citations?user=hOmai0UAAAAJ",
-          "https://orcid.org/0009-0003-9210-0999"
+  alumni_of              : "Vellore Institute of Technology, Chennai"
+  knows_about            : ["EEG decoding", "Surface electromyography (EMG)", "Brain-computer interfaces", "Federated learning", "Machine learning"]
+  links: ["https://scholar.google.com/citations?user=hOmai0UAAAAJ",
+          "https://orcid.org/0009-0003-9210-0999",
+          "https://github.com/Girish-K01",
+          "https://www.linkedin.com/in/girish-kulathumani/",
+          "https://arxiv.org/a/kulathumani_g_1.html",
+          "https://greylattice.substack.com",
+          "https://twitter.com/GK4913",
+          "https://www.kaggle.com/girishk49"
          ]
 
 
-# Analytics (disabled: the old tag G-PZ8254RK67 returned 404 from Google).
-# To enable, set provider to "google-analytics-4" and add:
-#   google:
-#     tracking_id: "G-XXXXXXXXXX"
+# Analytics: off. Two options are wired up:
+#   GoatCounter (free, privacy-friendly, no cookie banner): create a site at goatcounter.com, then
+#     provider: "goatcounter"   and   goatcounter_code: "<your code>"  (the part before .goatcounter.com)
+#   Google Analytics 4: provider: "google-analytics-4"  and  google: { tracking_id: "G-XXXXXXXXXX" }
+#     (the previous tag G-PZ8254RK67 returned 404 from Google)
 analytics:
   provider: false
+  goatcounter_code:
 
 
 # Reading Files
@@ -140,6 +148,7 @@ exclude:
   - .sass-cache
   - assets/js/_main.js
   - assets/js/plugins
+  - scripts
   - CLAUDE.md
   - Gemfile
   - Gemfile.lock

@@ -1,0 +1,66 @@
+[
+  {
+    "title": "GL02s: Summary of \"How We Listen To The Brain And Why It's Super Hard\"",
+    "url": "https://greylattice.substack.com/p/gl02s",
+    "date": "2025-08-21",
+    "summary": "Audio overview of article GL02 - invasive vs non-invasive brain recording methods, spatial and temporal resolution tradeoffs, EEG vs neural implants, signal degradation, sampling rate limitations",
+    "audio": true,
+    "image": "https://substackcdn.com/image/fetch/$s_!siEw!,w_600,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F62cd0e74-37ed-4850-9048-0eea73682a06_1025x966.png"
+  },
+  {
+    "title": "GL01s - Summary of \"What is Computational Neuroscience\"",
+    "url": "https://greylattice.substack.com/p/gl01s",
+    "date": "2025-08-03",
+    "summary": "Audio overview of article GL01 - Learn about neural coding, brain-machine interfaces, and the development of computational neuroscience in this overview from GreyLattice.",
+    "audio": true,
+    "image": "https://substackcdn.com/image/fetch/$s_!9h68!,w_600,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F07eb2c13-5004-45f1-9b0d-e23103279223_1025x966.png"
+  },
+  {
+    "title": "GLr01s - Summary of \"Brain decoding: toward real-time reconstruction of visual perception\" -> Arxiv - 2310.19812",
+    "url": "https://greylattice.substack.com/p/glr01s",
+    "date": "2025-08-02",
+    "summary": "Listen now (15 mins) | Audio overview of - 'Brain Decoding: Toward Real-Time Reconstruction of Visual Perception- Arxiv - 2310.19812'—exploring MEG-based models, deep learning, and AI-driven neural representation learning.",
+    "audio": true,
+    "image": "https://substackcdn.com/image/fetch/$s_!_99M!,w_600,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F93d61039-2586-4cf6-9518-324ac3a65e73_1025x966.png"
+  },
+  {
+    "title": "GL02: How We Listen To The Brain And Why It's Super Hard",
+    "url": "https://greylattice.substack.com/p/gl02",
+    "date": "2025-07-22",
+    "summary": "This blog explores invasive vs non-invasive brain recording methods, spatial and temporal resolution tradeoffs, EEG vs neural implants, signal degradation challenges, and sampling rate limitations.",
+    "audio": false,
+    "image": "https://substackcdn.com/image/fetch/w_600,c_limit,$s_!jqlV!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd0b91fd3-c73c-4c0b-a9d0-f1a104969a4f_1024x1024.png"
+  },
+  {
+    "title": "GLc00: Decoding Minds, Building Intelligence - Welcome to GreyLattice",
+    "url": "https://greylattice.substack.com/p/glc00",
+    "date": "2025-05-28",
+    "summary": "Listen now | The pilot episode starting of The GreyLattice Podcast",
+    "audio": true,
+    "image": null
+  },
+  {
+    "title": "GLr01: \"Brain decoding: toward real-time reconstruction of visual perception\" -> Arxiv - 2310.19812",
+    "url": "https://greylattice.substack.com/p/glr01",
+    "date": "2025-04-28",
+    "summary": "Breaking down - 'Brain Decoding: Toward Real-Time Reconstruction of Visual Perception- Arxiv - 2310.19812'—exploring MEG-based models, deep learning, and AI-driven neural representation learning.",
+    "audio": false,
+    "image": "https://substackcdn.com/image/fetch/w_600,c_limit,$s_!hmVb!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdcc94b89-4002-4a45-82d2-0fa9bff817df_1024x1024.png"
+  },
+  {
+    "title": "GreyLattice-01(GL01): What is Computational Neuroscience",
+    "url": "https://greylattice.substack.com/p/gl01",
+    "date": "2025-02-06",
+    "summary": "Dive into “GreyLattice-01” to explore the origins and history of Computational Neuroscience",
+    "audio": false,
+    "image": "https://substackcdn.com/image/fetch/w_600,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Feeb336e2-b4bb-4456-ba5d-52bc4bb97ab1_1536x1024.png"
+  },
+  {
+    "title": "GreyLattice-00(GL00): Welcome to GreyLattice!",
+    "url": "https://greylattice.substack.com/p/gl00",
+    "date": "2025-02-06",
+    "summary": "Introducing a blog series on Neurotechnology, GreyLattice — Decoding minds, Building Intelligence",
+    "audio": false,
+    "image": "https://substackcdn.com/image/fetch/w_600,c_limit,$s_!1cUZ!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F21ac9c33-9526-458d-924e-1b1491d2ab4b_1024x1024.png"
+  }
+]
