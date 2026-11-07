@@ -20,7 +20,7 @@ author_profile: true
           <article class="post-card">
             {% if post.image %}
               <a href="{{ post.url | relative_url }}">
-                <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" class="post-image">
+                <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" class="post-image" loading="lazy" decoding="async">
               </a>
             {% endif %}
 
