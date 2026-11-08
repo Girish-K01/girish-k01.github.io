@@ -18,17 +18,16 @@ url                      : "https://girish-k01.github.io"
 baseurl                  : ""
 repository               : "Girish-K01/girish-k01.github.io"
 
-# Site Author - The following control what appear as part of the author content on the side bar.
-#               If a field is blank the icon and link will not appear, otherwise it will be shown.
-#               Additional customization can be done by editing /_includes/author-profile.html
+# Site Author - used by the home page (photo, email, profile links), the footer links on every page
+#               (_includes/footer.html) and the SEO tags. A blank link is simply left out.
 author:
   # Biographic information
-  avatar           : "profile_pic.jpg"
+  avatar           : "profile_pic.webp"
   name             : "Girish Kulathumani"
   pronouns         : # example: "she/her"  
   bio              : "Biosignal decoding · Federated learning"
   location         : "Chennai, Tamil Nadu, India"
-  employer         : # shown in the sidebar when set (VIT ended May 2025, Accenture Oct 2026)
+  employer         : # not shown anywhere at the moment (VIT ended May 2025, Accenture Oct 2026)
   uri              : # URL
   email            : "girish.kulathumani@gmail.com" 
 
@@ -76,12 +75,13 @@ author:
   youtube          : # Username
   zhihu            : # Username
 
-# Publication Category - The following the list of publication categories and their headings
+# Publication categories: a paper's `category` is one of these keys, and `title` is the label shown
+# after its venue (/publications/ is one list, newest first, so an unknown category only loses the label)
 publication_category:
   manuscripts:
-    title: 'Journal Articles'    
+    title: 'Journal article'
   conferences:
-    title: 'Conference Papers'
+    title: 'Conference paper'
 
 # Site Settings
 teaser                   :  # filename of fallback teaser image placed in /images/
@@ -193,7 +193,8 @@ collections:
     permalink: /:collection/:path/  
 
 
-# These settings control how pages and collections are included in the site
+# These settings control how pages and collections are included in the site.
+# Every page uses one centred column (no sidebar, share buttons or related posts).
 defaults:
   # _posts
   - scope:
@@ -201,25 +202,18 @@ defaults:
       type: posts
     values:
       layout: single
-      author_profile: true
-      read_time: true
-      share: true
-      related: true
   # _pages
   - scope:
       path: ""
       type: pages
     values:
       layout: single
-      author_profile: true
   # _publications
   - scope:
       path: ""
       type: publications
     values:
       layout: single
-      author_profile: true
-      share: true
 
 # Sass/SCSS
 sass:

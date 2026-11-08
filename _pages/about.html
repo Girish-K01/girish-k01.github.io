@@ -2,7 +2,6 @@
 permalink: /
 title: "About"
 excerpt: "Researcher in non-invasive biosignal decoding (EEG and wrist EMG), federated learning and leakage-free evaluation. Open to research engineer, research assistant and PhD roles."
-author_profile: false
 hide_title: true
 classes: home-page
 redirect_from:
@@ -11,16 +10,17 @@ redirect_from:
 ---
 {% comment %}
   Home page. Plain HTML (not Markdown) so the layout below is rendered exactly as written.
+  The intro says who you are; "Research focus" says what you work on, so don't repeat it there.
   Featured work comes from _data/projects.yml (featured: true), news from _data/news.yml.
   The roles/availability line is the most important sentence on the site: keep it current.
 {% endcomment %}
 <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/about-style.css">
 
 <section class="hero" aria-labelledby="hero-name">
-  <img class="hero__photo" src="{{ site.baseurl }}/images/{{ site.author.avatar }}" alt="Girish Kulathumani" width="150" height="150">
+  <img class="hero__photo" src="{{ site.baseurl }}/images/{{ site.author.avatar }}" alt="Girish Kulathumani" width="144" height="144">
   <div class="hero__body">
     <h1 id="hero-name" class="hero__name">Girish Kulathumani</h1>
-    <p class="hero__lead">I work on <strong>decoding non-invasive biosignals</strong>, EEG and wrist surface EMG, so that models trained on some people work on new ones with little or no calibration. I’m also interested in personalising shared models with federated learning without pooling anyone’s data, and in evaluating them with subject-wise splits that rule out data leakage.</p>
+    <p class="hero__lead">I’m a machine learning researcher working on EEG and EMG decoding. I graduated in Computer Science and Engineering from VIT Chennai in 2025, spent a year as an application engineer at Accenture, and have two peer-reviewed papers.</p>
     <p class="hero__status"><span class="hero__dot" aria-hidden="true"></span><span><strong>Open to research engineer, research assistant and PhD roles in biosignal ML.</strong> Available now · based in Chennai, open to relocation and remote.</span></p>
     <p class="hero__actions">
       <a class="hero__btn hero__btn--primary" href="{{ site.baseurl }}/files/cv.pdf"><i class="fas fa-file-arrow-down" aria-hidden="true"></i>Download CV</a>
@@ -44,8 +44,8 @@ redirect_from:
 </ul>
 
 <h2>Featured work</h2>
-<ul class="card-grid card-grid--featured">
-  {% for p in site.data.projects.items %}{% if p.featured %}{% include project-card.html project=p %}{% endif %}{% endfor %}
+<ul class="entries">
+  {% for p in site.data.projects.items %}{% if p.featured %}{% include project-entry.html project=p %}{% endif %}{% endfor %}
 </ul>
 <p class="see-all"><a href="{{ '/projects/' | relative_url }}">All projects →</a> · <a href="{{ '/publications/' | relative_url }}">Publications →</a></p>
 

@@ -1,35 +1,22 @@
 /* Home page (/). Loaded only by _pages/about.html, whose <body> has the class "home-page".
-   Colours come from the theme variables so it works in light and dark mode. */
+   The column, headings and lists come from the site styles (_sass/_custom_layout.scss and
+   _custom_components.scss); this file only styles the introduction. Colours come from the theme
+   variables so it works in light and dark mode. */
 
-/* The home page has no sidebar: let the content use the full width (template breakpoint $large = 925px). */
-@media (min-width: 925px) {
-  .home-page #main .page {
-    float: none;
-    width: 100%;
-    max-width: 62rem;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
-
-/* Introduction */
 .hero {
   display: flex;
-  gap: 2rem;
+  gap: 1.75rem;
   align-items: flex-start;
-  margin: 0.5rem 0 2.5rem;
+  margin: 0.25rem 0 2.75rem;
 }
 
 .hero__photo {
   flex: 0 0 auto;
-  width: 150px;
-  height: 150px;
+  width: 8rem;
+  height: 8rem;
   object-fit: cover;
-  object-position: top;
-  border: 3px solid var(--global-link-color);
   border-radius: 50%;
+  box-shadow: 0 0 0 1px var(--global-rule-color);
 }
 
 .hero__body {
@@ -37,15 +24,16 @@
 }
 
 .hero__name {
-  margin: 0 0 0.6rem;
+  margin: 0 0 0.5rem;
   font-size: 2.2rem;
   line-height: 1.15;
+  letter-spacing: -0.015em;
 }
 
 .hero__lead {
   margin: 0 0 1rem;
   font-size: 1.05rem;
-  line-height: 1.65;
+  line-height: 1.6;
 }
 
 .hero__status {
@@ -57,7 +45,7 @@
   font-size: 0.95rem;
   line-height: 1.5;
   background: var(--global-code-background-color);
-  border: 1px solid var(--global-border-color);
+  border: 1px solid var(--global-rule-color);
   border-radius: 8px;
 }
 
@@ -138,14 +126,6 @@
   margin-right: 0.35rem;
 }
 
-/* Sections */
-.home-page .page__content h2 {
-  margin: 2.2rem 0 0.8rem;
-  padding-bottom: 0.4rem;
-  font-size: 1.35rem;
-  border-bottom: 1px solid var(--global-border-color);
-}
-
 .focus-list {
   margin: 0;
   padding-left: 1.2rem;
@@ -157,29 +137,23 @@
 }
 
 .see-all {
-  margin: -0.5rem 0 1rem;
+  margin: 0 0 1rem;
   font-weight: 600;
 }
 
-/* Phones: stack the introduction */
+/* Phones: stack the introduction, still left-aligned */
 @media (max-width: 600px) {
   .hero {
     flex-direction: column;
-    align-items: center;
     gap: 1rem;
-    text-align: center;
+  }
+
+  .hero__photo {
+    width: 6rem;
+    height: 6rem;
   }
 
   .hero__name {
-    font-size: 1.8rem;
-  }
-
-  .hero__status {
-    text-align: left;
-  }
-
-  .hero__actions,
-  .hero__links {
-    justify-content: center;
+    font-size: 1.9rem;
   }
 }

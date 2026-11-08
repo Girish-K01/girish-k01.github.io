@@ -1,9 +1,9 @@
 /* CV page (/cv/): a compact, resume-style single column that mirrors files/cv.pdf.
    Markup: _includes/cv-template.html and _includes/cv-entry.html.
-   Colours use the site theme variables, so light and dark mode both work. */
+   Colours use the site theme variables, so light and dark mode both work; heading sizes use the
+   site type scale (--fs-section, --fs-item in _sass/_custom_layout.scss). */
 
 .cv {
-  max-width: 48rem;
   font-size: 0.9rem;
   line-height: 1.55;
 }
@@ -62,19 +62,19 @@
 
 /* Sections */
 .cv-section {
-  margin: 0 0 1.6rem;
+  margin: 0 0 1.5rem;
   scroll-margin-top: 5rem; /* clear the fixed site header when jumped to */
 }
 
+/* Same look as section headings on every other page */
 .cv .cv-section__title {
-  margin: 0 0 0.75rem;
-  padding: 0 0 0.3rem;
-  font-size: 0.8rem;
+  margin: 0 0 0.7rem;
+  padding: 0 0 0.4rem;
+  font-size: var(--fs-section);
   font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  line-height: 1.3;
   color: var(--global-text-color);
-  border-bottom: 1px solid var(--global-border-color);
+  border-bottom: 1px solid var(--global-rule-color);
 }
 
 /* Entries */
@@ -93,7 +93,7 @@
 .cv .cv-entry__title {
   margin: 0;
   padding: 0;
-  font-size: 0.95rem;
+  font-size: var(--fs-item);
   font-weight: 600;
   line-height: 1.4;
   border: 0;
@@ -205,11 +205,11 @@
     --global-text-color-light: #444;
     --global-link-color: #000;
     --global-border-color: #bbb;
+    --global-rule-color: #ccc;
     --global-code-background-color: #fff;
   }
 
   .masthead,
-  .sidebar,
   .page__footer,
   .page__title,
   .cv-toolbar,
@@ -258,6 +258,17 @@
   .cv-print-header .cv-print-header__name {
     font-size: 18pt;
     font-weight: 700;
+  }
+
+  /* Paper sizes for the headings (on screen they follow the site type scale);
+     a heading never ends a page without its first entry */
+  .cv .cv-section__title {
+    font-size: 12pt;
+    break-after: avoid;
+  }
+
+  .cv .cv-entry__title {
+    font-size: 10.5pt;
   }
 
   .cv a {

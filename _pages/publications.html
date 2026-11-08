@@ -3,71 +3,31 @@ layout: archive
 title: "Publications"
 description: "Peer-reviewed journal articles and conference papers by Girish Kulathumani, with links to the papers, preprints, code and BibTeX."
 permalink: /publications/
-author_profile: true
-classes: page--publications
 ---
 
 {% include base_path %}
 
-{% if site.author.googlescholar %}
-  <div class="scholar-link">
-    <i class="fas fa-graduation-cap" aria-hidden="true"></i> You can also find my articles on <a href="{{ site.author.googlescholar }}">my Google Scholar profile</a>.
-  </div>
-{% endif %}
+{% comment %}
+  One list, newest first. Each paper's `category` (a key of publication_category in _config.yml)
+  gives the label after the venue; `teaser` is the thumbnail (320x240 WebP under images/).
+{% endcomment %}
+<p class="page__lead">Peer-reviewed papers, newest first.{% if site.author.googlescholar %} Also on <a href="{{ site.author.googlescholar }}">Google Scholar</a>.{% endif %}</p>
 
-<div class="filter-bar" role="group" aria-label="Filter publications">
-  <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">All Publications</button>
-  {% for category in site.publication_category %}
-    <button type="button" class="filter-btn" data-filter="{{ category[0] }}" aria-pressed="false">{{ category[1].title }}</button>
-  {% endfor %}
-</div>
-
-{% comment %} Publications are grouped by `category`, which must be a key of publication_category in _config.yml. {% endcomment %}
-<div class="publications-container">
-  {% for category in site.publication_category %}
-    <section class="publication-category" id="{{ category[0] }}-section" data-filter-tags="{{ category[0] }}">
-      <div class="category-header">
-        <h2>{{ category[1].title }}</h2>
+{% assign papers = site.publications | sort: "date" | reverse %}
+<ul class="entries">
+  {% for post in papers %}
+    {% assign kind = site.publication_category[post.category].title %}
+    <li class="entry entry--paper">
+      {% if post.teaser %}
+        <div class="entry__thumb"><img src="{{ base_path }}/images/{{ post.teaser }}" alt="" width="320" height="240" loading="lazy" decoding="async"></div>
+      {% endif %}
+      <div class="entry__body">
+        <h2 class="entry__title"><a href="{{ base_path }}{{ post.url }}">{{ post.title }}</a></h2>
+        {% if post.authors %}<p class="entry__authors">{{ post.authors }}</p>{% endif %}
+        <p class="entry__meta">{% if post.venue %}<em>{{ post.venue }}</em>, {% endif %}{{ post.date | date: "%Y" }}{% if kind %} · {{ kind }}{% endif %}</p>
+        {% include publication-links.html pub=post label=true %}
+        {% if post.excerpt %}<p class="entry__text">{{ post.excerpt | strip_html }}</p>{% endif %}
       </div>
-
-      {% assign category_publications = site.publications | where: "category", category[0] | sort: "date" | reverse %}
-      {% for post in category_publications %}
-        <div class="archive__item">
-          {% if post.teaser %}
-            <div class="archive__item-teaser">
-              <img src="{{ post.teaser | prepend: '/images/' | prepend: base_path }}" alt="{{ post.title }}">
-            </div>
-          {% endif %}
-
-          <div class="archive__item-content">
-            <h2 class="archive__item-title">
-              <a href="{{ base_path }}{{ post.url }}">{{ post.title }}</a>
-            </h2>
-
-            <div class="publication-meta">
-              {% if post.authors %}<span class="meta-item"><i class="fas fa-users" aria-hidden="true"></i> <span>{{ post.authors }}</span></span>{% endif %}
-              {% if post.venue %}<span class="meta-item"><i class="fas fa-university" aria-hidden="true"></i> <span>{{ post.venue }}</span></span>{% endif %}
-              {% if post.date %}<span class="meta-item"><i class="fas fa-calendar-alt" aria-hidden="true"></i> <span>{{ post.date | date: "%Y" }}</span></span>{% endif %}
-            </div>
-
-            <div class="publication-links">
-              {% if post.paperurl %}<a href="{{ post.paperurl }}"><i class="fas fa-file-lines" aria-hidden="true"></i> Paper</a>{% endif %}
-              {% if post.preprinturl %}<a href="{{ post.preprinturl }}"><i class="ai ai-arxiv" aria-hidden="true"></i> arXiv</a>{% endif %}
-              {% if post.doiurl %}<a href="{{ post.doiurl }}"><i class="ai ai-doi" aria-hidden="true"></i> DOI</a>{% endif %}
-              {% if post.codeurl %}<a href="{{ post.codeurl }}"><i class="fas fa-code" aria-hidden="true"></i> Code</a>{% endif %}
-              {% if post.bibtexurl %}<a href="{{ base_path }}{{ post.bibtexurl }}"><i class="fas fa-quote-right" aria-hidden="true"></i> BibTeX</a>{% endif %}
-            </div>
-
-            {% if post.excerpt %}
-              <div class="archive__item-excerpt">
-                {{ post.excerpt }}
-              </div>
-            {% endif %}
-          </div>
-        </div>
-      {% endfor %}
-    </section>
+    </li>
   {% endfor %}
-</div>
-
-{% include filter-script.html items=".publication-category" %}
+</ul>

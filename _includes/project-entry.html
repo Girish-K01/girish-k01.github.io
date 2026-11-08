@@ -1,0 +1,20 @@
+{% comment %}
+  One project in an entry list (data: _data/projects.yml). Usage: {% include project-entry.html project=p heading="h2" %}
+  heading defaults to h3; pass h2 when the list sits directly under the page's h1.
+{% endcomment %}
+{% assign p = include.project %}
+{% assign heading = include.heading | default: "h3" %}
+{% assign topic_names = site.data.projects.topics %}
+<li class="entry">
+  <div class="entry__body">
+    <div class="entry__head">
+      <{{ heading }} class="entry__title">{{ p.title | escape }}</{{ heading }}>
+      <p class="entry__date">{% if p.status %}<span class="badge">{{ p.status | escape }}</span> {% endif %}{{ p.when | escape }}</p>
+    </div>
+    <p class="entry__text">{{ p.summary | escape }}</p>
+    <p class="entry__foot">
+      <span class="entry__topics">{% for t in p.topics %}{{ topic_names[t] | default: t | escape }}{% unless forloop.last %} · {% endunless %}{% endfor %}</span>
+      {% if p.links and p.links.size > 0 %}<span class="entry__links">{% for link in p.links %}<a href="{% if link.url contains '://' %}{{ link.url }}{% else %}{{ link.url | relative_url }}{% endif %}">{{ link.label | escape }}<span class="visually-hidden">: {{ p.title | escape }}</span></a>{% endfor %}</span>{% endif %}
+    </p>
+  </div>
+</li>

@@ -17,7 +17,7 @@ NAME = "Girish Kulathumani"
 TAGLINE = "EEG/EMG decoding · Federated learning"
 SEEKING = "Open to research engineer, RA and PhD roles"
 URL = "girish-k01.github.io"
-PHOTO = IMAGES / "profile_pic.jpg"
+PHOTO = IMAGES / "profile_pic.webp"  # the site avatar (author.avatar): a square head-and-shoulders crop, 400x400
 
 BOLD = "/System/Library/Fonts/Supplemental/Arial Bold.ttf"
 REGULAR = "/System/Library/Fonts/Supplemental/Arial.ttf"
@@ -46,7 +46,7 @@ def og_card():
     draw.text((left, 350), SEEKING, font=font(REGULAR, 30), fill=SLATE)
     draw.text((left, 520), URL, font=font(REGULAR, 28), fill=GREY)
 
-    # Circular photo on the right. The source photo is small, so keep it near 1:1.
+    # Circular photo on the right (the avatar is already square; the crop only matters if it isn't)
     size = 230
     photo = Image.open(PHOTO).convert("RGB")
     side = min(photo.size)

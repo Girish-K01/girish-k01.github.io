@@ -1,0 +1,17 @@
+{% comment %}
+  Paper / arXiv / DOI / Code / Slides / BibTeX chips for one publication, shared by the /publications/
+  list and each paper's own page. Usage: {% include publication-links.html pub=post label=true %}
+  label=true (the list page) adds the paper's title to each link for screen readers.
+{% endcomment %}
+{% include base_path %}
+{% assign pub = include.pub %}
+{% assign for_paper = "" %}
+{% if include.label %}{% capture for_paper %}<span class="visually-hidden">: {{ pub.title | escape }}</span>{% endcapture %}{% endif %}
+<ul class="chips">
+  {% if pub.paperurl %}<li><a href="{{ pub.paperurl }}"><i class="fas fa-file-lines" aria-hidden="true"></i>Paper{{ for_paper }}</a></li>{% endif %}
+  {% if pub.preprinturl %}<li><a href="{{ pub.preprinturl }}"><i class="ai ai-arxiv" aria-hidden="true"></i>arXiv{{ for_paper }}</a></li>{% endif %}
+  {% if pub.doiurl %}<li><a href="{{ pub.doiurl }}"><i class="ai ai-doi" aria-hidden="true"></i>DOI{{ for_paper }}</a></li>{% endif %}
+  {% if pub.codeurl %}<li><a href="{{ pub.codeurl }}"><i class="fas fa-code" aria-hidden="true"></i>Code{{ for_paper }}</a></li>{% endif %}
+  {% if pub.slidesurl %}<li><a href="{{ pub.slidesurl }}"><i class="fas fa-person-chalkboard" aria-hidden="true"></i>Slides{{ for_paper }}</a></li>{% endif %}
+  {% if pub.bibtexurl %}<li><a href="{{ base_path }}{{ pub.bibtexurl }}"><i class="fas fa-quote-right" aria-hidden="true"></i>BibTeX{{ for_paper }}</a></li>{% endif %}
+</ul>

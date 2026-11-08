@@ -12,6 +12,12 @@ codeurl: 'https://github.com/Girish-K01/'
 preprinturl: 'https://arxiv.org/abs/2406.06225'
 doiurl: 'https://doi.org/10.1007/978-3-031-92605-1_31'
 bibtexurl: '/files/bib/samhruth2025siren.bib'
+teaser: 'publications/siren-thumb.webp'  # list thumbnail, 320x240
+figure: 'publications/siren.webp'        # shown on this page; Fig. 3 of the arXiv preprint
+figure_width: 608
+figure_height: 272
+figure_alt: 'Diagram: a main server sends one-way encryption commands to a honeypot; while an attacker tries to retrieve information from it, the honeypot encrypts its two dummy files.'
+figure_caption: 'The overall honeypot architecture (Fig. 3 of the paper).'
 scholar:  # Google Scholar citation tags; metadata as recorded by Crossref (Springer lists the names in this order)
   title: 'Siren: Advancing Cybersecurity Through Deception and Adaptive Analysis'
   authors: ['Samhruth, Ananthanarayanan', 'Girish, Kulathumani', 'Ganesh, Narayanan']

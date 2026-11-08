@@ -38,7 +38,8 @@ html[data-theme="dark"] {
     --global-base-color                 : #{$background};
     --global-bg-color                   : #{$background};
     --global-footer-bg-color            : #0F172A; // slightly lighter footer
-    --global-border-color               : #{$light-gray};
+    --global-border-color               : #4B5563; // outlines of chips and buttons (gray-600; was the much brighter $light-gray)
+    --global-rule-color                 : #1E293B; // hairlines between sections and list entries
     --global-dark-border-color          : #1E293B; // dark slate border
     --global-code-background-color      : #1E293B; // dark slate for code blocks
     --global-code-text-color            : #{$text};

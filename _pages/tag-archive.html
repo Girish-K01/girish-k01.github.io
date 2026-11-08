@@ -1,17 +1,22 @@
 ---
 layout: archive
 permalink: /tags/
-title: "Posts by Tags"
-author_profile: true
+title: "Posts by tag"
 ---
 
 {% include base_path %}
 {% include group-by-array collection=site.posts field="tags" %}
 
+<p class="page__lead">The early GreyLattice posts on this site, by tag. Newer writing is on the <a href="{{ base_path }}/blog/">Blog</a>.</p>
+
+<ul class="chips">
+  {% for tag in group_names %}<li><a href="#{{ tag | slugify }}">{{ tag }}</a></li>{% endfor %}
+</ul>
+
 {% for tag in group_names %}
   {% assign posts = group_items[forloop.index0] %}
-  <h2 id="{{ tag | slugify }}" class="archive__subtitle">{{ tag }}</h2>
-  {% for post in posts %}
-    {% include archive-single.html %}
-  {% endfor %}
+  <h2 id="{{ tag | slugify }}">{{ tag }}</h2>
+  <ul class="link-list">
+    {% for post in posts %}<li><a href="{{ base_path }}{{ post.url }}">{{ post.title }}</a><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %Y" }}</time></li>{% endfor %}
+  </ul>
 {% endfor %}

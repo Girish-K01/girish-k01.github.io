@@ -1,8 +1,8 @@
 # Portfolio entries, most relevant first (pages show them in this order).
 # The home page shows those with `featured: true` (keep it to about four);
-# /projects/ shows all of them, with a filter per topic.
-#   title, when, summary: shown on the card (plain text)
-#   topics: keys from `topics` below; the first one is the card's main topic
+# /projects/ shows all of them.
+#   title, when, summary: shown in the list (plain text)
+#   topics: keys from `topics` below, shown under the summary
 #   status: optional pill such as "In progress"
 #   links: optional; internal links start with "/"
 
@@ -50,7 +50,7 @@ items:
     summary: "A secure-messaging pipeline combining ECDH key exchange with nonce-based AES-128 and parallelised stages, with its protocol verified in ProVerif. Published in Engineering Research Express (2025)."
     links:
       - label: "Paper"
-        url: "/publication/2025-00-00-jigs-crypto"
+        url: "/publication/2025-06-04-jigs-crypto"
       - label: "Code"
         url: "https://github.com/Girish-K01/jigs-crypto-code-repo"
 

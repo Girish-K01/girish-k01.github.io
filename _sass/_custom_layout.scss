@@ -1,0 +1,237 @@
+// Site-wide layout and type scale. Every page uses one centred column and there is no sidebar.
+// Sizes are in rem: the root size is 16px on phones and 18px from 768px up (layout/_reset.scss),
+// so the column is about 680px wide on a laptop (80–90 characters per line of running text).
+// Colours come from the theme variables.
+
+:root {
+  --measure: 38rem;       // width of the content column (and of the masthead and footer rows)
+  --fs-title: 1.9rem;     // page titles (h1)
+  --fs-section: 1.25rem;  // section headings (h2)
+  --fs-item: 1.05rem;     // titles of projects, papers, posts and CV entries
+  --fs-meta: 0.85rem;     // dates, venues, topics and the links under an entry
+}
+
+/* Page frame: masthead, one column, footer at the bottom of short pages */
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-bottom: 0; // the footer is in the normal flow now, so no space is reserved for it
+}
+
+#main {
+  flex: 1 0 auto;
+  width: 100%;
+  max-width: calc(var(--measure) + 2rem);
+  margin: 2rem auto 0;
+  padding: 0 1rem;
+}
+
+// The template floats .page and .archive next to the old sidebar; one column needs none of that.
+.page,
+.archive,
+.page .page__inner-wrap,
+.page .page__inner-wrap .page__content,
+.page .page__inner-wrap .page__meta {
+  float: none;
+  width: auto;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.archive {
+  margin-bottom: 0;
+}
+
+/* Type scale */
+
+.page__title {
+  margin: 0 0 0.5rem;
+  font-size: var(--fs-title);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.page__lead {
+  margin: 0 0 1.75rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--global-text-color-light);
+}
+
+.page__date {
+  margin: 0 0 1.5rem;
+  font-size: var(--fs-meta);
+  color: var(--global-text-color-light);
+}
+
+// Section headings look the same on every page
+.page__content h2,
+.archive h2 {
+  margin: 2.5rem 0 1rem;
+  padding: 0 0 0.4rem;
+  font-size: var(--fs-section);
+  line-height: 1.3;
+  border-bottom: 1px solid var(--global-rule-color);
+}
+
+.page__content h3,
+.archive h3 {
+  font-size: var(--fs-item);
+}
+
+// Running text
+.page__content > p,
+.page__content > ul > li,
+.page__content > ol > li {
+  line-height: 1.65;
+}
+
+.page__content a,
+.archive a {
+  text-underline-offset: 0.15em;
+  text-decoration-thickness: 1px;
+}
+
+hr {
+  border-top-color: var(--global-rule-color);
+}
+
+/* Masthead: aligned with the content column */
+
+.masthead::after {
+  background: var(--global-rule-color);
+}
+
+.masthead__inner-wrap {
+  max-width: calc(var(--measure) + 2rem);
+  padding: 0.5rem 1rem;
+}
+
+// Tighter link spacing so the name and all the links fit the column-wide row on a laptop
+// (the greedy nav moves whatever doesn't fit into the menu button)
+.greedy-nav a {
+  margin: 0 0.75rem;
+}
+
+.masthead__menu-item--lg {
+  padding-right: 1em;
+}
+
+// Phone menu button: a plain icon in the text colour instead of a filled grey box
+.greedy-nav button {
+  width: 2.75rem;
+  padding: 0;
+  color: var(--global-text-color);
+  background: transparent;
+  border-radius: 8px;
+
+  &:hover {
+    background: var(--global-code-background-color);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--global-link-color);
+    outline-offset: 2px;
+  }
+}
+
+.greedy-nav .navicon,
+.greedy-nav .navicon::before,
+.greedy-nav .navicon::after {
+  width: 1.375rem;
+  height: 2px;
+  background: currentColor;
+  border-radius: 1px;
+}
+
+.greedy-nav .navicon::before {
+  top: -7px;
+}
+
+.greedy-nav .navicon::after {
+  bottom: -7px;
+}
+
+// Open state: the two outer bars cross to make an X
+.greedy-nav button.close .navicon {
+  background: transparent;
+}
+
+.greedy-nav button.close .navicon::before,
+.greedy-nav button.close .navicon::after {
+  top: 0;
+  bottom: auto;
+}
+
+// The dropdown follows the theme (the template hard-codes white)
+.greedy-nav .hidden-links {
+  background: var(--global-bg-color);
+  border-color: var(--global-rule-color);
+
+  &::before {
+    border-color: var(--global-rule-color) transparent;
+  }
+
+  &::after {
+    border-color: var(--global-bg-color) transparent;
+  }
+
+  li {
+    border-bottom-color: var(--global-rule-color);
+  }
+}
+
+/* Footer: contact and profile links on every page */
+
+.page__footer {
+  position: static;
+  float: none;
+  flex-shrink: 0;
+  margin-top: 4rem;
+  border-top: 1px solid var(--global-rule-color);
+
+  footer {
+    max-width: calc(var(--measure) + 2rem);
+    margin: 0 auto;
+    padding: 1.5rem 1rem 2rem;
+  }
+}
+
+.site-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 1.25rem;
+  margin: 0 0 0.75rem;
+  padding: 0;
+  font-size: 0.9rem;
+  list-style: none;
+
+  li {
+    margin: 0;
+  }
+
+  .page__footer & a {
+    display: inline-block;
+    padding: 0.25rem 0;
+    color: var(--global-text-color);
+  }
+
+  .page__footer & a:hover {
+    color: var(--global-link-color);
+  }
+
+  i {
+    margin-right: 0.4rem;
+    color: var(--global-text-color-light);
+  }
+}
+
+.site-footer__meta {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--global-text-color-light);
+}

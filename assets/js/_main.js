@@ -55,42 +55,10 @@ $(document).ready(function () {
     .on('click', function (e) { e.preventDefault(); toggleTheme(); })
     .on('keydown', function (e) { if (e.key === ' ') { e.preventDefault(); toggleTheme(); } });
 
-  // These should be the same as the settings in _variables.scss
-  const scssLarge = 925; // pixels
-
-  // Sticky footer
-  var bumpIt = function () {
-    $("body").css("margin-bottom", $(".page__footer").outerHeight(true));
-  },
-    didResize = false;
-
-  bumpIt();
-
-  $(window).resize(function () {
-    didResize = true;
-  });
-  setInterval(function () {
-    if (didResize) {
-      didResize = false;
-      bumpIt();
-    }
-  }, 250);
+  // The footer sits at the bottom of short pages through CSS (body is a flex column), so no JS is needed for it.
 
   // FitVids init
   fitvids();
-
-  // Follow menu drop down
-  $(".author__urls-wrapper button").on("click", function () {
-    $(".author__urls").fadeToggle("fast", function () { });
-    $(".author__urls-wrapper button").toggleClass("open");
-  });
-
-  // Restore the follow menu if toggled on a window resize
-  jQuery(window).on('resize', function () {
-    if ($('.author__urls.social-icons').css('display') == 'none' && $(window).width() >= scssLarge) {
-      $(".author__urls").css('display', 'block')
-    }
-  });
 
   // init smooth scroll, this needs to be slightly more than then fixed masthead height
   $("a").smoothScroll({ 

@@ -31,7 +31,8 @@ $sidebar-screen-min-width   : 1024px;
     --global-base-color                 : #{$gray};
     --global-bg-color                   : #ffffff;
     --global-footer-bg-color            : #f9fafb; /* slightly lighter */
-    --global-border-color               : #{$lighter-gray};
+    --global-border-color               : #{$lighter-gray}; /* outlines of chips and buttons */
+    --global-rule-color                 : #e5e7eb; /* hairlines between sections and list entries */
     --global-dark-border-color          : #e5e7eb; /* Tailwind gray-200 */
     --global-code-background-color      : #f9fafb;
     --global-code-text-color            : #{$darker-gray};

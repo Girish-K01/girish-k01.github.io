@@ -2,24 +2,10 @@
 title: "Projects"
 description: "Research and engineering projects by Girish Kulathumani: EEG decoding, federated learning, secure systems and GPU-accelerated ML."
 permalink: /projects/
-author_profile: true
 ---
 
-{% assign projects = site.data.projects %}
+<p class="page__lead">Research and engineering work, most relevant first.</p>
 
-<p class="page__lead">Research and engineering work, most relevant first. Filter by topic:</p>
-
-<div class="filter-bar" role="group" aria-label="Filter projects by topic">
-  <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">All<span class="filter-btn__count">{{ projects.items.size }}</span></button>
-  {% for topic in projects.topics %}
-    {% assign key = topic[0] %}
-    {% assign count = projects.items | where_exp: "p", "p.topics contains key" | size %}
-    {% if count > 0 %}<button type="button" class="filter-btn" data-filter="{{ key }}" aria-pressed="false">{{ topic[1] | escape }}<span class="filter-btn__count">{{ count }}</span></button>{% endif %}
-  {% endfor %}
-</div>
-
-<ul class="card-grid">
-  {% for p in projects.items %}{% include project-card.html project=p heading="h2" %}{% endfor %}
+<ul class="entries">
+  {% for p in site.data.projects.items %}{% include project-entry.html project=p heading="h2" %}{% endfor %}
 </ul>
-
-{% include filter-script.html items=".project-card" %}

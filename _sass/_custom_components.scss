@@ -1,129 +1,111 @@
-// Components shared by the home page, /projects/ and /publications/.
-// Colours come from the theme variables so everything works in light and dark mode.
+// Shared components: entry lists (projects, papers, posts), link chips, badges, the news list,
+// plain link lists and a paper's own page. Colours come from the theme variables, so light and
+// dark mode both work; sizes come from the type scale in _custom_layout.scss.
 
-// Filter buttons (behaviour: _includes/filter-script.html)
-.filter-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+/* Entry list: one row per project, paper or post, separated by hairlines */
+
+.entries {
   margin: 0 0 1.5rem;
-}
-
-.filter-btn {
-  padding: 0.4rem 0.9rem;
-  font-size: 0.85rem;
-  color: var(--global-text-color);
-  background: transparent;
-  border: 1px solid var(--global-border-color);
-  border-radius: 999px;
-  cursor: pointer;
-
-  &:hover {
-    border-color: var(--global-link-color);
-  }
-
-  &.active {
-    color: var(--global-bg-color);
-    background: var(--global-link-color);
-    border-color: var(--global-link-color);
-  }
-
-  .filter-btn__count {
-    opacity: 0.75;
-    margin-left: 0.25rem;
-  }
-}
-
-// Project cards (markup: _includes/project-card.html, data: _data/projects.yml)
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1.25rem;
-  margin: 1rem 0 2rem;
   padding: 0;
   list-style: none;
 }
 
-// Home page: four featured cards read best as a 2x2 grid (one column on phones)
-.card-grid--featured {
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
-}
-
-.project-card {
+.entries > .entry {
   display: flex;
-  flex-direction: column;
+  gap: 1.25rem;
   margin: 0;
-  padding: 1.1rem 1.2rem 1rem;
-  background: var(--global-bg-color);
-  border: 1px solid var(--global-border-color);
-  border-top: 3px solid var(--global-link-color);
-  border-radius: 8px;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--global-rule-color);
 
-  &:hover {
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-    transform: translateY(-2px);
+  &:first-child {
+    padding-top: 0.35rem;
+    border-top: 0;
   }
 }
 
-.project-card__meta {
+.entry__body {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+// Title on the left and dates on the right; the dates wrap under the title on phones
+.entry__head {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: 0.4rem;
-  margin: 0 0 0.5rem;
-  font-size: 0.8rem;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.1rem 1rem;
+}
+
+.entries .entry__title {
+  margin: 0;
+  padding: 0;
+  font-size: var(--fs-item);
+  font-weight: 600;
+  line-height: 1.35;
+  border: 0;
+
+  a {
+    color: var(--global-text-color);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--global-link-color);
+      text-decoration: underline;
+    }
+  }
+}
+
+.entry__date,
+.entry__meta {
+  margin: 0;
+  font-size: var(--fs-meta);
+  line-height: 1.5;
   color: var(--global-text-color-light);
 }
 
-.project-card__status {
-  padding: 0.05rem 0.5rem;
-  font-weight: 600;
-  color: var(--global-bg-color);
-  background: var(--global-link-color);
-  border-radius: 999px;
+.entry__date {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
 }
 
-.project-card__title {
-  margin: 0 0 0.5rem;
-  padding: 0;
-  font-size: 1.05rem;
-  line-height: 1.35;
-  border: 0; // the template rules off every h2 in page content; not wanted inside a card
+.entry__meta {
+  margin-top: 0.15rem;
 }
 
-.project-card__summary {
-  flex: 1 1 auto;
-  margin: 0 0 0.8rem;
-  font-size: 0.9rem;
-  line-height: 1.55;
+.entry__authors {
+  margin: 0.25rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
-.project-card__topics {
+.entry__text {
+  margin: 0.4rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+// Topics and links under a project
+.entry__foot {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem;
-  margin: 0 0 0.7rem;
-  padding: 0;
-  list-style: none;
+  align-items: baseline;
+  gap: 0.2rem 1.25rem;
+  margin: 0.45rem 0 0;
+  font-size: var(--fs-meta);
 }
 
-.topic-chip {
-  margin: 0;
-  padding: 0.1rem 0.55rem;
-  font-size: 0.75rem;
-  color: var(--global-text-color);
-  border: 1px solid var(--global-border-color);
-  border-radius: 999px;
+.entry__topics {
+  color: var(--global-text-color-light);
 }
 
-.project-card__links {
-  display: flex;
+.entry__links {
+  display: inline-flex;
   flex-wrap: wrap;
-  gap: 0.3rem 1rem;
-  font-size: 0.85rem;
+  gap: 0.2rem 1rem;
 
   a {
+    font-weight: 600;
     text-decoration: none;
 
     &:hover {
@@ -132,7 +114,127 @@
   }
 }
 
-// Dated news list (data: _data/news.yml)
+// Small outlined label such as "In progress" or "Audio"
+.badge {
+  display: inline-block;
+  padding: 0 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.55;
+  color: var(--global-text-color);
+  white-space: nowrap;
+  vertical-align: 0.12em;
+  border: 1px solid var(--global-border-color);
+  border-radius: 999px;
+}
+
+/* Papers: a figure thumbnail beside the text (above it on phones) */
+
+.entry__thumb {
+  flex: 0 0 9rem;
+  align-self: flex-start;
+  margin: 0.25rem 0 0;
+  overflow: hidden;
+  background: #fff; // the figures are drawn on white
+  border: 1px solid var(--global-rule-color);
+  border-radius: 6px;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 599px) {
+  .entries > .entry--paper {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .entry__thumb {
+    flex-basis: auto;
+    width: 100%;
+    max-width: 14rem;
+  }
+}
+
+/* Posts: a date column, the text, and an image on the right for full articles */
+
+.entries > .entry--post {
+  display: grid;
+  grid-template-columns: 5.25rem minmax(0, 1fr) auto;
+  gap: 0 1.25rem;
+  align-items: start;
+
+  .entry__date {
+    padding-top: 0.2rem;
+  }
+}
+
+.entry__image {
+  display: block;
+  width: 8rem;
+  height: 5.33rem;
+  object-fit: cover;
+  border: 1px solid var(--global-rule-color);
+  border-radius: 6px;
+}
+
+@media (max-width: 599px) {
+  .entries > .entry--post {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.15rem 1rem;
+
+    .entry__date {
+      grid-column: 1 / -1;
+      padding-top: 0;
+    }
+  }
+
+  .entry__image {
+    width: 5.5rem;
+    height: 3.67rem;
+  }
+}
+
+/* Link chips: Paper / arXiv / DOI / Code / BibTeX under a paper, and tag links */
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.6rem 0 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    margin: 0;
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    min-height: 1.75rem; // at least 28px to tap
+    padding: 0 0.7rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--global-link-color);
+    text-decoration: none;
+    border: 1px solid var(--global-border-color);
+    border-radius: 999px;
+
+    &:hover {
+      text-decoration: none;
+      border-color: var(--global-link-color);
+    }
+  }
+}
+
+/* Dated news list on the home page (data: _data/news.yml) */
+
 .news-list {
   margin: 0.5rem 0 2rem;
   padding: 0;
@@ -144,9 +246,9 @@
     gap: 0.75rem;
     margin: 0;
     padding: 0.55rem 0;
-    border-bottom: 1px solid var(--global-border-color);
     font-size: 0.95rem;
     line-height: 1.5;
+    border-bottom: 1px solid var(--global-rule-color);
   }
 
   time {
@@ -154,4 +256,88 @@
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
   }
+}
+
+/* Plain link lists: the tags page and the sitemap */
+
+.link-list {
+  margin: 0 0 1.5rem;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    margin: 0;
+    padding: 0.45rem 0;
+    border-bottom: 1px solid var(--global-rule-color);
+  }
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  time {
+    flex: 0 0 auto;
+    font-size: var(--fs-meta);
+    color: var(--global-text-color-light);
+  }
+}
+
+/* A paper's own page: authors, venue, links, then the figure */
+
+.pub-header {
+  margin: 0 0 1.75rem;
+}
+
+.pub-header__authors {
+  margin: 0 0 0.15rem;
+  font-size: 0.95rem;
+}
+
+.pub-header__venue {
+  margin: 0;
+  font-size: var(--fs-meta);
+  color: var(--global-text-color-light);
+}
+
+.pub-figure {
+  display: block;
+  margin: 0 0 2rem;
+  text-align: center;
+
+  a {
+    display: inline-block;
+    max-width: 100%;
+  }
+
+  img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 28rem;
+    margin: 0 auto;
+    padding: 0.75rem;
+    background: #fff; // figures are drawn on white, in either theme
+    border: 1px solid var(--global-rule-color);
+    border-radius: 6px;
+  }
+
+  figcaption {
+    margin: 0.5rem 0 0;
+    font-family: inherit;
+    font-size: var(--fs-meta);
+    color: var(--global-text-color-light);
+  }
+}
+
+.pub-citation {
+  font-size: 0.95rem;
 }

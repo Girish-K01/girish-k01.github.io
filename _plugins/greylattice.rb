@@ -20,7 +20,7 @@ module GreyLattice
   FEED_URL = "https://greylattice.substack.com/feed"
   SNAPSHOT = "_data/greylattice.json"
   CACHE_SECONDS = 3600 # `jekyll serve` rebuilds on every save; don't refetch each time
-  IMAGE_WIDTH = 600
+  IMAGE_WIDTH = 320 # the blog list shows images at about 144px wide
 
   class Generator < Jekyll::Generator
     priority :highest
@@ -89,7 +89,7 @@ module GreyLattice
       posts.empty? ? nil : posts.sort_by { |p| p["date"] }.reverse
     end
 
-    # Substack's image CDN resizes on request; cards only need ~600px instead of the original.
+    # Substack's image CDN resizes on request; the list only needs IMAGE_WIDTH, not the original.
     def resize(url)
       return nil if url.nil? || url.empty?
       return url unless url.include?("substackcdn.com/image/fetch/")

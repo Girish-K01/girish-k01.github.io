@@ -3,43 +3,30 @@ layout: archive
 permalink: /blog/
 title: "Blog"
 description: "Every GreyLattice post by Girish Kulathumani: deep dives on brain–computer interfaces, brain decoding and computational neuroscience, plus audio summaries."
-author_profile: true
 ---
-
-{% include base_path %}
-
-<link rel="stylesheet" href="{{ base_path }}/assets/css/year-archive-style.css">
 
 {% comment %}
   Posts come from the GreyLattice Substack feed via _plugins/greylattice.rb (site.data.greylattice),
   falling back to the snapshot in _data/greylattice.json. Links go to the posts on Substack.
+  Full articles show their image; audio posts (podcast episodes and summaries) get an "Audio" badge instead.
 {% endcomment %}
-<p class="page__lead">I write <a href="https://greylattice.substack.com">GreyLattice</a>, a publication on brain–computer interfaces and computational neuroscience. Every post, newest first:</p>
+<p class="page__lead">I write <a href="https://greylattice.substack.com">GreyLattice</a>, a publication on brain–computer interfaces and computational neuroscience. Every post, newest first.</p>
 
-<div class="blog-archive">
-  {% assign posts_by_year = site.data.greylattice | group_by_exp: "post", "post.date | slice: 0, 4" %}
-  {% for year in posts_by_year %}
-    <section class="year-section" aria-labelledby="year-{{ year.name }}">
-      <h2 class="year-title" id="year-{{ year.name }}">{{ year.name }}</h2>
-      <div class="posts-container">
-        {% for post in year.items %}
-          <article class="post-card">
-            {% if post.image %}
-              <img src="{{ post.image }}" alt="" class="post-image" loading="lazy" decoding="async">
-            {% endif %}
-            <div class="post-content">
-              <h3 class="post-title"><a href="{{ post.url }}">{{ post.title | escape }}</a></h3>
-              <p class="post-meta">
-                <time class="post-date" datetime="{{ post.date }}">{{ post.date | date: '%B %-d, %Y' }}</time>
-                {% if post.audio %}<span class="post-badge">Audio summary</span>{% endif %}
-              </p>
-              {% if post.summary != "" %}
-                <p class="post-excerpt">{{ post.summary | strip_html | truncatewords: 30 | escape }}</p>
-              {% endif %}
-            </div>
-          </article>
-        {% endfor %}
-      </div>
-    </section>
-  {% endfor %}
-</div>
+{% assign posts_by_year = site.data.greylattice | group_by_exp: "post", "post.date | slice: 0, 4" %}
+{% for year in posts_by_year %}
+  <section aria-labelledby="year-{{ year.name }}">
+    <h2 id="year-{{ year.name }}">{{ year.name }}</h2>
+    <ul class="entries">
+      {% for post in year.items %}
+        <li class="entry entry--post">
+          <p class="entry__date"><time datetime="{{ post.date }}">{{ post.date | date: '%-d %b' }}</time></p>
+          <div class="entry__body">
+            <h3 class="entry__title"><a href="{{ post.url }}">{{ post.title | escape }}</a>{% if post.audio %} <span class="badge">Audio</span>{% endif %}</h3>
+            {% if post.summary != "" %}<p class="entry__text">{{ post.summary | strip_html | truncatewords: 24 | escape }}</p>{% endif %}
+          </div>
+          {% if post.image and post.audio != true %}<img class="entry__image" src="{{ post.image }}" alt="" width="240" height="160" loading="lazy" decoding="async">{% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+{% endfor %}

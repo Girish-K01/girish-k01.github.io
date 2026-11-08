@@ -1,0 +1,27 @@
+---
+layout: archive
+title: "Sitemap"
+permalink: /sitemap/
+---
+
+{% include base_path %}
+
+<p class="page__lead">Every page on this site. Search engines get the same list as an <a href="{{ base_path }}/sitemap.xml">XML sitemap</a>.</p>
+
+<h2>Pages</h2>
+<ul class="link-list">
+  <li><a href="{{ base_path }}/">Home</a></li>
+  {% for link in site.data.navigation.main %}<li><a href="{{ base_path }}{{ link.url }}">{{ link.title }}</a></li>{% endfor %}
+  <li><a href="{{ base_path }}/tags/">Posts by tag</a></li>
+</ul>
+
+<h2>Publications</h2>
+<ul class="link-list">
+  {% assign papers = site.publications | sort: "date" | reverse %}
+  {% for paper in papers %}<li><a href="{{ base_path }}{{ paper.url }}">{{ paper.title }}</a><time datetime="{{ paper.date | date_to_xmlschema }}">{{ paper.date | date: "%Y" }}</time></li>{% endfor %}
+</ul>
+
+<h2>Posts on this site</h2>
+<ul class="link-list">
+  {% for post in site.posts %}<li><a href="{{ base_path }}{{ post.url }}">{{ post.title }}</a><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %Y" }}</time></li>{% endfor %}
+</ul>
