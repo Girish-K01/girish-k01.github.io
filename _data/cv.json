@@ -186,19 +186,6 @@
   "references": [],
   "projects": [
     {
-      "name": "Enterprise Banking System (Full-Stack)",
-      "startDate": "2025-05",
-      "endDate": "Present",
-      "description": "Comprehensive banking system with REST API, modern frontend, and containerized deployment.",
-      "highlights": [
-        "Developing REST API with FastAPI and SQLAlchemy ORM for role-based access and ACID-safe transactions",
-        "Building React + TypeScript frontend with Material UI, JWT authentication, and Axios interceptors",
-        "Containerized with Docker Compose, CI/CD via GitHub Actions, 85% test coverage with pytest"
-      ],
-      "keywords": ["FastAPI", "PostgreSQL", "React", "Docker", "JWT", "TypeScript", "Material UI"],
-      "url": ""
-    },
-    {
       "name": "GPU-Accelerated Financial News Sentiment",
       "startDate": "2024-01",
       "endDate": "2024-04",
@@ -286,13 +273,6 @@
       "organization": "VIT Chennai",
       "date": "2023",
       "description": "Introduction to CUDA programming for 50+ attendees."
-    },
-    {
-      "title": "Social Media Manager",
-      "organization": "VIT Startup Centre",
-      "startDate": "2024-01",
-      "endDate": "Present",
-      "description": "Strategically managed social media platforms, increasing engagement and visibility for the Startup Incubation Centre"
     }
   ],
   "research": {

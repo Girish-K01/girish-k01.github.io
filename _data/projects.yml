@@ -64,12 +64,6 @@ items:
       - label: "arXiv"
         url: "https://arxiv.org/abs/2406.06225"
 
-  - title: "Enterprise banking system"
-    when: "May 2025 – present"
-    topics: [systems]
-    summary: "Full-stack banking system: a FastAPI and SQLAlchemy REST API with role-based access and ACID-safe transactions, a React and TypeScript frontend, Docker Compose, CI with GitHub Actions and 85% test coverage with pytest."
-    links: []
-
   - title: "GPU-accelerated financial news sentiment"
     when: "Jan – Apr 2024"
     topics: [systems, applied]
