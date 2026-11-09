@@ -1,85 +1,304 @@
-/* CV page (/cv/): a compact, resume-style single column that mirrors files/cv.pdf.
+/* Resume page (/resume/): the resume as a sheet of paper on a grey "desk", like a PDF viewer, in the
+   look of the LaTeX PDF (files/cv.pdf): Latin Modern serif, a centred header, ruled section headings.
    Markup: _includes/cv-template.html and _includes/cv-entry.html.
-   Colours use the site theme variables, so light and dark mode both work; heading sizes use the
-   site type scale (--fs-section, --fs-item in _sass/_custom_layout.scss). */
+   The desk and toolbar follow the site theme. The paper stays white in both themes, as a PDF does, so it
+   sets its own colour variables and nothing inside it follows the dark theme. */
 
-.cv {
-  font-size: 0.9rem;
-  line-height: 1.55;
+/* Latin Modern Roman 10, cut down and renamed (assets/fonts/README-resume-serif.txt) */
+@font-face {
+  font-family: "Resume Serif";
+  src: url("../fonts/resume-serif-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
-/* Download button + contact line */
-.cv-toolbar {
+@font-face {
+  font-family: "Resume Serif";
+  src: url("../fonts/resume-serif-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Resume Serif";
+  src: url("../fonts/resume-serif-italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* The desk runs the full width, from the masthead to the footer */
+.resume-page #main {
+  max-width: none;
+  margin-top: 0;
+  padding: 0;
+}
+
+.resume-page .page__footer {
+  margin-top: 0;
+}
+
+.resume-viewer {
+  padding: 1.5rem 1rem 3rem;
+  background: #e9ebee;
+}
+
+html[data-theme="dark"] .resume-viewer {
+  background: #161c27;
+}
+
+/* A4 width at 100% zoom (44rem = 792px on a laptop): the desk has room, and the wider sheet keeps the page short */
+.resume-toolbar,
+.paper {
+  max-width: 44rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Toolbar above the paper */
+.resume-toolbar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.6rem 1.25rem;
-  margin: 0 0 1rem;
+  justify-content: space-between;
+  gap: 0.6rem 1rem;
+  margin-bottom: 1rem;
 }
 
-.cv a.cv-download,
-.cv a.cv-download:visited {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.45rem 0.95rem;
-  font-weight: 600;
-  color: #fff;
-  text-decoration: none;
-  background: #2563eb; /* white on #2563eb is 5.2:1 in both themes */
-  border-radius: 6px;
+.resume-toolbar__title {
+  margin: 0;
+  font-size: 1.35rem;
+  line-height: 1.2;
 }
 
-.cv a.cv-download:hover {
-  background: #1d4ed8;
-}
-
-.cv-contact {
-  color: var(--global-text-color-light);
-}
-
-/* Section jump links */
-.cv-jump {
+.resume-toolbar__actions {
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Jump links to the sections, like a PDF viewer's bookmarks (a row of their own) */
+.resume-outline {
+  display: flex;
+  flex-basis: 100%;
   flex-wrap: wrap;
   gap: 0.4rem;
-  margin: 0 0 1.75rem;
 }
 
-.cv .cv-jump a {
-  padding: 0.15rem 0.7rem;
+.archive .resume-outline a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.85rem;
+  padding: 0 0.75rem;
   font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1;
   color: var(--global-text-color);
   text-decoration: none;
+  background: var(--global-bg-color);
   border: 1px solid var(--global-border-color);
   border-radius: 999px;
 }
 
-.cv .cv-jump a:hover {
+.archive .resume-outline a:hover {
   color: var(--global-link-color);
   border-color: var(--global-link-color);
 }
 
-/* Sections */
-.cv-section {
-  margin: 0 0 1.5rem;
-  scroll-margin-top: 5rem; /* clear the fixed site header when jumped to */
+.resume-toggle,
+.resume-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.25rem;
+  padding: 0 0.9rem;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
-/* Same look as section headings on every other page */
-.cv .cv-section__title {
-  margin: 0 0 0.7rem;
-  padding: 0 0 0.4rem;
-  font-size: var(--fs-section);
-  font-weight: 700;
-  line-height: 1.3;
+.resume-toggle {
   color: var(--global-text-color);
-  border-bottom: 1px solid var(--global-rule-color);
+  background: var(--global-bg-color);
+  border: 1px solid var(--global-border-color);
 }
 
-/* Entries */
+.resume-toggle:hover {
+  border-color: var(--global-link-color);
+}
+
+.resume-toggle:focus-visible,
+.resume-download:focus-visible {
+  outline: 2px solid var(--global-link-color);
+  outline-offset: 2px;
+}
+
+.resume-toggle__swatch {
+  width: 0.9rem;
+  height: 0.9rem;
+  border: 1px solid #b38f00;
+  border-radius: 3px;
+}
+
+/* On: a tinted button with a filled swatch; off: a plain button with an empty one */
+.resume-toggle[aria-pressed="true"] {
+  background: #fff6cc;
+  border-color: #d9b400;
+  color: #1a1a1a;
+}
+
+html[data-theme="dark"] .resume-toggle[aria-pressed="true"] {
+  background: #3b3311;
+  border-color: #a68a00;
+  color: #f3f4f6;
+}
+
+.resume-toggle[aria-pressed="true"] .resume-toggle__swatch {
+  background: #ffdd57;
+}
+
+.archive a.resume-download,
+.archive a.resume-download:visited {
+  color: #fff;
+  text-decoration: none;
+  background: #2563eb; /* white on #2563eb is 5.2:1 in both themes */
+  border: 1px solid #2563eb;
+}
+
+.archive a.resume-download:hover {
+  background: #1d4ed8;
+}
+
+/* The sheet of paper */
+.paper {
+  --global-text-color: #1a1a1a;
+  --global-text-color-light: #555;
+  --global-link-color: #1d4ed8;
+  --global-link-color-hover: #1e3a8a;
+  --global-border-color: #bdbdbd;
+  --global-rule-color: #d4d4d4;
+  --paper-bg: #fff;
+  --paper-tint: #f6f5f1; /* the "At a glance" box */
+  position: relative;
+  padding: 3rem 3.25rem 3.25rem;
+  color: var(--global-text-color);
+  background: var(--paper-bg);
+  font-family: "Resume Serif", "Latin Modern Roman", "CMU Serif", Georgia, "Times New Roman", serif;
+  /* Latin Modern's lowercase is small (x-height 0.43 of the size), so the paper's text is set about
+     10% larger than the site's to read as large; everything inside is sized in em from this. */
+  font-size: 1.05rem;
+  line-height: 1.4;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 8px 28px rgba(0, 0, 0, 0.12);
+}
+
+/* Dark mode: the paper dims a little so it doesn't glare (text contrast stays above 12:1) */
+html[data-theme="dark"] .paper {
+  --paper-bg: #e9e7e2;
+  --paper-tint: #dcd9d1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 12px 36px rgba(0, 0, 0, 0.55);
+}
+
+.paper h2,
+.paper h3 {
+  font-family: inherit;
+  color: var(--global-text-color);
+}
+
+.archive .paper a {
+  color: var(--global-link-color);
+}
+
+.archive .paper a:hover {
+  color: var(--global-link-color-hover);
+}
+
+/* Header: name and contact line, centred like the PDF */
+.paper__header {
+  margin: 0 0 1.25rem;
+  text-align: center;
+}
+
+.paper__name {
+  margin: 0 0 0.35rem;
+  font-size: 2em;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.paper__contact {
+  margin: 0;
+  font-size: 0.82em;
+  line-height: 1.7;
+}
+
+.paper__contact .item {
+  white-space: nowrap;
+}
+
+.archive .paper .paper__contact a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: #b5b5b5;
+  text-underline-offset: 0.18em;
+}
+
+.archive .paper .paper__contact a:hover {
+  text-decoration-color: currentColor;
+}
+
+.paper__contact .sep {
+  color: #8a8a8a;
+}
+
+/* "At a glance": what a recruiter should take away first (cv.json `highlights`) */
+.paper__glance {
+  margin: 0 0 1.5rem;
+  padding: 0.75rem 1rem 0.8rem 1.1rem;
+  background: var(--paper-tint);
+  border-left: 3px solid #1a1a1a;
+}
+
+.paper .paper__glance-title {
+  margin: 0 0 0.3rem;
+  padding: 0;
+  font-size: 1.05em;
+  font-weight: 700;
+  border: 0;
+}
+
+.paper__glance ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.paper__glance li {
+  margin: 0 0 0.15rem;
+}
+
+/* Sections: bold title-case headings over a thin rule */
+.cv-section {
+  margin: 0 0 1rem;
+  scroll-margin-top: 5rem; /* clear the fixed site header when linked to */
+}
+
+.paper .cv-section__title {
+  margin: 0 0 0.55rem;
+  padding: 0 0 0.15rem;
+  font-size: 1.3em;
+  font-weight: 700;
+  line-height: 1.25;
+  border-bottom: 1px solid #1f1f1f;
+}
+
+/* Entries: title and dates on one line, organisation in italics, then text and bullets */
 .cv-entry {
-  margin: 0 0 0.95rem;
+  margin: 0 0 0.6rem;
 }
 
 .cv-entry__head {
@@ -90,50 +309,47 @@
   gap: 0 1rem;
 }
 
-.cv .cv-entry__title {
+.paper .cv-entry__title {
   margin: 0;
   padding: 0;
-  font-size: var(--fs-item);
-  font-weight: 600;
-  line-height: 1.4;
+  font-size: 1.06em;
+  font-weight: 700;
+  line-height: 1.35;
   border: 0;
 }
 
-/* Linked entry titles stand alone, so colour is enough; underline on hover */
-.cv .cv-entry__title a {
+.archive .paper .cv-entry__title a {
+  color: inherit;
   text-decoration: none;
 }
 
-.cv .cv-entry__title a:hover {
+.archive .paper .cv-entry__title a:hover {
   text-decoration: underline;
 }
 
 .cv-entry__date {
-  font-size: 0.85rem;
-  color: var(--global-text-color-light);
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
 
 .cv-entry__org {
-  margin: 0.05rem 0 0.2rem;
+  margin: 0;
   font-style: italic;
-  color: var(--global-text-color-light);
 }
 
 .cv-entry__text {
-  margin: 0.2rem 0 0;
+  margin: 0.1rem 0 0;
 }
 
 .cv-entry__points {
-  margin: 0.25rem 0 0;
+  margin: 0.15rem 0 0;
   padding-left: 1.1rem;
 }
 
 .cv-entry__points li,
 .cv-focus li,
 .cv-certs li {
-  margin: 0 0 0.2rem;
+  margin: 0 0 0.15rem;
 }
 
 .cv-focus,
@@ -144,24 +360,34 @@
 
 .cv-tech {
   display: block;
-  margin-top: 0.15rem;
-  font-size: 0.8rem;
+  margin-top: 0.1rem;
+  font-size: 0.9em;
   color: var(--global-text-color-light);
 }
 
 .cv-more {
-  margin: 0.2rem 0 0;
-  font-size: 0.85rem;
+  margin: 0.3rem 0 0;
+  font-size: 0.92em;
 }
 
-/* Publications as numbered citations */
+/* Publications numbered [1], [2] as in the PDF */
 .cv-pubs {
   margin: 0;
-  padding-left: 1.4rem;
+  padding-left: 2rem;
+  list-style: none;
+  counter-reset: pub;
 }
 
 .cv-pubs li {
-  margin: 0 0 0.5rem;
+  position: relative;
+  margin: 0 0 0.45rem;
+  counter-increment: pub;
+}
+
+.cv-pubs li::before {
+  content: "[" counter(pub) "]";
+  position: absolute;
+  left: -2rem;
 }
 
 /* Skills as label: list rows */
@@ -173,47 +399,94 @@
   display: grid;
   grid-template-columns: 14rem 1fr;
   gap: 0 1rem;
-  padding: 0.2rem 0;
+  padding: 0.1rem 0;
 }
 
 .cv-skills dt {
-  font-weight: 600;
+  margin: 0;
+  font-weight: 700;
 }
 
 .cv-skills dd {
   margin: 0;
 }
 
+/* Highlighter marks on the phrases that matter most (switch: the Highlights button) */
+.paper mark {
+  margin: 0 -0.12em;
+  padding: 0 0.12em;
+  color: inherit;
+  background-color: transparent;
+  background-image: linear-gradient(100deg, rgba(255, 221, 87, 0.7), rgba(255, 221, 87, 0.95) 45%, rgba(255, 221, 87, 0.75));
+  background-repeat: no-repeat;
+  background-size: 100% 0.95em;
+  background-position: 0 70%;
+  border-radius: 0.3em 0.15em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.paper--plain mark {
+  margin: 0;
+  padding: 0;
+  background: none;
+}
+
+/* Phones: the paper fills the width, with just a sliver of desk at the sides */
 @media (max-width: 600px) {
+  .resume-viewer {
+    padding: 0.75rem 0.25rem 2rem;
+  }
+
+  .resume-toolbar {
+    padding: 0 0.5rem;
+  }
+
+  .resume-toggle,
+  .resume-download {
+    min-height: 2.5rem;
+  }
+
+  /* One swipeable row, so the links don't push "At a glance" out of the first screen */
+  .resume-outline {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+  }
+
+  .resume-outline::-webkit-scrollbar {
+    display: none;
+  }
+
+  .archive .resume-outline a {
+    flex: 0 0 auto;
+    min-height: 2.25rem;
+  }
+
+  .paper {
+    padding: 1.4rem 0.9rem 1.6rem;
+  }
+
+  .paper__name {
+    font-size: 1.7em;
+  }
+
+  .paper__contact {
+    font-size: 0.8em;
+  }
+
   .cv-skills div {
     grid-template-columns: 1fr;
-    padding: 0.3rem 0;
+    padding: 0.2rem 0;
   }
 }
 
-/* Print: a clean one-column document with the contact details on top */
-.cv-print-header {
-  display: none;
-}
-
+/* Print: just the paper, black on white, without the toolbar or the highlighter */
 @media print {
-  /* Paper is white whatever theme is active: reset the theme colours that everything uses */
-  :root,
-  html[data-theme="dark"] {
-    --global-bg-color: #fff;
-    --global-text-color: #000;
-    --global-text-color-light: #444;
-    --global-link-color: #000;
-    --global-border-color: #bbb;
-    --global-rule-color: #ccc;
-    --global-code-background-color: #fff;
-  }
-
   .masthead,
   .page__footer,
-  .page__title,
-  .cv-toolbar,
-  .cv-jump,
+  .resume-toolbar,
   .cv-more {
     display: none !important;
   }
@@ -221,57 +494,61 @@
   html,
   body {
     background: #fff !important;
-    color: #000 !important;
   }
 
   body {
+    display: block !important;
     margin: 0 !important;
     padding: 0 !important;
-    font-size: 10pt;
   }
 
   #main,
-  .page,
-  .page__inner-wrap {
-    float: none !important;
-    width: auto !important;
+  .archive,
+  .resume-viewer {
     max-width: none !important;
     margin: 0 !important;
     padding: 0 !important;
+    background: none !important;
   }
 
-  .cv {
+  .paper {
     max-width: none;
+    padding: 0;
     font-size: 10pt;
+    background: #fff !important; /* even when printed from dark mode */
+    box-shadow: none !important;
+    border-radius: 0;
   }
 
-  .cv-print-header {
-    display: block;
-    margin: 0 0 12pt;
+  .paper__name {
+    font-size: 18pt;
   }
 
-  .cv-print-header p {
-    margin: 0;
+  .paper__contact {
     font-size: 9pt;
   }
 
-  .cv-print-header .cv-print-header__name {
-    font-size: 18pt;
-    font-weight: 700;
+  .paper__glance {
+    background: none;
+    border-left-width: 2px;
   }
 
-  /* Paper sizes for the headings (on screen they follow the site type scale);
-     a heading never ends a page without its first entry */
-  .cv .cv-section__title {
+  .paper .cv-section__title {
     font-size: 12pt;
     break-after: avoid;
   }
 
-  .cv .cv-entry__title {
+  .paper .cv-entry__title {
     font-size: 10.5pt;
   }
 
-  .cv a {
+  .paper mark {
+    margin: 0;
+    padding: 0;
+    background: none;
+  }
+
+  .archive .paper a {
     color: #000 !important;
     text-decoration: none !important;
   }

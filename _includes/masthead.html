@@ -4,7 +4,8 @@
   <div class="masthead__inner-wrap">
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav" aria-label="Main">
-        <button type="button" aria-label="Toggle navigation menu" aria-controls="site-nav-hidden-links" aria-expanded="false"><span class="navicon"></span></button>
+        {% comment %} Starts hidden so the greedy nav measures the full row; it shows the button only when links overflow. {% endcomment %}
+        <button type="button" class="hidden" aria-label="Toggle navigation menu" aria-controls="site-nav-hidden-links" aria-expanded="false"><span class="navicon"></span></button>
         <ul class="visible-links">
           <li class="masthead__menu-item masthead__menu-item--lg persist"><a href="{{ base_path }}/">{{ site.title }}</a></li>
           {% for link in site.data.navigation.main %}

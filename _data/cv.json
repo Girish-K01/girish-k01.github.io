@@ -48,6 +48,12 @@
       }
     ]
   },
+  "highlights": [
+    "Two peer-reviewed papers, one as first author (<i>Engineering Research Express</i>; Springer LNNS).",
+    "Research assistant at VIT Chennai on federated learning (NVIDIA DGX) and on secure systems and AI.",
+    "Independent entrant in the NeurIPS 2026 EEG/EMG Foundation Challenge (Track 2: EEG decoding).",
+    "A year in industry as an application engineer at Accenture. Available now; open to relocation and remote work."
+  ],
   "work": [
     {
       "company": "Accenture, Chennai",
@@ -57,7 +63,7 @@
       "endDate": "2026-10",
       "summary": "Built Salesforce Life Sciences Cloud features (Apex, Lightning Web Components, Flows) for a global pharmaceutical client.",
       "highlights": [
-        "Evaluated GitHub Copilot on real user stories, reporting over 80% average time savings, which fed into the licence decision",
+        "Evaluated GitHub Copilot on real user stories, reporting <mark>over 80% average time savings</mark>, which fed into the licence decision",
         "Wrote a 60-page onboarding guide adopted by teams in India and the Philippines"
       ]
     },
@@ -67,7 +73,7 @@
       "website": "",
       "startDate": "2025-01",
       "endDate": "2025-05",
-      "summary": "Led a three-person team building HabitatFL, a federated framework for classifying wildlife audio and images across separate clients, with Flower and Docker on multi-GPU infrastructure.",
+      "summary": "<mark>Led a three-person team</mark> building HabitatFL, a federated framework for classifying wildlife audio and images across separate clients, with Flower and Docker on multi-GPU infrastructure.",
       "highlights": [
         "Trained lightweight edge models (MobileNetV3, SqueezeNet, under 2 MB): 87.65% accuracy on 18.2K spectrograms (27 classes) and 69.92% on 50K images (82 classes) (<a href=\"https://github.com/Girish-K01/federated-learning-ai-for-biodiv\">code</a>)"
       ],
@@ -79,7 +85,7 @@
       "website": "",
       "startDate": "2024-01",
       "endDate": "2024-05",
-      "summary": "Research on secure messaging and deception-based defence, leading to two peer-reviewed papers.",
+      "summary": "Research on secure messaging and deception-based defence, leading to <mark>two peer-reviewed papers</mark>.",
       "highlights": [
         "Designed and implemented JIGS, a secure-messaging pipeline combining ECDH key exchange with nonce-based AES-128 and parallelised stages, with its protocol verified in ProVerif (<a href=\"https://github.com/Girish-K01/jigs-crypto-code-repo\">code</a>)",
         "Contributed to Siren, a deception-based defence pairing honeypots and simulated user activity with ML classification of attacker behaviour"
@@ -189,7 +195,7 @@
       "name": "GPU-Accelerated Financial News Sentiment",
       "startDate": "2024-01",
       "endDate": "2024-04",
-      "description": "Streamed news through Kafka and scored it with FinBERT, using RAPIDS cuDF on an RTX 2060 to cut end-to-end latency from about 8 minutes to 10 seconds.",
+      "description": "Streamed news through Kafka and scored it with FinBERT, using RAPIDS cuDF on an RTX 2060 to cut end-to-end latency <mark>from about 8 minutes to 10 seconds</mark>.",
       "highlights": [],
       "keywords": ["Apache Kafka", "FinBERT", "RAPIDS cuDF", "CUDA"],
       "url": "https://github.com/Girish-K01/HPC-Sentiment-Analysis"
@@ -305,7 +311,7 @@
     {
       "name": "EEG/EMG Foundation Challenge, NeurIPS 2026 (Track 2: EEG decoding)",
       "startDate": "2026-11",
-      "summary": "Independent entry: a covariance-based EEG decoder (Riemannian tangent space with logistic regression), written without AI-generated code and evaluated on held-out participants."
+      "summary": "Independent entry: a covariance-based EEG decoder (Riemannian tangent space with logistic regression), written without AI-generated code and <mark>evaluated on held-out participants</mark>."
     }
   ]
 }

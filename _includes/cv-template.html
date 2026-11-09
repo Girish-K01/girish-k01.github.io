@@ -1,116 +1,147 @@
 {% comment %}
-  CV page body, rendered from _data/cv.json. A compact single column that follows the
-  section order of the PDF resume (files/cv.pdf). Styles: assets/css/cv-style.css (includes
-  a print layout). Dates go through cv-date.html (see CLAUDE.md for why).
+  Resume page body (/resume/), rendered from _data/cv.json: a sheet of paper on a grey "desk", like a PDF
+  viewer, in the look of the LaTeX PDF (files/cv.pdf). Styles and the print layout: assets/css/cv-style.css.
+  Dates go through cv-date.html (see CLAUDE.md for why).
+  Focus: `highlights` (top level in cv.json) fills the "At a glance" box, and any text field may wrap the
+  phrases a recruiter should notice in <mark>; the Highlights button turns those marks off and on.
 {% endcomment %}
 {% include base_path %}
 {% assign cv = site.data.cv %}
 
-<div class="cv">
-  {% comment %} Shown only when printing: the site header and sidebar are hidden then. {% endcomment %}
-  <div class="cv-print-header">
-    <p class="cv-print-header__name">{{ cv.basics.name }}</p>
-    <p>{{ cv.basics.location.city }}, India · {{ cv.basics.email }} · {{ site.url | remove: "https://" }}{% for profile in cv.basics.profiles %} · {{ profile.url | remove: "https://" | remove: "www." }}{% endfor %}</p>
+<div class="resume-viewer">
+  <div class="resume-toolbar">
+    <h1 class="resume-toolbar__title">Resume</h1>
+    <div class="resume-toolbar__actions">
+      <button type="button" class="resume-toggle" id="resume-marks" aria-pressed="true" hidden><span class="resume-toggle__swatch" aria-hidden="true"></span>Highlights</button>
+      <a class="resume-download" href="{{ base_path }}/files/cv.pdf" download="Girish_Kulathumani_Resume.pdf"><i class="fas fa-file-arrow-down" aria-hidden="true"></i>Download PDF</a>
+    </div>
+    <nav class="resume-outline" aria-label="Resume sections">
+      <a href="#cv-research">Research</a>
+      <a href="#cv-education">Education</a>
+      <a href="#cv-publications">Publications</a>
+      <a href="#cv-experience">Experience</a>
+      <a href="#cv-writing">Writing</a>
+      <a href="#cv-projects">Projects</a>
+      <a href="#cv-skills">Skills</a>
+    </nav>
   </div>
 
-  <div class="cv-toolbar">
-    <a class="cv-download" href="{{ base_path }}/files/cv.pdf"><i class="fas fa-file-arrow-down" aria-hidden="true"></i>Download PDF</a>
-    <span class="cv-contact"><a href="mailto:{{ cv.basics.email }}">{{ cv.basics.email }}</a> · {{ cv.basics.location.city }}, {{ cv.basics.location.region }}</span>
-  </div>
+  <article class="paper" id="resume-paper">
+    <header class="paper__header">
+      <p class="paper__name">{{ cv.basics.name }}</p>
+      {% comment %} Same contact line as the PDF: location, email, site, then these profiles in this order. {% endcomment %}
+      {% assign header_networks = "GitHub|Google Scholar|ORCID|Substack|LinkedIn" | split: "|" %}
+      <p class="paper__contact"><span class="item">{{ cv.basics.location.city }}, India</span><span class="sep" aria-hidden="true"> · </span><a class="item" href="mailto:{{ cv.basics.email }}">{{ cv.basics.email }}</a><span class="sep" aria-hidden="true"> · </span><a class="item" href="{{ base_path }}/">{{ site.url | remove: "https://" | remove: "http://" }}</a>{% for network in header_networks %}{% for profile in cv.basics.profiles %}{% if profile.network == network %}<span class="sep" aria-hidden="true"> · </span><a class="item" href="{{ profile.url }}">{% case network %}{% when "Google Scholar" %}Google Scholar{% when "ORCID" %}ORCID {{ profile.username }}{% else %}{{ profile.url | remove: "https://" | remove: "www." }}{% endcase %}</a>{% endif %}{% endfor %}{% endfor %}</p>
+    </header>
 
-  <nav class="cv-jump" aria-label="CV sections">
-    <a href="#cv-research">Research</a>
-    <a href="#cv-education">Education</a>
-    <a href="#cv-publications">Publications</a>
-    <a href="#cv-experience">Experience</a>
-    <a href="#cv-writing">Writing</a>
-    <a href="#cv-projects">Projects</a>
-    <a href="#cv-skills">Skills</a>
-  </nav>
+    {% if cv.highlights.size > 0 %}
+    <section class="paper__glance" aria-labelledby="cv-glance-title">
+      <h2 class="paper__glance-title" id="cv-glance-title">At a glance</h2>
+      <ul>
+        {% for item in cv.highlights %}<li>{{ item }}</li>{% endfor %}
+      </ul>
+    </section>
+    {% endif %}
 
-  <section class="cv-section" id="cv-research" aria-labelledby="cv-research-title">
-    <h2 class="cv-section__title" id="cv-research-title">Research interests</h2>
-    <ul class="cv-focus">
-      {% for focus in cv.research.focus %}<li><strong>{{ focus.area }}:</strong> {{ focus.description }}</li>{% endfor %}
-    </ul>
-  </section>
+    <section class="cv-section" id="cv-research" aria-labelledby="cv-research-title">
+      <h2 class="cv-section__title" id="cv-research-title">Research interests</h2>
+      <ul class="cv-focus">
+        {% for focus in cv.research.focus %}<li><strong>{{ focus.area }}:</strong> {{ focus.description }}</li>{% endfor %}
+      </ul>
+    </section>
 
-  <section class="cv-section" id="cv-education" aria-labelledby="cv-education-title">
-    <h2 class="cv-section__title" id="cv-education-title">Education</h2>
-    {% for ed in cv.education %}
-      {% capture degree %}{{ ed.studyType }}, {{ ed.area }}{% if ed.gpa %} · CGPA {{ ed.gpa }}{% endif %}{% endcapture %}
-      {% include cv-entry.html title=ed.institution org=degree start=ed.startDate end=ed.endDate %}
-    {% endfor %}
-  </section>
-
-  <section class="cv-section" id="cv-publications" aria-labelledby="cv-publications-title">
-    <h2 class="cv-section__title" id="cv-publications-title">Publications</h2>
-    <ol class="cv-pubs">
-      {% for pub in cv.publications %}
-        {% assign authors_end = pub.authors | strip_html | strip | slice: -1 %}
-        <li>{% if pub.authors %}{{ pub.authors }}{% unless authors_end == "." %}.{% endunless %} {% endif %}{% if pub.website and pub.website != "" %}<a href="{{ pub.website }}">“{{ pub.name }}.”</a>{% else %}“{{ pub.name }}.”{% endif %} <em>{{ pub.publisher }}</em>, {{ pub.releaseDate }}.</li>
+    <section class="cv-section" id="cv-education" aria-labelledby="cv-education-title">
+      <h2 class="cv-section__title" id="cv-education-title">Education</h2>
+      {% for ed in cv.education %}
+        {% capture degree %}{{ ed.studyType }}, {{ ed.area }}{% if ed.gpa %} · CGPA {{ ed.gpa }}{% endif %}{% endcapture %}
+        {% include cv-entry.html title=ed.institution org=degree start=ed.startDate end=ed.endDate %}
       {% endfor %}
-    </ol>
-  </section>
+    </section>
 
-  <section class="cv-section" id="cv-experience" aria-labelledby="cv-experience-title">
-    <h2 class="cv-section__title" id="cv-experience-title">Research experience</h2>
-    {% for work in cv.work %}{% if work.category == "research" %}
-      {% include cv-entry.html title=work.position org=work.company start=work.startDate end=work.endDate text=work.summary points=work.highlights %}
-    {% endif %}{% endfor %}
-  </section>
+    <section class="cv-section" id="cv-publications" aria-labelledby="cv-publications-title">
+      <h2 class="cv-section__title" id="cv-publications-title">Publications</h2>
+      <ol class="cv-pubs">
+        {% for pub in cv.publications %}
+          {% assign authors_end = pub.authors | strip_html | strip | slice: -1 %}
+          <li>{% if pub.authors %}{{ pub.authors }}{% unless authors_end == "." %}.{% endunless %} {% endif %}{% if pub.website and pub.website != "" %}<a href="{{ pub.website }}">“{{ pub.name }}.”</a>{% else %}“{{ pub.name }}.”{% endif %} <em>{{ pub.publisher }}</em>, {{ pub.releaseDate }}.</li>
+        {% endfor %}
+      </ol>
+    </section>
 
-  {% if cv.current.size > 0 %}
-  <section class="cv-section" aria-labelledby="cv-current-title">
-    <h2 class="cv-section__title" id="cv-current-title">Current work</h2>
-    {% for item in cv.current %}
-      {% include cv-entry.html title=item.name date=item.startDate text=item.summary %}
-    {% endfor %}
-  </section>
-  {% endif %}
+    <section class="cv-section" id="cv-experience" aria-labelledby="cv-experience-title">
+      <h2 class="cv-section__title" id="cv-experience-title">Research experience</h2>
+      {% for work in cv.work %}{% if work.category == "research" %}
+        {% include cv-entry.html title=work.position org=work.company start=work.startDate end=work.endDate text=work.summary points=work.highlights %}
+      {% endif %}{% endfor %}
+    </section>
 
-  <section class="cv-section" id="cv-writing" aria-labelledby="cv-writing-title">
-    <h2 class="cv-section__title" id="cv-writing-title">Writing and activities</h2>
-    {% for initiative in cv.research.initiatives %}
-      {% capture title %}{{ initiative.role }}, {{ initiative.name }}{% endcapture %}
-      {% include cv-entry.html title=title url=initiative.url start=initiative.startDate end=initiative.endDate text=initiative.description %}
-    {% endfor %}
-    {% for item in cv.leadership %}
-      {% include cv-entry.html title=item.title org=item.organization start=item.startDate end=item.endDate date=item.date text=item.description %}
-    {% endfor %}
-  </section>
+    {% if cv.current.size > 0 %}
+    <section class="cv-section" id="cv-current" aria-labelledby="cv-current-title">
+      <h2 class="cv-section__title" id="cv-current-title">Current work</h2>
+      {% for item in cv.current %}
+        {% include cv-entry.html title=item.name date=item.startDate text=item.summary %}
+      {% endfor %}
+    </section>
+    {% endif %}
 
-  <section class="cv-section" aria-labelledby="cv-other-title">
-    <h2 class="cv-section__title" id="cv-other-title">Other experience</h2>
-    {% for work in cv.work %}{% unless work.category == "research" %}
-      {% include cv-entry.html title=work.position org=work.company start=work.startDate end=work.endDate text=work.summary points=work.highlights %}
-    {% endunless %}{% endfor %}
-  </section>
+    <section class="cv-section" id="cv-writing" aria-labelledby="cv-writing-title">
+      <h2 class="cv-section__title" id="cv-writing-title">Writing and activities</h2>
+      {% for initiative in cv.research.initiatives %}
+        {% capture title %}{{ initiative.role }}, {{ initiative.name }}{% endcapture %}
+        {% include cv-entry.html title=title url=initiative.url start=initiative.startDate end=initiative.endDate text=initiative.description %}
+      {% endfor %}
+      {% for item in cv.leadership %}
+        {% include cv-entry.html title=item.title org=item.organization start=item.startDate end=item.endDate date=item.date text=item.description %}
+      {% endfor %}
+    </section>
 
-  <section class="cv-section" id="cv-projects" aria-labelledby="cv-projects-title">
-    <h2 class="cv-section__title" id="cv-projects-title">Projects</h2>
-    {% for project in cv.projects %}
-      {% capture text %}{{ project.description }}{% if project.keywords.size > 0 %} <span class="cv-tech">{{ project.keywords | join: " · " }}</span>{% endif %}{% endcapture %}
-      {% include cv-entry.html title=project.name url=project.url start=project.startDate end=project.endDate text=text %}
-    {% endfor %}
-    <p class="cv-more"><a href="{{ '/projects/' | relative_url }}">More detail and links on the Projects page →</a></p>
-  </section>
+    <section class="cv-section" id="cv-other" aria-labelledby="cv-other-title">
+      <h2 class="cv-section__title" id="cv-other-title">Other experience</h2>
+      {% for work in cv.work %}{% unless work.category == "research" %}
+        {% include cv-entry.html title=work.position org=work.company start=work.startDate end=work.endDate text=work.summary points=work.highlights %}
+      {% endunless %}{% endfor %}
+    </section>
 
-  <section class="cv-section" id="cv-skills" aria-labelledby="cv-skills-title">
-    <h2 class="cv-section__title" id="cv-skills-title">Skills</h2>
-    <dl class="cv-skills">
-      {% for skill in cv.skills %}<div><dt>{{ skill.name }}</dt><dd>{{ skill.keywords | join: ", " }}</dd></div>{% endfor %}
-      {% if cv.languages.size > 0 %}<div><dt>Languages</dt><dd>{% for lang in cv.languages %}{{ lang.language }} ({{ lang.fluency | downcase }}){% unless forloop.last %}, {% endunless %}{% endfor %}</dd></div>{% endif %}
-      {% if cv.interests.size > 0 %}<div><dt>Interests</dt><dd>{% for interest in cv.interests %}{{ interest.name }}{% unless forloop.last %}, {% endunless %}{% endfor %}</dd></div>{% endif %}
-    </dl>
-  </section>
+    <section class="cv-section" id="cv-projects" aria-labelledby="cv-projects-title">
+      <h2 class="cv-section__title" id="cv-projects-title">Projects</h2>
+      {% for project in cv.projects %}
+        {% capture text %}{{ project.description }}{% if project.keywords.size > 0 %} <span class="cv-tech">{{ project.keywords | join: " · " }}</span>{% endif %}{% endcapture %}
+        {% include cv-entry.html title=project.name url=project.url start=project.startDate end=project.endDate text=text %}
+      {% endfor %}
+      <p class="cv-more"><a href="{{ '/projects/' | relative_url }}">More detail and links on the Projects page →</a></p>
+    </section>
 
-  {% if cv.certifications.size > 0 %}
-  <section class="cv-section" aria-labelledby="cv-certs-title">
-    <h2 class="cv-section__title" id="cv-certs-title">Certifications</h2>
-    <ul class="cv-certs">
-      {% for cert in cv.certifications %}<li><strong>{{ cert.name }}</strong> · {{ cert.issuer }}, {% include cv-date.html date=cert.date %}</li>{% endfor %}
-    </ul>
-  </section>
-  {% endif %}
+    <section class="cv-section" id="cv-skills" aria-labelledby="cv-skills-title">
+      <h2 class="cv-section__title" id="cv-skills-title">Skills</h2>
+      <dl class="cv-skills">
+        {% for skill in cv.skills %}<div><dt>{{ skill.name }}</dt><dd>{{ skill.keywords | join: ", " }}</dd></div>{% endfor %}
+        {% if cv.languages.size > 0 %}<div><dt>Languages</dt><dd>{% for lang in cv.languages %}{{ lang.language }} ({{ lang.fluency | downcase }}){% unless forloop.last %}, {% endunless %}{% endfor %}</dd></div>{% endif %}
+        {% if cv.interests.size > 0 %}<div><dt>Interests</dt><dd>{% for interest in cv.interests %}{{ interest.name }}{% unless forloop.last %}, {% endunless %}{% endfor %}</dd></div>{% endif %}
+      </dl>
+    </section>
+
+    {% if cv.certifications.size > 0 %}
+    <section class="cv-section" id="cv-certifications" aria-labelledby="cv-certs-title">
+      <h2 class="cv-section__title" id="cv-certs-title">Certifications</h2>
+      <ul class="cv-certs">
+        {% for cert in cv.certifications %}<li><strong>{{ cert.name }}</strong> · {{ cert.issuer }}, {% include cv-date.html date=cert.date %}</li>{% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+  </article>
 </div>
+
+{% comment %} Highlights switch. No // comments in here: compress.html joins the page into one line. {% endcomment %}
+<script>
+  (function () {
+    var button = document.getElementById("resume-marks");
+    var paper = document.getElementById("resume-paper");
+    if (!button || !paper || !paper.querySelector("mark")) return;
+    button.hidden = false;
+    button.addEventListener("click", function () {
+      var on = button.getAttribute("aria-pressed") !== "true";
+      button.setAttribute("aria-pressed", on ? "true" : "false");
+      paper.classList.toggle("paper--plain", !on);
+    });
+  })();
+</script>
